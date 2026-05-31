@@ -1,0 +1,69 @@
+.container{
+    background: var(--bg-light);
+    padding: 0 200px;
+}
+.hero-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+}
+
+.hero-left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    overflow: hidden;
+    height: calc(100vh - 100px);
+}
+.hero-left h1{
+    font-size: 3.5rem;
+    color: var(--text-dark);
+}
+.hero-left span{
+}
+
+.hero-left p{
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.hero-right{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 40%;
+}
+.hero-right img{
+    height:auto;
+    width:100%;
+    border-radius: 4rem 4rem 4rem 25rem;
+}
+.hero-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: 1rem;
+    gap: 2rem;
+}
+
+.enrollNowBtn{
+    background:var(--text-dark);
+    color: white;
+}
+.enrollNowBtn:hover{
+    background: var(--hover-blue);
+    color: white;
+}
+.watchVideosBtn{
+    background:var(--gradient-main);
+    color: white;
+    transition: all 0.3s ease;
+}
+.watchVideosBtn:hover{
+    background: var(--hover-blue);
+    color: white;
+}

@@ -1,0 +1,66 @@
+.container{
+    padding: 0 200px;
+    background-color: whitesmoke;
+}
+.about-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0;
+    
+}
+.about-section h2{
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin: 20px 0 50px 0;
+}
+.about-desc-container{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 2rem;
+}
+.about-left{
+    width: 50%;
+    
+}
+.about-section p{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+}
+.about-left ul{
+    list-style:none;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+.about-left ul li{
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.about-left ul li span, i{
+    color:var(--text-dark);
+    font-weight: bold;
+    margin-left: 10px;
+}
+.about-left ul li i{
+    color: rgb(4, 152, 4);
+}
+.about-right{
+    width: 50%;
+}
+
+.inquireNowBtn{
+    background:var(--text-dark);
+    color: white;
+    margin-top: 20px;
+}
+.btn:hover{
+    background:var(--gradient-main);
+    color: white;
+}

@@ -1,0 +1,132 @@
+.container{
+    background: var(--bg-light);
+    padding:20px 50px;
+    background: whitesmoke;
+}
+.classes-section{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 3rem;
+    margin: 100px 0;
+}
+.section-content h2{
+    padding: 0 200px;
+    font-size: 3rem;
+    color: var(--text-dark);
+    margin-bottom: 50px;
+    text-align: center;
+}
+.section-content p{
+     font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0 200px;
+}
+.class-cards-container{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+}
+.class-card{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    flex: 1 1 0;
+    min-width: 200px;
+    max-width: 450px;
+    min-height: 450px;
+    max-height: 550px;
+    padding: 2rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 0.3s ease;
+}
+.class-card:hover{
+    transform: translateY(-8px);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 30px;
+
+}
+.class-card:nth-child(2){
+    border-top: 10px solid rgb(4, 152, 4);
+    box-shadow: rgba(100, 100, 111, 0.8) 0px 7px 29px 0px;
+
+}
+.class-details{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    gap:10px;
+}
+.class-details h3{
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    text-align: left;
+}
+.class-details span{
+    font-size: 1.5rem;
+    margin-right: 0.7rem;
+}
+.class-details h2{
+    font-size: 2rem;
+}
+.class-details p{
+    color: rgb(4, 152, 4);
+    text-align: left;
+    font-weight: bold;
+}
+.class-features{
+    margin-top: 1rem;
+    width: 100%;
+}
+.class-features ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    width: 100%;
+}
+.class-features ul div{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+.class-description{
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+.class-description i{
+    color: rgb(4, 152, 4);
+}
+.class-action{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.enroll-button{
+    background: whitesmoke;
+    color: var(--text-dark);
+    transition: 0.3s ease;
+    cursor: pointer;
+    border: 2px solid var(--text-dark);
+}
+.enroll-button:hover{
+    scale: 1.03;
+    background: var(--gradient-main);
+    color: white;
+}

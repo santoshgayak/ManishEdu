@@ -1,9 +1,21 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Navbar } from './components/navbar/navbar';
+import { Hero } from './components/hero/hero';
+import { Qualities } from './components/qualities/qualities';
+import { About } from './components/about/about';
+import { WhyUs } from './components/why-us/why-us';
+import { Classes } from './components/classes/classes';
+import { Services } from "./components/services/services";
+import { CallToAction } from "./components/call-to-action/call-to-action";
+import { Team } from './components/team/team';
+import { Faq } from './components/faq/faq';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Navbar, Hero, 
+            Qualities, About, WhyUs, 
+            Classes, Services, CallToAction,Team,Faq],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

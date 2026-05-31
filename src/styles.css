@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   font-family: "Elms Sans", sans-serif;
+   font-family: 'Work Sans', sans-serif;
+   scroll-behavior: smooth;
+}
+
+:root {
+
+  /* ===============================
+     PRIMARY BRAND COLORS
+     Used for: navbar, buttons, links
+  =============================== */
+
+  --primary-blue: #2563eb;   /* Main buttons, CTA (Get Started, Login) */
+  --primary-dark: #1e40af;   /* Navbar background, footer */
+
+  /* ===============================
+     ACCENT COLORS (MUSIC + MODERN FEEL)
+     Used for: highlights, hover effects, icons
+  =============================== */
+
+  --accent-cyan: #06b6d4;    /* Hover links, icons, small highlights */
+  --accent-sky: #38bdf8;     /* Sub headings, decorative elements */
+
+  /* ===============================
+     BACKGROUND COLORS
+     Used for: page background, sections
+  =============================== */
+
+  --bg-light: #f8fafc;       /* Main page background */
+  --bg-white: #ffffff;       /* Cards, sections, navbar (if light) */
+
+  /* ===============================
+     TEXT COLORS
+     Used for: headings, paragraphs, subtitles
+  =============================== */
+
+  --text-dark: rgb(3, 4, 94);      /* Main headings (H1, H2) */
+  --text-muted: #64748b;     /* Paragraph text, descriptions */
+
+  /* ===============================
+     BORDER & UI ELEMENTS
+     Used for: cards, inputs, separators
+  =============================== */
+
+  --border-light: #e2e8f0;   /* Card borders, input borders */
+
+  /* ===============================
+     HOVER STATES
+     Used for: buttons, links hover effect
+  =============================== */
+
+  --hover-blue: #1d4ed8;     /* Button hover, link hover */
+
+  /* ===============================
+     SPECIAL GRADIENTS
+     Used for: hero section, banners
+  =============================== */
+
+  --gradient-main: linear-gradient(
+    135deg,
+    #2563eb,  /* primary blue */
+    #06b6d4   /* accent cyan */
+  );
+}
+
+body{
+   padding: 0 0px;
+   background: var(--bg-light);
+}
+.btn{
+    padding:20px 30px;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: (--text-dark);
+    cursor: pointer;
+   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+
+}
+.btn:hover{
+    background:var(--gradient-main);
+    color: white;
+}
+p{
+   font-size: clamp(1rem, 1.2vw, 1.6rem);
+   line-height: 1.5;
+
+}
+h2{
+   font-size: 4rem;
+   color: var(--text-dark);
+}
+.container{
+
+}
