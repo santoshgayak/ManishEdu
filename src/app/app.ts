@@ -10,12 +10,15 @@ import { Services } from "./components/services/services";
 import { CallToAction } from "./components/call-to-action/call-to-action";
 import { Team } from './components/team/team';
 import { Faq } from './components/faq/faq';
+import { Contact } from './components/contact/contact';
+import { Footer } from "./components/footer/footer";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Hero, 
-            Qualities, About, WhyUs, 
-            Classes, Services, CallToAction,Team,Faq],
+  imports: [RouterOutlet, Navbar, Hero,
+    Qualities, About, WhyUs,
+    Classes, Services, CallToAction,
+    Team, Faq, Contact, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
