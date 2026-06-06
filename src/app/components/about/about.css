@@ -41,7 +41,7 @@
 .about-left ul li{
     font-size: 1.2rem;
     line-height: 1.5;
-    color: var(--text-muted);
+    color: var(--text-dark);
 }
 .about-left ul li span, i{
     color:var(--text-dark);
@@ -58,7 +58,7 @@
 .inquireNowBtn{
     background:var(--text-dark);
     color: white;
-    margin-top: 20px;
+    margin-top: 80px;
 }
 .btn:hover{
     background:var(--gradient-main);

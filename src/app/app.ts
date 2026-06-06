@@ -15,13 +15,9 @@ import { Footer } from "./components/footer/footer";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Hero,
-    Qualities, About, WhyUs,
-    Classes, Services, CallToAction,
-    Team, Faq, Contact, Footer],
+  imports: [RouterOutlet, Navbar, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('ManhishEdu');
 }

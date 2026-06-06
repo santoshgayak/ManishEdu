@@ -27,14 +27,14 @@
     height: auto;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
     gap: 2rem;
     flex: 1 1 0;
     padding: 0px;
 }
 .our-team-card{
     width: 540px;
-    min-height: 300px;
+    min-height: 150px;
     max-height: 800px;
     background: whitesmoke;
     border-radius: 2rem;
@@ -46,6 +46,45 @@
     padding: 30px;
     margin: 0px  ;
 }
+.manishCard{
+    height: 600px;
+    flex-direction: column;
+
+}
+
+.manishCard .team-img img{
+    height: 250px;
+    width: 250px;
+
+}
+.manishCard .team-detail h3{
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+}
+.position{
+    font-size: 1rem;
+    color:rgb(4, 152, 4);
+    font-weight: bold;
+}
+.manishCard .team-detail .position{
+    font-size: 2rem;
+    text-align: center !important;
+    color: rgb(4, 152, 4);
+    font-weight: bold;
+    width: 100%;
+}
+.manishCard .team-detail .sayings{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.other-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+   
 .team-detail{
     display: flex;
     flex-direction: column;
@@ -58,11 +97,7 @@
     color: var(--text-dark);
     margin: 0;
 }
-.position{
-    font-size: 1.2rem;
-    color:rgb(4, 152, 4);
-    font-weight: bold;
-}
+
 
 .social-media-links{
     display: flex;
@@ -71,6 +106,11 @@
     gap: 1rem;
     margin-top: 20px;
     margin-bottom: auto;
+}
+.manishCard .team-detail .social-media-links{
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
 }
 .social-media-links li{
     list-style: none;

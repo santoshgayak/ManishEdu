@@ -28,8 +28,7 @@
 .navbar ul li a{
     color: var(--text-dark);
     text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bolder;
+    font-size: 1rem;
     padding: 5px 20px;
     margin-left: 10px;
     position: relative;
@@ -63,4 +62,18 @@
     height: 70px;
     width: auto;
     margin-left: -40px;
+}
+.navbar .basket{
+    height: 30px;
+    width: auto;
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+}
+.navbar .badge{
+    font-size: 1rem;
+    color: var(--text-dark);
+    border-radius: 50%; 
+    font-weight: bold;
+    display: none;
 }

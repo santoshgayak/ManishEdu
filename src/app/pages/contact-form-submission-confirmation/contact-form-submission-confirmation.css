@@ -1,0 +1,27 @@
+.container{
+    padding: 0 200px;
+    
+
+}
+.thank-you-container{
+    height: auto;
+    padding: 100px 0;
+   
+
+}
+.thank-you-card{
+     display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 2rem;
+}
+.thank-you-actions{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+
+}
+.thank-you-actions .mainBtn{
+    background-color: var(--text-dark);
+    color: white;
+}

@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="cart-payment">
+
+    <form [formGroup]="paymentInfo" (ngSubmit)="proceedToPayment()" class="customer-info">
+      <div class="custinfo">
+        <h3>Customer Information</h3>
+
+      <div class="fullname">
+        <div class="fname">
+          <label for="firstName">First Name</label>
+          <input id="firstName" type="text" formControlName="firstName" required />
+        </div>
+
+        <div class="lname">
+          <label for="lastName">Last Name</label>
+          <input id="lastName" type="text" formControlName="lastName" required />
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="phone">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="tel" formControlName="phone" required />
+        </div>
+
+        <div class="email">
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" required />
+        </div>
+      </div>
+
+      <div formGroupName="address" class="address">
+
+        <div class="addressLine">
+          <div class="addresslines">
+            <label for="addressLine1">Address Line 1</label>
+            <input id="addressLine1" type="text" formControlName="addressLine1" required />
+          </div>
+
+          <div class="addresslines">
+            <label for="addressLine2">Address Line 2</label>
+            <input id="addressLine2" type="text" formControlName="addressLine2" required />
+          </div>
+        </div>
+
+        <div class="cityAndState">
+          <div class="city">
+            <label for="city">City</label>
+            <input id="city" type="text" formControlName="city" required />
+          </div>
+
+          <div class="state">
+            <label for="state">State</label>
+            <input id="state" type="text" formControlName="state" required />
+          </div>
+        </div>
+
+        <div class="postcodeAndCountry">
+          <div class="postcode">
+            <label for="postcode">Postcode</label>
+            <input id="postcode" type="text" formControlName="postcode" required />
+          </div>
+
+          <div class="country">
+            <label for="country">Country</label>
+            <select id="country" formControlName="country" required>
+              <option value="">Select Country</option>
+              <option value="DE">Germany</option>
+              <option value="IN">India</option>
+              <option value="US">United States</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+      
+
+
+      <div>
+         <div class="cardInfo" formGroupName="card">
+          <h3>Cardholder Information</h3>
+   
+          <div class="cardholder-info">
+
+            <div class="field">
+              <label for="cardName">Name on Card</label>
+              <input id="cardName" type="text" formControlName="cardName" placeholder="John Doe" />
+            </div>
+
+            <div class="field">
+              <label for="cardNumber">Card Number</label>
+              <input id="cardNumber" type="text" formControlName="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" />
+            </div>
+
+
+            <div class="expiryAndCvv">
+              <div class="field">
+              <label for="expiry">Expiry</label>
+              <input id="expiry" type="text" formControlName="expiry" placeholder="MM/YY" maxlength="5" />
+            </div>
+
+            <div class="field">
+              <label for="cvv">CVV</label>
+              <input id="cvv" type="password" formControlName="cvv" placeholder="123" maxlength="4" />
+            </div>
+           
+
+            </div>
+            <div class="termsAndCondition">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+                <p class="terms">
+              By proceeding with the payment, you agree to our Terms & Conditions and Privacy Policy. 
+              You confirm that the information provided is correct and authorize the payment for this order.
+            </p>
+
+            </div>
+           
+            
+                 <!-- Submit Button -->
+   
+
+          </div>
+   <button type="submit" class="btn processToPaymentBtn">
+        Proceed to payment
+      </button>
+      </div>
+
+      </div>
+
+     
+
+ 
+
+    </form>
+    
+  
+  </div>
+</div>
+
+<app-footer></app-footer>
