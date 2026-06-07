@@ -4,6 +4,7 @@ import { Shop } from './pages/shop/shop';
 import { BuyNow } from './pages/buy-now/buy-now';
 import { ContactFormSubmissionConfirmation } from './pages/contact-form-submission-confirmation/contact-form-submission-confirmation';
 import { Payment } from './pages/payment/payment';
+import { Success } from './pages/success/success';
 
 export const routes: Routes = [
     {
@@ -27,5 +28,11 @@ export const routes: Routes = [
         path:'payment',
         component: Payment
 
+    },
+    {
+        path:'success',
+        component: Success
+
     }
+
 ];

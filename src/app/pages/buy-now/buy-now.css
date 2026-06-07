@@ -11,6 +11,7 @@
     gap: 1rem;
     margin-top: 1.5rem;
     padding: 0;
+    scale: 0.9;
 }
 .cart-section h2{
     font-size: 2rem;
@@ -106,7 +107,7 @@
 }
 .top p{
     text-transform: capitalize;
-        background-color: rgb(221, 247, 221);
+    background-color: rgb(239, 251, 239);
         font-size: 0.7rem;
         color: green;
         border-radius: 0.5rem;
@@ -168,7 +169,7 @@
     gap: 0 !important;
     align-items: center !important;
     color: green;
-    background-color: rgb(221, 247, 221);
+    background-color: rgb(239, 251, 239);
     padding: 1rem 1rem;
     border-radius: 1rem;
     margin-top: 1rem;
@@ -191,6 +192,10 @@
     color: white;
     transition: all 0.2s ease;
     padding: 1rem;
+
+}
+.processToPaymentBtn i{
+    margin-right: 0.7rem;
 }
 .processToPaymentBtn:hover{
     scale: 1.02;
