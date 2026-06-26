@@ -2,7 +2,6 @@ import express from 'express';
 import type { Request, Response } from 'express';
 import cors from 'cors';
 import Stripe from 'stripe';
-
 import contactRoutes from './routes/contact.routes.js';
 import saveCustomerInfoRoutes from './routes/save-customer-info.routes.js';
 import saveStudentInfoRoutes from './routes/save-student-info.routes.js';
