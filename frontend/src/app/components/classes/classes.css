@@ -1,0 +1,181 @@
+
+.classes-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 0rem;
+    padding: 1rem 0; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-content {
+    width: 100%;
+    text-align: center;
+}
+.sectionTopLine{
+    font-weight: bolder;
+    font-size: 0.9rem !important;
+    color: rgb(3, 139, 28) !important;
+    margin-bottom: -5px !important;
+    text-transform: uppercase;
+}
+.section-content h2 {
+    font-size: clamp(3rem, 4vw + 1rem, 5rem);
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    padding: 0 5%; 
+    position: relative;
+}
+
+.section-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin: 0 auto 30px auto;
+    max-width: 800px; 
+    padding: 0 5%;
+}
+
+.class-cards-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; 
+}
+
+.class-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 300px; 
+    max-width: 360px;
+    min-height: 480px;
+    padding: 2.5rem 2rem;
+    background:linear-gradient(135deg,rgb(10, 10, 35), rgb(225, 137, 69),rgb(20, 5, 38));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.class-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 20px 45px rgba(0, 0, 0, 0.12);
+    border-color: rgba(198, 236, 198, 0.2);
+}
+
+
+
+.class-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 1rem;
+    border-bottom: 1px dotted green;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.class-details h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    text-align: center;
+    color: white;
+}
+
+.class-details h2 {
+    font-size: 2rem;
+    display: flex;
+    align-items: baseline;
+    color:whitesmoke;
+
+}
+
+.class-details span {
+    font-size: 1.3rem;
+    margin-right: 0.4rem;
+    font-weight: 600;
+    color:whitesmoke;
+
+}
+
+.class-details p {
+    color: rgb(4, 152, 4);
+    text-align: center;
+    font-weight: bold;
+}
+
+.class-features {
+    margin-top: 1rem;
+    width: 100%;
+    flex-grow: 1; 
+}
+
+.class-features ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.class-features ul div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.class-description {
+    color:whitesmoke;
+}
+
+.class-description i {
+    color: rgb(4, 152, 4);
+    flex-shrink: 0;
+}
+
+.class-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.enroll-button {
+    width: 100%;
+    padding: 12px 24px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 1px dotted green;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.enroll-button:hover {
+    background: var(--gradient-main);
+    color: white;
+    border-color: transparent;
+}

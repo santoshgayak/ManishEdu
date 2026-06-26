@@ -1,0 +1,48 @@
+import { Component, inject } from '@angular/core';
+import { Footer } from "../../components/footer/footer";
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { CustomerInfo } from '../../models/customerInfo/customerInfo.model';
+import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { CheckoutService } from '../../services/checkout.service';
+import { ChangeDetectorRef} from '@angular/core';
+import { StripeCheckoutService } from '../../services/stripeCheckout.service'
+import { ActivatedRoute } from '@angular/router';
+@Component({
+  selector: 'app-payment',
+  imports: [ReactiveFormsModule, Footer],
+  templateUrl: './payment.html',
+  styleUrl: './payment.css',
+})
+export class Payment {
+  classId = '';
+   payload = {
+    id: this.classId
+  }
+
+  constructor(private router: Router, 
+              private checkoutService:CheckoutService,
+              private stripeCheckoutService: StripeCheckoutService,
+            private changeDetector: ChangeDetectorRef,
+            private route: ActivatedRoute
+          ){}
+
+  ngOnInit(): void {
+    this.classId = this.route.snapshot.paramMap.get('classId') || '';
+  }
+
+//checkout navigation based on parameter
+  ngAfterViewInit(){
+    this.changeDetector.detectChanges();
+    requestAnimationFrame(() => {
+
+      if(this.classId){
+          this.stripeCheckoutService.proceedToPayment(this.classId);
+      }else{
+          this.checkoutService.proceedToPayment();
+      }
+
+    });
+    }
+
+}

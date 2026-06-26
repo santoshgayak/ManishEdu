@@ -1,0 +1,39 @@
+.container {
+    padding: 20px 200px;
+}
+.cardtypes-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+.cardtypes-container div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.cardtypes-container div:nth-child(2){
+    border-right: 2px solid grey;
+    border-left: 2px solid grey;
+    padding: 0rem 3rem;
+}
+.cardtypes-container div p{
+    font-size: 0.8rem;
+    color: var(--text-dark);
+}
+.cardtypes-container div span{
+    font-weight: bold;
+}
+
+
+#checkout{
+   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+    border-radius: 2rem;
+}
+.ProductSummary-image{
+    background-color: red;
+    height: 2000px !important;
+}
+

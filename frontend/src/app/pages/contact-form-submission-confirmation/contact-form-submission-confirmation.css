@@ -1,0 +1,81 @@
+.container{
+    padding: 100px 200px;
+    
+
+}
+.thank-you-container{
+    height: calc(100vh - 80px);
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+}
+.image img{
+    height: 350px;
+}
+.thank-you-card{
+     display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 2rem;
+    width: 70% !important;
+    color: var(--text-dark);
+}
+.thank-you-actions{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+
+}
+.thank-you-actions .mainBtn{
+    background-color: var(--text-dark);
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.thank-you-actions i{
+    margin-right: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+.subBtn{
+    background: var(--gradient-main);
+    color: white;
+       display: flex;
+    align-items: center;
+}
+.subBtn:hover{
+    background: var(--hover-blue);
+}
+@media (max-width:768px) {
+    .container{
+        padding: 0;
+    }
+    .image img{
+    height: 150px;
+}
+.image{
+    width: 100%;
+}
+.thank-you-container{
+    padding: 3rem 0;
+ 
+    flex-direction: column;
+   
+
+}
+.thank-you-card{
+    width: 100%;
+    gap: 0;
+}
+.thank-you-actions{
+    width: 100%;
+    flex-direction: column;
+    margin-top: 3rem;
+}
+.mainBtn, .subBtn{
+    width: 100% !important;
+}
+
+    
+}

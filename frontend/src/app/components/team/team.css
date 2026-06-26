@@ -1,0 +1,175 @@
+.team-container {
+    padding: 0; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.our-team-section{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    width: 100%;
+    margin: 0;
+    background-color: white;
+    width: 100%;
+}
+.sectionTopLine{
+    font-weight: bolder;
+    font-size: 0.9rem !important;
+    color: rgb(3, 139, 28) !important;
+    margin-bottom: -5px !important;
+    text-transform: uppercase;
+}
+.section-content{
+    width: 100%;
+}
+.section-content h2{
+    font-size: clamp(3rem, 4vw + 1rem, 5rem);
+    color: var(--text-dark);     
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+}   
+.section-content p{
+   font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px; 
+    padding: 0 5%;
+}
+.our-team-cards-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    
+    gap: 2rem;
+    flex: 1 1 0;
+    padding: 0px;
+}
+.our-team-card{
+    max-width: 540px;
+    min-height: 150px;
+    max-height: 800px;
+    background: whitesmoke;
+    border-radius: 2rem;
+   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    padding: 30px;
+    margin: 0px  ;
+}
+.manishCard{
+    height: 600px;
+    flex-direction: column;
+
+}
+
+.manishCard .team-img img{
+    height: 250px;
+    width: 250px;
+
+}
+.manishCard .team-detail h3{
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+}
+.position{
+    font-size: 1rem;
+    color:rgb(4, 152, 4);
+    font-weight: bold;
+}
+.manishCard .team-detail .position{
+    font-size: 2rem;
+    text-align: center !important;
+    color: rgb(4, 152, 4);
+    font-weight: bold;
+    width: 100%;
+}
+.manishCard .team-detail .sayings{
+    font-size: 1.2rem;
+    text-align: center;
+}
+.other-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+   
+.team-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 0.2rem;    
+}
+.team-detail h3{
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+
+.social-media-links{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 1rem;
+    margin-top: 20px;
+    margin-bottom: auto;
+}
+.manishCard .team-detail .social-media-links{
+    width: 100%;
+    justify-content: center;
+    gap: 2rem;
+}
+.social-media-links li{
+    list-style: none;
+}
+.social-media-links a img{
+border-radius: 50%;
+}
+.social-media-links a img:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+
+}
+.team-img img{
+    border-radius: 50%;
+    border: 8px solid  var(--text-muted);
+    box-shadow: rgba(100, 100, 111, 1) 0px 7px 29px 0px;
+}
+.sayings{
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+@media (max-width:768px) {
+    .container{
+        padding: 0;
+    }
+    .our-team-card{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .our-team-card h3, .our-team-card p{
+        width: 100%;
+        text-align: center;
+    }
+    .social-media-links{
+        width: 100%;
+        justify-content: center;
+    }
+}

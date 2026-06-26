@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   scroll-behavior: smooth;
+}
+
+:root {
+
+
+  --primary-blue: #2563eb;   /* Main buttons, CTA (Get Started, Login) */
+  --primary-dark: #1e40af;   /* Navbar background, footer */
+
+
+
+  --accent-cyan: #06b6d4;    /* Hover links, icons, small highlights */
+  --accent-sky: #38bdf8;     /* Sub headings, decorative elements */
+
+
+
+  --bg-light: #f8fafc;       /* Main page background */
+  --bg-white: #ffffff;       /* Cards, sections, navbar (if light) */
+
+
+
+  --text-dark: rgb(3, 4, 94);      /* Main headings (H1, H2) */
+  --text-muted: #64748b;     
+
+
+
+  --gradient-main: linear-gradient(
+    135deg,
+    #2563eb, 
+    #06b6d4   
+  );
+    --gradient-main-sec: linear-gradient(
+    135deg,
+    #06b6d4,
+    #2563eb
+      
+  );
+
+}
+
+body{
+   padding: 0 0px;
+   background: whitesmoke;
+}
+section{
+   padding: 50px 0 !important;
+}
+.btn{
+    padding:20px 30px;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: (--text-dark);
+    cursor: pointer;
+   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
+
+}
+.btn:hover{
+    background:var(--gradient-main);
+    color: white;
+}
+p{
+   font-size: clamp(1rem, 1.2vw, 1.6rem);
+   line-height: 1.5;
+
+}
+h2{
+   font-size: 4rem;
+   color: var(--text-dark);
+}
+.container{
+
+    z-index: 999;
+    width: 100%;
+    padding: 0 5%;
+
+}
+
+.flexItemHorzntl{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 1rem;
+}
+@media (max-width:1024px) {
+   .container{
+      padding: 0 2%;
+   }
+   
+}
+@media (max-width:768px) {
+   .container{
+      padding: 0;
+   }
+
+   
+}

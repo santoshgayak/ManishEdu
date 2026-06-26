@@ -1,0 +1,131 @@
+.container{
+    padding: 0;
+}
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 0; 
+    width: 100%;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+.about-section h2 {
+    font-size: clamp(3rem, 4vw + 1rem, 5rem);
+    color: var(--text-dark);
+    margin: 0 0 40px 0;
+    text-align: center;
+    position: relative;
+}
+
+.about-desc-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px; 
+    flex-wrap: wrap;  
+    box-sizing: border-box;
+}
+
+.about-left {
+    flex: 1 1 450px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.about-right {
+    flex: 1 1 450px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin: 0 0 20px 0;
+}
+
+.about-left ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0;
+}
+
+.about-left ul li {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+ 
+}
+
+.about-left ul li span {
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.about-left ul li i {
+    color: rgb(4, 152, 4);
+    font-size: 1.2rem;
+    flex-shrink: 0; 
+    margin: 0 0.5rem 0 0;
+}
+
+.inquireNowBtn {
+    padding: 14px 32px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin-top: 40px; 
+    transition: all 0.3s ease;
+    display: inline-block;
+     width: 100%;
+    background-color: white;
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    
+}
+
+.inquireNowBtn:hover {
+    background: var(--gradient-main);
+    color: white;
+}
+@media (max-width:768px) {
+    .container{
+        padding: 0 2%;
+    }
+    #about-section {
+        scroll-margin-top: 200px;
+        }
+    ul li{
+        flex-direction: column;
+        text-align: center;
+    }
+    ul li i{
+        display: none;
+    }
+    .about-section h2{
+        text-align: center;
+    }
+    .about-section p {
+        text-align: justify;
+    }
+    .about-right{
+        flex-direction: column;
+    }
+    .about-right button{
+        width: 100%;
+        background-color: white;
+        color: var(--text-dark);
+        border: 2px solid var(--text-dark);
+    }
+}

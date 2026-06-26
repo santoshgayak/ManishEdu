@@ -1,0 +1,41 @@
+<div class="nav-container">
+    <nav class="navbar" [class.open]="isMenuOpen">
+        <div class="logoContainer">
+            <img src="/images/logos/logo.png" alt="logo">
+                <i class="fa-solid" 
+                    [ngClass]="isMenuOpen ? 'fa-xmark' : 'fa-bars'" 
+                    (click)="toggleMenu()">
+            </i>        
+        </div>
+        <ul [class.open]="isMenuOpen" (click)="isMenuOpen = false">
+            <li>
+                <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            </li>
+            <li>
+                <a routerLink="/" fragment="about-section" routerLinkActive="active" [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'ignored', paths: 'exact', fragment: 'exact' }">About</a>
+            </li>        
+            <li>
+                <a routerLink="/" fragment="classes-section" routerLinkActive="active" [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'ignored', paths: 'exact', fragment: 'exact' }">Classes</a>
+            </li>       
+            <li>
+                <a routerLink="/" fragment="services-section" routerLinkActive="active" [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'ignored', paths: 'exact', fragment: 'exact' }">Services</a>
+            </li>
+            <li>
+                <a routerLink="/" fragment="team-section" routerLinkActive="active" [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'ignored', paths: 'exact', fragment: 'exact' }">Team</a>
+            </li>
+            <li>
+                <a routerLink="/" fragment="faq-section" routerLinkActive="active" [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'ignored', paths: 'exact', fragment: 'exact' }">FAQ</a>
+            </li>
+            <li>
+                <a routerLink="/" fragment="contact-section" routerLinkActive="active" [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'ignored', paths: 'exact', fragment: 'exact' }">Contact</a>
+            </li>
+            <li>
+                <a routerLink="/shop" >Shop</a>
+            </li>
+            <li>
+                <a routerLink="/buy-now" ><img src="/images/icons/basket.png" alt="Cart" class="basket"> <span class="badge">({{cartCount}})</span></a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>

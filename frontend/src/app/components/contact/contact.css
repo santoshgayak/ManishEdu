@@ -1,0 +1,221 @@
+
+#contact-section {
+    background: var(--bg-light);
+    width: 100%;
+    box-sizing: border-box;
+    background: whitesmoke;
+}
+
+.contact-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 5rem; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-content h2 {
+    font-size: clamp(3rem, 4vw + 1rem, 5rem);
+    color: var(--text-dark);
+    text-align: center;
+    margin: 0 0 1rem 0;  
+    position: relative;  
+}
+
+
+.contact-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-container {
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-left, .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-top: 5px solid var(--text-dark);
+    border-bottom: 5px solid var(--text-dark);
+    padding: 2.5rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.15) 0px 7px 29px 0px;  
+    box-sizing: border-box;
+}
+
+.contact-left {
+    flex: 1 1 400px;
+    max-width: 460px;
+    min-width: 0;
+}
+
+.container-left-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+}
+.container-left-detail div:last-child {
+    min-width: 0; 
+    width: 100%;
+}
+.container-left-detail h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.container-left-detail p {
+   margin: 0;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    text-align: left;
+     overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all; 
+    white-space: normal;
+}
+
+.map {
+    width: 100%;
+    margin-top: auto; 
+    border-radius: 0.5rem;
+    overflow: hidden;
+    height: 250px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.contact-right {
+    flex: 1 1 500px;
+}
+
+.contact-right form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.name-email {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.name, .email {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 50%; 
+    width: 100%;
+}
+
+.contact-right form label {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+
+.contact-right form input,
+.contact-right form textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 0.5rem;
+    font-size: 1rem;  
+    background: #ffffff;
+    color: var(--text-dark);
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-right form input:focus,
+.contact-right form textarea:focus {
+    outline: none;
+    border-color: var(--hover-blue);
+    box-shadow: 0 0 0 3px rgba(var(--hover-blue-rgb), 0.15);
+}
+
+.contact-right form textarea {
+    height: 160px;
+    resize: vertical;
+}
+
+.contact-button {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.contact-right form button {
+    padding: 0.85rem 2rem;
+    border: none;
+    border-radius: 2rem;            
+    font-size: 1.1rem;
+    font-weight: 700;  
+    background: var(--text-dark);
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.contact-right form button:hover {
+    background: linear-gradient(135deg, var(--hover-blue), var(--text-dark));
+    transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+    .contact-container {
+        flex-direction: column; 
+    }
+
+    .contact-left, .contact-right {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+    
+    .map {
+        height: 300px;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container{
+        padding: 0;
+    }
+    .name-email {
+        flex-direction: column; 
+        gap: 1.2rem;
+    }
+    
+    .name, .email {
+        flex: 1 1 100%;
+    }
+
+    .contact-section h2 {
+        font-size: 2.4rem;
+    }
+   
+}

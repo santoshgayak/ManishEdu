@@ -1,0 +1,27 @@
+    <section class="classes-section" id="classes-section">
+    <div class="section-content">
+        <p class="sectionTopLine">What we offer</p>
+        <h2 class="section-title">Classes &amp; Pricing</h2>
+        <p class="section-description">Discover a World of Musical Learning and Expression with our Range of Sarangi Classes. Whether you're a beginner or looking to enhance your skills, we have the perfect class for you.</p>
+    </div>
+    <div class="class-cards-container" >
+        <div class="class-card " *ngFor="let course of classList">
+            <div class="class-details">
+                <h3 class="class-title">{{course.title}}</h3>
+                <h2 class="class-price"><span>Rs</span>{{course.price}}</h2>
+                <p class="class-duration">per month</p>
+            </div>
+            <div class="class-features">
+                <ul >
+                    <div class="class-description" *ngFor="let feature of course.features">
+                        <i class='fas fa-check-double'></i>
+                        <li>{{feature}}</li>
+                    </div>
+                </ul>
+            </div>
+            <div class="class-action">
+                <button class="btn enroll-button" (click)="enrollInClass(course.id)">Enroll Now</button>
+            </div>
+        </div>
+    </div>
+</section>

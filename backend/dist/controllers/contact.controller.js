@@ -1,0 +1,26 @@
+import { ContactService } from '../services/contact.service.js';
+import { error } from 'node:console';
+//create instant of contact service
+const contactService = new ContactService();
+export const submitContactForm = async (req, res) => {
+    try {
+        console.log('Contact form received...');
+        console.log(req.body);
+        const { name, email, subject, message } = req.body;
+        const result = await contactService.sendMail(name, email, subject, message);
+        res.status(200).json({
+            success: true,
+            message: 'Contact Form Submitted Successfully.',
+            emailResult: result
+        });
+    }
+    catch (err) {
+        console.error("error while sending emaillCCT", err);
+        res.status(500).json({
+            success: false,
+            message: 'Contact Form failed submission!',
+            error
+        });
+    }
+};
+//# sourceMappingURL=contact.controller.js.map
