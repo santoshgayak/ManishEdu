@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Angular / build
+dist/
+tmp/
+out-tsc/
+.angular/cache
+
+# Environment files (IMPORTANT)
+.env
+*.env
+backend/src/config/.env
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
