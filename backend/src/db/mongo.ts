@@ -3,7 +3,8 @@ import { MongoClient, Db } from "mongodb";
 import "dotenv/config";
 import { error } from "node:console";
  
-
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
+console.log("DB_NAME:", process.env.DB_NAME);
 const client = new MongoClient(process.env.MONGODB_URI!);
 
 let db: Db;

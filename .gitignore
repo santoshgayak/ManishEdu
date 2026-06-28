@@ -23,3 +23,17 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# backend secrets
+.env
+
+# dependencies
+node_modules/
+
+# Angular build cache
+frontend/.angular/
+frontend/dist/
+frontend/out-tsc/
+
+# logs
+*.log
