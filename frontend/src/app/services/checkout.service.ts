@@ -40,7 +40,7 @@ export class CheckoutService{
             const checkout = await (this.stripe as any).createEmbeddedCheckoutPage({
             fetchClientSecret: async () => {
 
-                const res = await fetch('http://localhost:3000/create-checkout-session', {
+                const res = await fetch('https://manisheduserver.onrender.com/create-checkout-session', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

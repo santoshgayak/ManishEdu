@@ -30,7 +30,7 @@ export class Contact {
     console.log(this.contactForm.value);
 
     const formData = this.contactForm.value;
-    this.http.post('http://localhost:3000/api/contact', formData)
+    this.http.post('https://manisheduserver.onrender.com/api/contact', formData)
         .subscribe({
           next: (response) =>{
             console.log("Success", response);

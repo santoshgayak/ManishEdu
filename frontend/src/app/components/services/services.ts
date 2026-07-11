@@ -26,7 +26,7 @@ export class Services {
 
   //load service data from database
   ngOnInit(){
-          this.http.get<ApiResponse>('http://localhost:3000/api/data/services').subscribe({
+          this.http.get<ApiResponse>('https://manisheduserver.onrender.com/api/data/services').subscribe({
         next:(res)=>{
           this.serviceList = res.data;
           this.cdr.detectChanges();

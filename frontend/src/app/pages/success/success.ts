@@ -53,7 +53,7 @@ export class Success implements OnInit {
     }
 
     // Fetch Stripe session from backend
-    this.http.get<any>(`http://localhost:3000/session-status?session_id=${this.sessionId}`).subscribe({
+    this.http.get<any>(`https://manisheduserver.onrender.com/session-status?session_id=${this.sessionId}`).subscribe({
       next: (res) => {
         console.log('✅ Session Data:', res);
 

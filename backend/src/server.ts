@@ -211,5 +211,5 @@ app.get('/session-status', async (req: Request, res: Response) => {
 // START SERVER
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log('🚀 Server running on http://localhost:3000');
+  console.log('🚀 Server running now !!');
 });

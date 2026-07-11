@@ -84,7 +84,7 @@ ngOnInit(): void {
       return;
     }
     console.log("Forms submmited",this.enrollmentInfo.value);
-    this.http.post<SaveStudentResponse>('http://localhost:3000/api/save-student-info',this.enrollmentInfo.value).
+    this.http.post<SaveStudentResponse>('https://manisheduserver.onrender.com/api/save-student-info',this.enrollmentInfo.value).
     subscribe({
       next:(res)=>{
         console.log("Saved student information succesfully",res);

@@ -39,7 +39,7 @@ export class Products {
 
     //load the products from database
     ngOnInit(){
-       this.http.get<ApiResponse>('http://localhost:3000/api/data/products').subscribe({
+       this.http.get<ApiResponse>('https://manisheduserver.onrender.com/api/data/products').subscribe({
         next:(res)=>{
           console.log("Data successfully arived at products:",res.data);
           this.products = res.data;

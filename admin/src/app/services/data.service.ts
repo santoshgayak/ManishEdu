@@ -14,7 +14,7 @@ import { Product } from "../model/products.model";
 
 export class DataService{
 
-    apiUrl = 'http://localhost:3000/api';
+    apiUrl = 'https://manisheduserver.onrender.com/api';
     private http = inject(HttpClient);
     updatedClass?: ClassPlan;
     updatedProduct?:Product;

@@ -10,7 +10,7 @@ import { LoginResponse } from "../model/loginResponse.model";
 })
 export class AuthenticateService {
 
-  private apiUrl = 'http://localhost:3000/api';
+  private apiUrl = 'https://manisheduserver.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 

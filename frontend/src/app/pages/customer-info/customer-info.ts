@@ -63,7 +63,7 @@ export class CustomerInfo {
   savedFormData(){
     const formData = this.paymentInfo.value;
     console.log(" fomr dat:",formData);
-    this.http.post<CustomerResponse>('http://localhost:3000/api/save-customer-info',formData).
+    this.http.post<CustomerResponse>('https://manisheduserver.onrender.com/api/save-customer-info',formData).
     subscribe({
       next:(res)=>{
    console.log("THIS IS RES,", res);
