@@ -18,13 +18,15 @@
 .whyUsImageContainer {
     flex: 1 1 40%;
     max-width: 480px;
-    background-color: #e0e0e0;
+   background: transparent !important;
+
     position: sticky;
     top: 120px;
     border-radius: 2rem;
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 30px;
     box-sizing: border-box;
+    padding: 0px;
 }
 
 .whyUsImageContainer img {
@@ -163,7 +165,7 @@
     .whyUs-section {
         flex-direction: column; 
         gap: 3rem;
-        padding: 60px 0;
+        padding: 60px 20px !important;
     }
 
     .whyUsImageContainer {
@@ -171,6 +173,9 @@
         top: 0;
         width: 100%;
         max-width: 100%;
+    }
+    .whyUsImageContainer img{
+        padding: 20px;
     }
 
     .whyUs-content {

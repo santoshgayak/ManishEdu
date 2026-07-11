@@ -27,7 +27,8 @@ app.use(cors({
     'http://localhost:4200',
     'http://localhost:4300',
     'http://localhost:62519/',
-    'https://manish-edu-git-main-manish-edu.vercel.app'
+    'https://manish-edu-git-main-manish-edu.vercel.app',
+    'https://manisheduserver.onrender.com'  
   ],
   methods: ['GET', 'POST','PUT', 'DELETE'],
   credentials: true

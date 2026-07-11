@@ -55,7 +55,7 @@ h1,h2{
    font-size: clamp(3rem,6vw + 1rem, 7rem);
 }
 section{
-   padding: 50px 0 !important;
+   padding: 0px 0;
 }
 .btn{
     padding:20px 30px;
