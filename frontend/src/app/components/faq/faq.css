@@ -1,12 +1,10 @@
-.faq-container{
-    padding: 0;
-}
+
 .faq-section{
     display: flex;
     align-items: start;
     justify-content: center;
     gap: 3rem;
-    padding: 1rem 20px;
+    padding: 100px 20px;
 
 }
 .section-content{
