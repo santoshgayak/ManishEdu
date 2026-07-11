@@ -8,12 +8,27 @@ import { Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+
+interface SaveStudentResponse {
+  success: boolean;
+  alreadyExists: boolean;
+  data: {
+    _id: string;
+  };
+}
+
+
 @Component({
   selector: 'app-enroll',
   imports: [Footer, ReactiveFormsModule],
   templateUrl: './enroll.html',
   styleUrl: './enroll.css',
 })
+
+
+
+
+
 export class Enroll {
 
 
@@ -69,12 +84,21 @@ ngOnInit(): void {
       return;
     }
     console.log("Forms submmited",this.enrollmentInfo.value);
-    this.http.post('http://localhost:3000/api/save-student-info',this.enrollmentInfo.value).
+    this.http.post<SaveStudentResponse>('http://localhost:3000/api/save-student-info',this.enrollmentInfo.value).
     subscribe({
       next:(res)=>{
         console.log("Saved student information succesfully",res);
         console.log("✅ API success:", res);
-        this.router.navigate(['/payment',this.classId]);
+
+
+        const studentId = res.data._id;
+        this.router.navigate(['/payment'],{
+            queryParams:{
+              flow:'class',
+              classId : this.classId,
+              studentId: studentId
+            }
+        });
       },
       error:(err)=>{
         console.log("error saving student data.",err);

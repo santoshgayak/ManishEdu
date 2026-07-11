@@ -36,6 +36,11 @@ export const routes: Routes = [
         component: Payment
 
     },
+     {
+        path:'payment/:customerId',
+        component: Payment
+
+    },
     {
         path:'success',
         component: Success

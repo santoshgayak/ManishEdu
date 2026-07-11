@@ -1,12 +1,12 @@
-.container {
-    padding: 20px 200px;
+.cart-payment{
+    margin-top: 100px;
 }
 .cardtypes-container{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    margin-top: 2rem;
+    margin-top: 5rem;
 }
 .cardtypes-container div{
     display: flex;

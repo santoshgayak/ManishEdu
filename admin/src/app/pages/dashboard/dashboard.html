@@ -1,0 +1,56 @@
+<div class="dashboard-container">
+    <div class="side-nav">
+        <div class="title-logo">
+            <img src="logo.png" alt="company logo" height="70px">
+            <a routerLink="/">
+                <i class="fa-solid fa-chart-bar"></i>
+                Dashboard
+            </a>
+        </div>
+        <div class="menu-container manage">
+            <p class="menu-title">Manage</p>
+            <ul class="menus">
+                <li><a routerLink=""><i class="fa-brands fa-first-order"></i>Orders</a></li>
+                <li><a routerLink="/dashboard/products"><i class="fa-solid fa-cubes"></i>Products</a></li>
+                <li><a routerLink="/dashboard/classes"><i class="fa-solid fa-graduation-cap"></i>Classes</a></li>
+                <li><a routerLink=""><i class="fa-solid fa-circle-user"></i>Users</a></li>
+                <li><a routerLink=""><i class="fa-regular fa-credit-card"></i>Payments</a></li>
+            </ul>
+        </div>
+        <span></span>
+         <div class="menu-container settings">
+            <p class="menu-title">Settings</p>
+            <ul>
+                <li><a routerLink=""><i class="fa-solid fa-gear"></i>Settings</a></li>
+                <li><a (click)="logOut()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a></li>
+            </ul>
+        </div>
+        <div class="menu-container support">
+            <p class="needHelp"><i class="fa-solid fa-headset"></i>Need help?</p>
+            <p>If you need any help, pleae feel free to contact our support team.</p>
+            <a class="suppportBtn" routerLink="/">Contact Support</a>
+        </div>
+    </div>
+    <div class="main-dashboard-container">
+        <div class="nav">
+            <div class="left">
+                <i class="fa-solid fa-bars-staggered"></i>
+               
+            </div>
+            <div class="right">
+                <span id="divider"></span>
+                
+                <div class="user">
+                    <span>SG</span>
+                    <div class="user-name">
+                        <p>Admin</p>
+                        <p>admin@manish-edu.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+                <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

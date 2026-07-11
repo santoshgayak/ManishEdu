@@ -7,6 +7,22 @@ import { Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CheckoutService } from '../../services/checkout.service';
+
+interface CustomerResponse {
+  success: boolean;
+  message: string;
+  data: {
+    alreadyExists: boolean;
+    customer: {
+      _id: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+    };
+  };
+}
+
+
 @Component({
   selector: 'app-customer-info',
   imports: [ReactiveFormsModule,Footer],
@@ -47,10 +63,22 @@ export class CustomerInfo {
   savedFormData(){
     const formData = this.paymentInfo.value;
     console.log(" fomr dat:",formData);
-    this.http.post('http://localhost:3000/api/save-customer-info',formData).
+    this.http.post<CustomerResponse>('http://localhost:3000/api/save-customer-info',formData).
     subscribe({
       next:(res)=>{
-        this.router.navigate(['/payment']);
+   console.log("THIS IS RES,", res);
+
+    const customerId = res.data.customer._id;
+
+    console.log("CUSTOMER ID:", customerId);
+
+          this.router.navigate(['/payment'],{
+            queryParams:{
+              flow:'product',
+              customerId : customerId
+            }
+          }
+          );
       },
       error:(err)=>{
           console.error("Error saving data:", err);

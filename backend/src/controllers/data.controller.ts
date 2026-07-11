@@ -7,16 +7,14 @@ export const getData = async (req: Request, res: Response) => {
     const service = new DataService();
     const collection = req.params.collection.toString().toLowerCase();
     if (!collectionList.includes(collection)) {
-    return res.status(400).json({
-      success: false,
-      message: 'Invalid collection'
-    });
-  }
+        return res.status(400).json({
+        success: false,
+        message: 'Invalid collection'
+        });
+    }
 
     try{
-        console.log("trying to get data now ...");
         const data = await service.getAll(collection);
-        console.log("Backedn Course:",data);
         return res.status(200).json({
             success:true,
             data

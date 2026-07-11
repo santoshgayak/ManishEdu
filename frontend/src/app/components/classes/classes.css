@@ -57,7 +57,7 @@
     max-width: 360px;
     min-height: 480px;
     padding: 2.5rem 2rem;
-    background:linear-gradient(135deg,rgb(10, 10, 35), rgb(225, 137, 69),rgb(20, 5, 38));
+    background:linear-gradient(135deg,rgb(10, 10, 35), rgb(5, 16, 49),rgb(20, 5, 38));
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 24px;
@@ -117,6 +117,11 @@
     font-weight: bold;
 }
 
+.class-desc{
+    color: white;
+    font-size: 0.8rem;
+
+}
 .class-features {
     margin-top: 1rem;
     width: 100%;

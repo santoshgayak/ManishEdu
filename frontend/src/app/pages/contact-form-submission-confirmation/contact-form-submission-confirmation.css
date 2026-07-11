@@ -1,25 +1,27 @@
-.container{
-    padding: 100px 200px;
-    
 
-}
 .thank-you-container{
-    height: calc(100vh - 80px);
-    padding: 3rem 0;
+    height: max-content;
+    min-height: 70vh;
+    padding:2rem;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     margin-top: 80px;
+    width: 100%;
+    
 }
-.image img{
-    height: 350px;
-}
+
 .thank-you-card{
      display: flex;
     align-items: start;
     flex-direction: column;
     gap: 2rem;
-    width: 70% !important;
+    width: 100% !important;
     color: var(--text-dark);
+}
+.thank-you-card h1{
+    font-size: clamp(2rem,4vw + 0.5rem, 5rem);
 }
 .thank-you-actions{
     display: flex;
@@ -50,22 +52,28 @@
 @media (max-width:768px) {
     .container{
         padding: 0;
+        height: max-content;
+    }
+    .image{
+        width: 100%;
     }
     .image img{
-    height: 150px;
+    height: auto;
+    width: 100%;
 }
 .image{
     width: 100%;
 }
 .thank-you-container{
-    padding: 3rem 0;
- 
+    padding: 1rem 0;
     flex-direction: column;
+    height: auto;
    
 
 }
 .thank-you-card{
-    width: 100%;
+    width: 100% !important;
+    padding:0 1rem;
     gap: 0;
 }
 .thank-you-actions{
@@ -75,6 +83,19 @@
 }
 .mainBtn, .subBtn{
     width: 100% !important;
+}
+
+    
+}
+@media (max-width:1088px) {
+    .thank-you-card img{
+        width: 200px !important;
+        height: 100px;
+    }
+    .mainBtn, .subBtn{
+        padding: 1rem;
+        font-size: 0.8rem;
+        width: 200px;
 }
 
     

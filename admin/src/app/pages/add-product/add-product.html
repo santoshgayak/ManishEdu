@@ -1,0 +1,127 @@
+
+    <div class="breadcrumb">
+      <a routerLink="/dashboard">Dashboard</a>
+      <span>></span>
+      <a routerLink="/dashboard/products">Product</a>
+      <span>></span>
+      <span>Add Product</span>
+    </div>
+
+
+    <div class="intro">
+        <div class="title">
+            <h3>Add a new product</h3>
+            <p>Create, update and manage all products</p>
+        </div>
+        <div class="btns">
+            <button class="cancelAddClass" (click)="onCancel()"><i class="fa-solid fa-angles-left"></i>Cancel</button>
+            <button class="addNewClass" (click)="addNewProduct()"><i class="fa-solid fa-plus"></i>Save Product</button>
+        </div>
+  </div>
+  
+<form class="add-product" [formGroup]="productForm">
+
+  <!-- Product Information -->
+  <div class="card">
+    <h3>Product Information</h3>
+
+    <div class="form-grid">
+
+      <!-- Product Name -->
+      <div class="form-group full-width">
+        <label>
+          <i class="fa-solid fa-box"></i>
+          Product Name
+        </label>
+
+        <input
+          type="text"
+          placeholder="Enter product name"
+          formControlName="name">
+      </div>
+
+      <!-- Image URL -->
+      <div class="form-group full-width">
+        <label>
+          <i class="fa-solid fa-image"></i>
+          Product Image URL
+        </label>
+
+        <input
+          type="text"
+          placeholder="https://example.com/image.jpg"
+          formControlName="image">
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-tags"></i>
+          Category
+        </label>
+
+        <select formControlName="category">
+          <option value="">Select Category</option>
+          <option value="sarangi">Sarangi</option>
+          <option value="madal">Madal</option>
+          <option value="bansuri">Bansuri</option>
+        </select>
+      </div>
+
+      <!-- Stock -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-boxes-stacked"></i>
+          Stock Quantity
+        </label>
+
+        <input
+          type="number"
+          placeholder="Available stock"
+          formControlName="stock">
+      </div>
+
+      <!-- Price -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-dollar-sign"></i>
+          Price ($)
+        </label>
+
+        <input
+          type="number"
+          placeholder="Product price"
+          formControlName="price">
+      </div>
+
+      <!-- Product ID (Optional) -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-hashtag"></i>
+          Product SKU / ID
+        </label>
+
+        <input
+          type="text"
+          placeholder="Optional custom ID"
+          formControlName="id">
+      </div>
+
+      <!-- Description -->
+      <div class="form-group full-width">
+        <label>
+          <i class="fa-solid fa-circle-info"></i>
+          Product Description
+        </label>
+
+        <textarea
+          rows="6"
+          placeholder="Write product description..."
+          formControlName="description">
+        </textarea>
+      </div>
+
+    </div>
+  </div>
+
+</form>

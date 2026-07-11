@@ -1,39 +1,41 @@
+# ==========================================
 # Dependencies
+# ==========================================
 node_modules/
+backend/node_modules/
+frontend/node_modules/
+admin/node_modules/
 
-# Angular / build
+# ==========================================
+# Environment Files & Secrets (CRITICAL)
+# ==========================================
+.env
+*.env
+backend/.env
+backend/src/config/.env
+
+# ==========================================
+# Frontend / Angular / Build Outputs
+# ==========================================
 dist/
 tmp/
 out-tsc/
 .angular/cache
-
-# Environment files (IMPORTANT)
-.env
-*.env
-backend/src/config/.env
-
-# Logs
-npm-debug.log*
-yarn-error.log*
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# backend secrets
-.env
-
-# dependencies
-node_modules/
-
-# Angular build cache
 frontend/.angular/
 frontend/dist/
 frontend/out-tsc/
 
-# logs
+# ==========================================
+# Logs
+# ==========================================
 *.log
+npm-debug.log*
+yarn-error.log*
+
+# ==========================================
+# IDE & System Files
+# ==========================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

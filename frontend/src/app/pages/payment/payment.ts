@@ -16,6 +16,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class Payment {
   classId = '';
+  studentId = '';
+  customerId = '';
+
    payload = {
     id: this.classId
   }
@@ -29,9 +32,24 @@ export class Payment {
 
   ngOnInit(): void {
     this.classId = this.route.snapshot.paramMap.get('classId') || '';
+  this.route.queryParams.subscribe((params) => {
+
+    const flow = params['flow'];
+    if (flow === 'product') {
+       this.customerId = params['customerId'];
+
+    }
+
+    if (flow === 'class') {
+       this.classId = params['classId'];
+       this.studentId = params['studentId'];
+
+
+    }
+});
+
   }
 
-//checkout navigation based on parameter
   ngAfterViewInit(){
     this.changeDetector.detectChanges();
     requestAnimationFrame(() => {

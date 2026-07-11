@@ -1,0 +1,170 @@
+
+    <div class="breadcrumb">
+      <a routerLink="/dashboard">Dashboard</a>
+      <span>></span>
+      <a routerLink="/dashboard/products">Product</a>
+      <span>></span>
+      <span>Add Product</span>
+    </div>
+
+
+    <div class="intro">
+        <div class="title">
+            <h3>Edit the Product</h3>
+            <p>Create, update and manage product.</p>
+        </div>
+        <div class="btns">
+            <button class="cancelAddProduct" (click)="onCancel()"><i class="fa-solid fa-angles-left"></i>Cancel</button>
+            <button class="addNewProduct" (click)="saveProduct()"><i class="fa-solid fa-plus"></i>Save Product</button>
+        </div>
+  </div>
+  
+<form class="add-product" [formGroup]="productForm">
+
+  <!-- Product Information -->
+  <div class="card">
+    <h3>Product Information</h3>
+
+    <div class="form-grid">
+
+      <!-- Product Name -->
+      <div class="form-group full-width">
+        <label>
+          <i class="fa-solid fa-box"></i>
+          Product Name
+        </label>
+
+        <input
+          type="text"
+          placeholder="Enter product name"
+          formControlName="name">
+      </div>
+
+      <!-- Image URL -->
+      <div class="form-group full-width">
+        <label>
+          <i class="fa-solid fa-image"></i>
+          Product Image URL
+        </label>
+
+        <input
+          type="text"
+          placeholder="https://example.com/image.jpg"
+          formControlName="image">
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-tags"></i>
+          Category
+        </label>
+
+          <select formControlName="category">
+            <option value="">Select Category</option>
+            <option value="sarangi">Sarangi</option>
+            <option value="madal">Madal</option>
+            <option value="bansuri">Bansuri</option>
+        </select>
+      </div>
+
+      <!-- Stock -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-boxes-stacked"></i>
+          Stock Quantity
+        </label>
+
+        <input
+          type="number"
+          placeholder="Available stock"
+          formControlName="stock">
+      </div>
+
+      <!-- Price -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-dollar-sign"></i>
+          Price ($)
+        </label>
+
+        <input
+          type="number"
+          placeholder="Product price"
+          formControlName="price">
+      </div>
+
+      <!-- Product ID (Optional) -->
+      <div class="form-group">
+        <label>
+          <i class="fa-solid fa-hashtag"></i>
+          Product SKU / ID
+        </label>
+
+        <input
+          type="text"
+          placeholder="Optional custom ID"
+          formControlName="id">
+      </div>
+
+      <!-- Description -->
+      <div class="form-group full-width">
+        <label>
+          <i class="fa-solid fa-circle-info"></i>
+          Product Description
+        </label>
+
+        <textarea
+          rows="6"
+          placeholder="Write product description..."
+          formControlName="description">
+        </textarea>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Right Side Preview -->
+  <div class="products-card-container">
+
+    <div class="product-card">
+
+      <img
+        class="product-image"
+        src="/images/products/instrumentMix.png"
+        alt="Product Preview"
+        >
+
+      <div class="product-info">
+
+        <span class="category-badge">
+          {{ productForm.get('category')?.value || 'Category' }}
+        </span>
+
+        <h3 class="product-name">
+          {{ productForm.get('name')?.value || 'Product Name' }}
+        </h3>
+
+        <p class="product-description">
+          {{
+            productForm.get('description')?.value ||
+            'Your product description will appear here.'
+          }}
+        </p>
+
+        <p class="product-price">
+          ${{ productForm.get('price')?.value || 0 }}
+        </p>
+
+        <div class="product-id">
+          <i class="fa-solid fa-dollar-sign"></i>
+          {{ productForm.get('id')?.value || 'No SKU Assigned' }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</form>

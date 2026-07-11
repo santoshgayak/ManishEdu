@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="order-summary-container">
+        <div class="recent-order">
+            <div class="card-title">
+                <h3>Recent Orders</h3>
+                <a routerLink="/dashboard/order" class="view all">View All Orders</a>
+            </div>
+            <div class="card-content">
+                <div class="table-header">
+                    <div>Order ID</div>
+                    <div>Customer</div>
+                    <div>Type</div>
+                    <div>Item</div>
+                    <div>Amount</div>
+                    <div>Status</div>
+                    <div>Date</div>
+                </div>
+                @for (order of orderList; track order._id) {
+                    <div class="table-row">
+                        <div>#{{order.orderId}}</div>
+                        <div>J{{order.customerName}}</div>
+                        <div><p class="class">{{order.type}}</p></div>
+                        <div>{{order.itemName}}</div>
+                        <div>${{order.totalPrice}}</div>
+                        <div class="status"><p [class]="order.paymentStatus?.toLowerCase()">{{order.paymentStatus}}</p></div>
+                        <div>{{order.createdAt | date:'mediumDate'}}</div>
+                    </div>
+                } @empty {
+                    <div class="empty-state">
+                        <p>No orders found. Check back later!</p>
+                    </div>
+                }                           
+            </div>
+        </div>
+         <div class="order-summary">
+                        <div class="card-title">
+                            <h3> Order Total</h3>
+                            <div class="order-summary-btn">
+                                <select id="period" name="period" class="period">
+                                    <option value="year">This Year</option>
+                                    <option value="quarter">This Quarter</option>
+                                    <option value="month">This Month</option>
+                                    <option value="week">This Week</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="raw-data">
+                            <p>Enrollment Revenue: <span>${{ enrollment_total }}</span></p>
+                            <p>Product Sales: <span>${{ order_total }}</span></p>
+                            <h3>Total Revenue: <span>${{ total_revenue }}</span></h3>
+                        </div>
+                        
+                        <div id="donut-chart" style="width: 100%; height: 225px;">
+                        </div>
+                        
+                    </div>
+    </div> 
+</div> 

@@ -7,14 +7,29 @@ import saveCustomerInfoRoutes from './routes/save-customer-info.routes.js';
 import saveStudentInfoRoutes from './routes/save-student-info.routes.js';
 import "dotenv/config";
 import { MongoClient, Db } from "mongodb";
-import  getDataRoutes  from './routes/data.routes.js'
-import {connectDB} from './db/mongo.js'
+import  getDataRoutes  from './routes/data.routes.js';
+import {connectDB} from './db/mongo.js';
+import  loginRoutes from './routes/login.routes.js';
+import getOrderRoutes from './routes/order.routes.js';
+import getClassRoutes from './routes/class.routes.js';
+import getProductRoutes from './routes/product.routes.js';
+import getSaveClassRoutes from './routes/saveClass.routes.js'
+import getDeleteClassRoutes from './routes/deleteClass.routes.js';
+import getSaveProductRoutes from './routes/saveProduct.routes.js';
+import getDeleteProductRoutes from './routes/deleteProduct.routes.js';
+import { verifyToken } from "./middleware/auth.middleware.js";
+
 const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'http://localhost:4200',
-  methods: ['GET', 'POST'],
+  origin: [
+    'http://localhost:4200',
+    'http://localhost:4300',
+    'http://localhost:62519/'
+  ],
+  methods: ['GET', 'POST','PUT', 'DELETE'],
+  credentials: true
 }));
 
 app.use(express.json());
@@ -28,6 +43,15 @@ app.use('/api/contact', contactRoutes);
 app.use('/api/save-customer-info', saveCustomerInfoRoutes);
 app.use('/api/save-student-info', saveStudentInfoRoutes);
 app.use('/api/data',getDataRoutes);
+app.use('/api/login',loginRoutes);
+app.use('/api/data/order',verifyToken,getOrderRoutes);
+app.use('/api/data/class',verifyToken, getClassRoutes);
+app.use('/api/data/product',verifyToken, getProductRoutes);
+app.use('/api/save/class',verifyToken,getSaveClassRoutes);
+app.use('/api/save/product',verifyToken,getSaveProductRoutes);
+app.use('/api/delete/class',verifyToken,getDeleteClassRoutes);
+app.use('/api/delete/product',verifyToken,getDeleteProductRoutes);
+
 
 app.get('/health', (req, res) => {
   console.log("Health endpoint hit");
@@ -179,6 +203,9 @@ app.get('/session-status', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to fetch session' });
   }
 });
+
+
+
 
 
 // START SERVER

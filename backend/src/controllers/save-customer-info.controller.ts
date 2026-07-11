@@ -7,9 +7,10 @@ export const saveCustomerInfo = async (req: Request, res: Response) => {
   try {
     console.log(" CONTROLLER HIT");
     console.log(req.body);
+    
 
-const result = await service.savedToDb(req.body);
-    return res.json({
+    const result = await service.savedToDb(req.body);
+    return res.status(201).json({
       success: true,
       message: "Saved successfully",
       data: result
