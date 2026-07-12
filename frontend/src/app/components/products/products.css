@@ -5,9 +5,8 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin:  80px;
-    padding:  1rem 0rem;
-    background-color: whitesmoke;  
+    margin-top:  100px;
+    padding:  1rem 2rem;
     width: 100%;
 }
 
@@ -37,7 +36,7 @@
 }
 .filterBtn:hover{
     color: white;
-    background-color: grey;
+    background-color: rgb(145, 102, 23);
 
 }
 .filterBtn.active{
@@ -115,6 +114,7 @@
     margin-bottom: 1rem;
 }       
 .product-card button{
+    background: var(--text-dark);
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -122,12 +122,10 @@
      transition: all 0.3s ease;
     cursor: pointer;
     font-size: 1rem;
-    background: rgb(245, 131, 2) ;
-
 }
 .product-card button:hover{
-    background: var(--text-dark);
-
+    background: var(--hover-blue);
+    color: white;
 
 }   
 
@@ -142,11 +140,6 @@
     .products-section{
         padding: 0;
     }
-    .product-card button{
-        width: 100%;
-    
-
-}
 
     
 }
