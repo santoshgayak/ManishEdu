@@ -59,23 +59,23 @@ export class Products {
       this.filterCategory(category);
     }
 
-    //filter products based on user selection
-    filterCategory(category: string){
-      if(category === 'All'){
+    filterCategory(category: string) {
+      if (category === 'All') {
         this.filteredProducts = this.products;
         return;
-
       }
-      if(category === 'less than $1200'){
+      
+      if (category === 'less than $1200') {
         this.filteredProducts = this.products.filter(
-          product => product.price < 1200
+          product => Number(product.price) < 1200
         );
         return;
       }
-      this.filteredProducts = this.products.filter(
-        product => product.category === category
-      )
 
+      this.filteredProducts = this.products.filter(product => {
+        if (!product.category) return false; 
+        return product.category.trim().toLowerCase() === category.trim().toLowerCase();
+      });
     }
 
     //add products to cart 

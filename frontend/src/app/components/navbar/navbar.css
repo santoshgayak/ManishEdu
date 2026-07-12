@@ -4,17 +4,15 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 100%;
     align-self: center;
-    margin: 0;
-    padding: 15px 205px;
+    padding: 0;
     box-sizing: border-box;
-    background-color: rgb(189, 189, 243);
+    background-color: var(--bg-light);
     border-radius: 0px;
-      position:fixed;
+    position:fixed;
     top: 0;
-    left: 0;
     z-index: 999;
+   box-shadow: rgba(100, 100, 111, 0.4) 0px 7px 29px 0px;
 }
 
 .logoContainer {
@@ -117,7 +115,7 @@
         opacity: 1;
         padding: 50px 10px 50px 10px!important;
         padding: 0;
-        background-color: rgb(5, 29, 63);
+        background-color: var(--text-dark);
     }
 
     .navbar ul li {

@@ -6,8 +6,9 @@
     justify-content: center;
     gap: 1rem;
     margin:  80px;
-    padding:  1rem 2rem;
+    padding:  1rem 0rem;
     background-color: whitesmoke;  
+    width: 100%;
 }
 
 .product-filter{
@@ -36,7 +37,7 @@
 }
 .filterBtn:hover{
     color: white;
-    background-color: rgb(145, 102, 23);
+    background-color: grey;
 
 }
 .filterBtn.active{
@@ -141,6 +142,11 @@
     .products-section{
         padding: 0;
     }
+    .product-card button{
+        width: 100%;
+    
+
+}
 
     
 }
