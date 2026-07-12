@@ -28,7 +28,8 @@ app.use(cors({
     'http://localhost:4300',
     'http://localhost:62519/',
     'https://manisheduserver.onrender.com',
-    'https://manish-edu.vercel.app'
+    'https://manish-edu.vercel.app',
+    'https://manish-edu-admin1.vercel.app/'
   ],
   methods: ['GET', 'POST','PUT', 'DELETE'],
   credentials: true
