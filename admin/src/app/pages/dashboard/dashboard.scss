@@ -2,14 +2,14 @@
 .dashboard-container{
     width: 100%;
     display: flex;
-    padding: 1rem;
     position: relative;
+            background:linear-gradient(135deg, rgb(241, 246, 226),rgb(227, 230, 244),rgb(234, 239, 245),rgb(244, 228, 244),white);
+
     //side navbar
     .side-nav{
-        flex: 1;
-        min-width: 0;
+        flex: 0;
+        width: 250px;
         height: calc(100vh - 2rem);
-        border: 0px solid var(--border-color);
         border-radius: 1rem 0 0 1rem;
         background-color: white;
         padding: 0.5rem 1rem;
@@ -19,7 +19,11 @@
         gap: 2rem;
         position: sticky;
         top: 0;
-   
+        background-color: transparent;  
+        &.collapsed{
+            width: 0px;
+            display: none;
+        }
         .title-logo{
             display: flex;
             align-items: center;
@@ -67,7 +71,7 @@
                     i{
                         margin-right: 0.7rem;
                         width: 20px;
-                        color: var(--highlight-text);
+                        color: var(--text-dark);
 
                     }
                 }
@@ -426,7 +430,7 @@
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 
     .content{
         padding: 0.5rem;
@@ -436,6 +440,7 @@
         flex-direction: column-reverse;
         padding: 0;
         .side-nav{
+            display: flex !important;
             position: sticky;
             bottom: 0px;
             left: 0;
@@ -444,8 +449,9 @@
             padding: 0.2rem;
             gap: 0;
             margin-top: 1rem;
-            background-color: rgb(47, 16, 126);
+            background-color: var(--boxes-background);
             z-index: 999;
+            width: 100% !important;
             .title-logo, .settings, .support, .menu-title{
                 display: none;
             }
@@ -468,11 +474,12 @@
                             align-items: center;
                             justify-content: center;
                             gap: 0.2rem;
-                            color: white;
+                            color: var();
                             i{
                                 margin: 0;
                                 font-size: 1.2rem;
                                 text-align: center;
+                                color: var(--text-dark);
                             }
                         }
                     }
@@ -523,7 +530,9 @@
     }
 
 
-
+#hamburger{
+    display: none;
+}
 
  //main container
     .main-dashboard-container{
@@ -532,31 +541,14 @@
         //top title section
         .nav{
             width: 100%;
-            background-color: rgb(212, 130, 23) !important;
+            color: var(--text-dark);
         }
+
     }
-
-
-
-
-
-    
-
     .nav .right{
         gap: 1rem;
-        #divider{
-            display: none;
-        }
-        .user{
-            .user-name{
-                display: none;
-            }
-        }
     }
-    .nav .left{
-    }
-    span{
-        display: none;
-    };
+
+  
 
 }

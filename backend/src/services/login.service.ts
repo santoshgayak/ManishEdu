@@ -13,18 +13,13 @@ export class LoginService{
 
     async login(data: loginData){
         const hashedPassword = await bcrypt.hash(data.password, 10);
-
-        
         const user = await dataService.getOne("admins",{email: data.email});
         if(!user){
             return null;
         }
         const passwordMatched = await bcrypt.compare(data.password,user.password);
 
-
         if (data.email === user.email && passwordMatched && user.role == "admin"){
-
-
             const token = jwt.sign(
             {
                 id: user._id,
@@ -36,13 +31,14 @@ export class LoginService{
                 expiresIn: "1h"
             }
         );
-
-
+        console.log("Database user:", user);
+console.log("User email:", user.email);
             return{
                     token: token,
                     user: {
                         id: 100,
                         name: 'Santosh Gayak',
+                        email: user.email,
                         role: 'admin'
                     }
                 };

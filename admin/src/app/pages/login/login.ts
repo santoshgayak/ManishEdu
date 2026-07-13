@@ -36,8 +36,11 @@ export class Login {
 
       this.authenticateService.authenticate(payload).subscribe({
         next:(res)=>{
+          console.log("ressssss",res);
             console.log("Authentication successful ! fc",res.token);
             localStorage.setItem('token',res.token);
+            localStorage.setItem('user', JSON.stringify(res.user));
+
             this.router.navigate(['/dashboard']);
         },
         error: (err)=>{

@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-  font-family: "Fraunces", serif;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    scroll-behavior: smooth;
 }
 
@@ -10,9 +10,14 @@
 
   --bg-light: #f8fafc;       /* Main page background */
   --bg-white: #ffffff;       /* Cards, sections, navbar (if light) */
+
+
+
   --text-dark: rgb(3, 4, 94);      /* Main headings (H1, H2) */
   --text-muted: #64748b;     
+
   --text-link: rgb(77, 26, 241);
+
 --border-color:rgb(240, 240, 241);
 --btn-background-color:rgb(6, 2, 78);
 --btn-hover-background-color:rgb(18, 215, 18);
@@ -22,6 +27,7 @@
 --divider-color:rgb(248, 245, 245);
 --highlight-text:rgb(3, 146, 3);
 --boxes-background:rgb(248, 251, 251);
+
   --gradient-main: linear-gradient(
     135deg,
     #2563eb, 
@@ -30,8 +36,10 @@
     --gradient-main-sec: linear-gradient(
     135deg,
     #06b6d4,
-    #2563eb  
+    #2563eb
+      
   );
+
 }
 
 body{

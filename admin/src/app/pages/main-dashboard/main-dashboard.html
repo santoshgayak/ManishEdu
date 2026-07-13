@@ -72,7 +72,7 @@
                                     <div class="table-row">
                                         <div>#{{order.orderId}}</div>
                                         <div>J{{order.customerName}}</div>
-                                        <div ><p [ngClass]="{class: order.type === 'Class', product: order.type === 'Product'}">{{order.type}}</p></div>
+                                        <div class="type" ><p [ngClass]="{class: order.type === 'Class', product: order.type === 'Product'}">{{order.type}}</p></div>
                                         <div>{{order.itemName}}</div>
                                         <div>${{order.totalPrice}}</div>
                                         <div class="status"><p [class]="order.paymentStatus?.toLowerCase()">{{order.paymentStatus}}</p></div>
@@ -84,7 +84,59 @@
                                     </div>
                                 }                           
                         </div>
+                         <div class="mobile-view">
+                         @for (order of orderList.slice(0,5); track order._id) {
+                                    <div class="order-card">
+                                        <div class="order-status">
+                                            <h3>#{{ order.orderId }}</h3>
+                                             <p class="status">
+                                            <span [class]="order.paymentStatus?.toLowerCase()">
+                                                {{ order.paymentStatus }}
+                                            </span>
+                                        </p>
+                                        </div>
+                                        <p><i class="fa-solid fa-circle-user"></i>{{ order.customerName }}</p>
+                                        <p><i class="fa-solid fa-kaaba"></i>{{ order.itemName }}</p>
+
+                                        <div class="type-amount">
+                                            <div class="type">
+                                                <p>Type</p>
+                                                <p>
+                                                    <span
+                                                        [ngClass]="{
+                                                        class: order.type === 'Class',
+                                                        product: order.type === 'Product'
+                                                        }">
+                                                        {{ order.type }}
+                                                    </span>
+                        
+                                                </p>
+                                            </div>
+                                           
+
+                                            <div class="amount">
+                                                <p>Amount</p>
+                                                <p>${{ order.totalPrice }}</p>
+
+
+                                            </div>
+                                        </div>
+                                        
+                                       <div class="createdAt">
+                                            <p>Date: {{ order.createdAt | date:'mediumDate' }}</p>
+                                       </div>
+
+                                    </div>
+                                }@empty {
+                                    <div class="empty-state">
+                                        <p><i class="fa-solid fa-calender-days"></i>No orders found. Check back later!</p>
+                                    </div>
+                                }        
+
                     </div>
+                    </div>
+
+                   
                     <div class="order-summary">
                         <div class="card-title">
                             <h3> Order Total</h3>

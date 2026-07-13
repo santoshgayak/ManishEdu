@@ -3,13 +3,13 @@ import { ClassPlan } from '../../model/classes.model';
 import { DataService } from '../../services/data.service';
 import { inject } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute  } from '@angular/router';
+import { ActivatedRoute, RouterLink  } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-class',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './edit-class.html',
   styleUrl: './edit-class.scss',
 })

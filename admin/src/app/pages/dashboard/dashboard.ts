@@ -25,11 +25,15 @@ export class Dashboard {
       private router = inject(Router);
 
       public orderList: Order[] = [];
-
+       menuOpen = false;
+       user:any;
 
       constructor(){}
 
  ngOnInit() {    
+  this.user = JSON.parse(localStorage.getItem('user')|| '{}');
+  console.log("USER: ",this.user);
+
     this.dataService.getData('order', 'orders').subscribe({
       next: (res: Order[]) => {
         this.orderList = (res as any).data; 
@@ -44,5 +48,10 @@ export class Dashboard {
     logOut(){
       this.authService.logOut();
       this.router.navigate(['/login']);
+    }
+
+    toggleMenu(){
+      this.menuOpen = !this.menuOpen;
+
     }
 }
