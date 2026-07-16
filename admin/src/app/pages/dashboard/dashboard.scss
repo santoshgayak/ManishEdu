@@ -234,6 +234,10 @@
                 font-size: 0.9rem;
             }
         }
+        a{
+            display: none;
+            padding: 1rem;
+        }
     }
     .notification{
         display: flex;
@@ -503,7 +507,7 @@
             z-index: 999;
             width: 100% !important;
             height: 200px !important;
-            .title-logo, .settings, .support, .menu-title{
+            .title-logo, .support, .menu-title{
                 display: none;
             }
           
@@ -599,6 +603,13 @@
     }
     .nav .right{
         gap: 1rem;
+        .user{
+             a{
+            display: block;
+        }
+
+        }
+       
     }
 
   
