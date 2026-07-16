@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 2rem 1rem;
     margin-bottom: 1rem;
     h3{
     color: var(--text-link);
@@ -143,7 +143,7 @@
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 1rem;
 }
 
 .full-width {
@@ -265,10 +265,36 @@ hr {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width:768px) {
+  .add-class{
+    flex-direction: column;
 
+  }
+  
+}
 @media (max-width: 576px) {
   :host {
     padding: 20px;
+  }
+       .intro{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        background-color: #e4edf4;
+        box-shadow: rgb(106, 12, 193,0.2) 0px 4px 5px;
+        padding: 1rem;
+    
+        .btns{
+            width: 100%;
+            justify-content: center;
+            button{
+                width: 100%;
+                justify-content: center;
+
+
+            }
+        
+        }
   }
 
   .card {

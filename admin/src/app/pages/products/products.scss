@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 2rem 1rem;
     h3{
     color: var(--text-dark);
 
@@ -49,7 +49,7 @@
 
  .summary-card-container{
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     margin: 1rem 0;
  }
@@ -62,7 +62,20 @@
     padding: 1rem;
     display: flex;
     align-items: center;
+    box-shadow: rgb(106, 12, 193,0.2) 0px 4px 10px;
     gap: 1.5rem;
+        &:nth-child(1){
+        background-color: rgb(232, 232, 251);
+    }
+    &:nth-child(2){
+                background-color: rgb(222, 248, 222);
+    }
+    &:nth-child(3){
+                background-color: rgb(247, 247, 221);
+    }
+    &:nth-child(4){
+                background-color: rgb(252, 218, 238);
+    }
         .card-icon{
             height: 50px;
             width: 80px;
@@ -124,7 +137,7 @@
 }
  .product-mgmt{
     flex: 1 1 0;
-    height: 280px;
+    height: auto;
     min-width: 0;
     width: auto;
     border: 2px solid var(--border-color);
@@ -363,8 +376,8 @@
 .products-card-container{
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 2rem;
-    display: grid;
+    margin-bottom: 0rem;
+    display: none;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     justify-content: center;
@@ -463,6 +476,15 @@
     .container{
         padding: 0;
     }
+    .product-mgmt{
+        height: max-content;
+    }
+    .card-content{
+        display: none;
+    }
+    .products-card-container{
+        display: grid;
+    }
  
     .product-filter{
         width: 100%;
@@ -475,3 +497,17 @@
     
 }
 
+@media (max-width:570px) {
+    .intro{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0;
+        button{
+            
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+}

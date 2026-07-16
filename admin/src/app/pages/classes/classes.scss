@@ -14,7 +14,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 2rem 1rem;
+
+
     h3{
     color: var(--text-dark);
 
@@ -47,7 +49,7 @@
 }
  .summary-card-container{
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     flex-wrap: wrap;
     margin: 1rem 0;
  }
@@ -61,15 +63,29 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-        .card-icon{
+    box-shadow: rgb(106, 12, 193, 0.1) 0px 4px 10px;
+    &:nth-child(1){
+        background-color: rgb(234, 235, 248);
+    }
+      &:nth-child(2){
+        background-color: rgb(233, 247, 233);
+    }
+      &:nth-child(3){
+                background-color: rgb(239, 228, 250);
+    }
+      &:nth-child(4){
+                        background-color: rgb(246, 241, 232);
+
+    }
+    .card-icon{
             height: 55px;
             width: 80px;
             display: flex;
             align-items:center;
             justify-content: center;
             border-radius: 50%;
-        }
-            i{
+    }
+    i{
                 font-size: 1.5rem;
                 color: white;
                 padding: 0.4rem;
@@ -165,7 +181,7 @@
             text-align: left;
             padding: 0.5rem;
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr 1.8fr 1fr;
             align-items: center;
             font-size: 0.8rem; 
         }
@@ -257,6 +273,192 @@
                 font-size: 1.5rem;
                 color: var(--text-link);
             }
+
+
+
+.class-cards-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; 
+    display: none;
+}
+
+.class-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 1 300px; 
+    max-width: 360px;
+    min-height: 480px;
+    padding: 2.5rem 2rem;
+    background:linear-gradient(135deg,rgb(58, 11, 116),rgb(32, 57, 199), rgb(140, 157, 205));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    .actions{
+                    display: flex;
+                    gap: 0.5rem;
+                    width: 100%;
+                    margin-top: 2rem;
+                    
+                    button{
+                        background-color: transparent;
+                        color: var(--text-link);
+                        font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
+                        text-decoration: none;
+                        text-align: center;
+                        padding: 1rem 2rem;
+                        font-size: 1rem;
+                        border-radius: 0.5rem;
+                        border: 0.5px solid var(--text-link);
+                        background-color: transparent ;
+                        border: 1px solid white;
+                        color: white;
+                        cursor: pointer;
+                        width: 100%;
+                        &:nth-child(2){
+                            background-color: red;
+                            color: white;
+                        }
+                        &:hover{
+                            background-color: var(--text-link);
+                            color: white;
+                        }
+                    }
+                 }  
+}
+
+.class-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 20px 45px rgba(0, 0, 0, 0.12);
+    border-color: rgba(198, 236, 198, 0.2);
+}
+
+
+
+.class-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 1rem;
+    border-bottom: 1px dotted green;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.class-details h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    text-align: left;
+    color: white;
+    width: 100%;
+}
+
+.class-details h2 {
+    font-size: 2rem;
+    display: flex;
+    align-items: baseline;
+    color:whitesmoke;
+
+}
+
+.class-details span {
+    font-size: 1.3rem;
+    margin-right: 0.4rem;
+    font-weight: 600;
+    color:whitesmoke;
+    text-align: left;
+
+}
+
+.class-details p {
+    color: orange;
+    text-align: left;
+    font-weight: bold;
+    width: 100%;
+}
+
+.class-desc{
+    color: white;
+    font-size: 0.8rem;
+    text-align: left;
+
+}
+.class-features {
+    margin-top: 1rem;
+    width: 100%;
+    flex-grow: 1; 
+}
+
+.class-features ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.class-features ul div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.class-description {
+    color:whitesmoke;
+}
+
+.class-description i {
+    color: rgb(4, 152, 4);
+    flex-shrink: 0;
+}
+
+.class-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+.enroll-button {
+    width: 100%;
+    padding: 12px 24px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 1px dotted green;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.enroll-button:hover {
+    background: var(--gradient-main);
+    color: white;
+    border-color: transparent;
+}
 @media (max-width:768px) {
     .class-mgmt{
         height: auto;
@@ -272,5 +474,28 @@
         background-color: rgb(249, 249, 254);
 
     }
+    .class-cards-container{
+        display: flex;
+    }
+    .card-content{
+        display: none;
+    }
     
+}
+@media (max-width:570px) {
+     .intro{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        background-color: #e4edf4;
+        box-shadow: rgb(106, 12, 193,0.2) 0px 4px 5px;
+        padding: 1rem;
+    
+        button{
+            width: 100%;
+            justify-content: center;
+        
+        }
+  }
+
 }

@@ -93,6 +93,27 @@
         }
 
     </div>
+     <div class="class-cards-container mobile-view" >
+        <div class="class-card " *ngFor="let course of classList">
+            <div class="class-details">
+                <h3 class="class-title">{{course.title}}</h3>
+                <h3 class="class-price"><span>Rs</span>{{course.price}}</h3>
+                <p class="class-duration">{{course.duration}} days</p>
+            </div>
+            <div class="class-features">
+                <ul >
+                    <div class="class-description" *ngFor="let feature of course.features">
+                        <i class='fas fa-check-double'></i>
+                        <li>{{feature}}</li>
+                    </div>
+                </ul>
+            </div>
+            <div class="actions">
+                <button class="edit-btn" (click)="editClass(course._id)"><i class="fa-regular fa-pen-to-square"></i></button>
+                <button class="delete-btn" (click)="deleteClass(course._id)"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+        </div>
+    </div>
 
 </div>
        

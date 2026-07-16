@@ -14,8 +14,9 @@
             <p>Create, update and manage product.</p>
         </div>
         <div class="btns">
-            <button class="cancelAddProduct" (click)="onCancel()"><i class="fa-solid fa-angles-left"></i>Cancel</button>
             <button class="addNewProduct" (click)="saveProduct()"><i class="fa-solid fa-plus"></i>Save Product</button>
+            <button class="cancelAddProduct" (click)="onCancel()"><i class="fa-solid fa-angles-left"></i>Cancel</button>
+
         </div>
   </div>
   
@@ -124,47 +125,6 @@
     </div>
   </div>
 
-  <!-- Right Side Preview -->
-  <div class="products-card-container">
 
-    <div class="product-card">
-
-      <img
-        class="product-image"
-        src="/images/products/instrumentMix.png"
-        alt="Product Preview"
-        >
-
-      <div class="product-info">
-
-        <span class="category-badge">
-          {{ productForm.get('category')?.value || 'Category' }}
-        </span>
-
-        <h3 class="product-name">
-          {{ productForm.get('name')?.value || 'Product Name' }}
-        </h3>
-
-        <p class="product-description">
-          {{
-            productForm.get('description')?.value ||
-            'Your product description will appear here.'
-          }}
-        </p>
-
-        <p class="product-price">
-          ${{ productForm.get('price')?.value || 0 }}
-        </p>
-
-        <div class="product-id">
-          <i class="fa-solid fa-dollar-sign"></i>
-          {{ productForm.get('id')?.value || 'No SKU Assigned' }}
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
 
 </form>
