@@ -87,7 +87,7 @@
                 }                           
             </div>
                  <div class="mobile-view">
-                         @for (order of orderList.slice(0,5); track order._id) {
+                         @for (order of orderList; track order._id) {
                                     <div class="order-card">
                                         <div class="order-status">
                                             <h3>#{{ order.orderId }}</h3>
