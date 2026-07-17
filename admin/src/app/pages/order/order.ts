@@ -9,7 +9,7 @@ import { DataService } from '../../services/data.service';
 import { Order } from '../../model/order.model';
 @Component({
   selector: 'app-order',
-  imports: [DatePipe, NgClass],
+  imports: [DatePipe, NgClass, RouterLink],
   templateUrl: './order.html',
   styleUrl: './order.scss',
 })

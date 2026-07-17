@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 1rem;
+    padding: 1rem;
 
 
     h3{
@@ -64,6 +64,7 @@
             flex-wrap: wrap;
             gap: 1rem;
             position: relative;
+            margin: 1.5rem 0;
         }
 
         //order summary section
@@ -101,78 +102,142 @@
 
 }
 
-//top summary cards
- // summary cards
-.summary-card{
-    min-height: 125px;
-    min-width: 270px;
-    flex: 1;
-    border: 2px solid var(--border-color);
-    border-radius: 1rem;
-    padding: 1rem;
+.summary-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+
+  .summary-card {
+    flex: 1 1 240px;
+    min-width: 240px;
     display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-    box-shadow: rgb(106, 12, 193, 0.1) 0px 4px 10px;
-    &:nth-child(1){
-        background-color: rgb(241, 241, 248);
+    align-items: center;
+    gap: 1.25rem;
+
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(106, 12, 193, 0.08);
+
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(106, 12, 193, 0.15);
     }
-    &:nth-child(2){
-                background-color: rgb(244, 251, 244);
-    }
-    &:nth-child(3){
-                background-color: rgb(246, 242, 249);
-    }
-    &:nth-child(4){
-                background-color: rgb(250, 248, 243);
-    }
-        .card-icon{
-            height: 60px;
-            width: 60px;
-            display: flex;
-            align-items:center;
-            justify-content: center;
-            border-radius: 50%;
+
+    &:nth-child(1) {
+      background: linear-gradient(135deg, #eef2ff, #ffffff);
+
+      .card-icon {
+        background: rgba(33, 44, 244, 0.1);
+
+        i {
+          background: #212cf4;
         }
-            i{
-                font-size: 1.5rem;
-                color: white;
-                padding: 0.7rem;
-                border-radius: 50%;
-                }
-            .order{
-                background-color: rgb(33, 44, 244);
-            }
-            .revenue{
-                background-color: rgb(44, 172, 44);
-            }
-            .student{
-                background-color: rgb(106, 12, 193);
-            }
-            .product{
-                background-color: rgb(241, 167, 30);
-            }
-            .card-content{
-                display: flex;
-                flex-direction: column;
-                gap: 0.1rem;
-                p{
-                    color: var(--text-muted);
-                }
-                .number{
-                    color: var(--text-dark);
-                    font-weight: 700;
-                    font-size: 1.5rem;
-                }
-                .compare{
-                    margin-top: 0.5rem;
-                    color: var(--highlight-text);
-                    font-size: 0.9rem;
-                }
+      }
+    }
 
-            }
+    &:nth-child(2) {
+      background: linear-gradient(135deg, #eefcf0, #ffffff);
+
+      .card-icon {
+        background: rgba(44, 172, 44, 0.1);
+
+        i {
+          background: #2cac2c;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      background: linear-gradient(135deg, #f6efff, #ffffff);
+
+      .card-icon {
+        background: rgba(106, 12, 193, 0.1);
+
+        i {
+          background: #6a0cc1;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      background: linear-gradient(135deg, #fff8ec, #ffffff);
+
+      .card-icon {
+        background: rgba(241, 167, 30, 0.1);
+
+        i {
+          background: #f1a71e;
+        }
+      }
+    }
+
+    .card-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      i {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #fff;
+        font-size: 1.4rem;
+      }
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex: 1;
+
+      h3 {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        line-height: 1;
+      }
+
+      .title {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      .compare {
+        margin-top: 0.4rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #16a34a;
+
+        &.negative {
+          color: #dc2626;
+        }
+      }
+    }
+  }
 }
-
 .recent-order{
     display: flex;
     align-items: flex-start;
@@ -180,7 +245,8 @@
     flex-direction: column;
     width: 100%;
     position: relative;
-    
+    border-radius: 10px 10px 0 0 ;
+  
     .card-title{
         display: flex;
         align-items: center;
@@ -188,9 +254,13 @@
         width: 100%;
         padding: 1rem 1rem;
         border-bottom: 2px solid var(--border-color);
+        background: #f1a71e;
+        border-radius: 10px 10px 0 0;
+        
         h3{
             font-size: 1rem;
-            color: var(--text-dark);
+            color: white;
+
         }
         a{
              background-color: transparent;
@@ -235,6 +305,9 @@
 
             .table-row {
                  border-bottom: 1px solid #eee;
+                 transition: all 0.2s ease-in;
+
+               
                  .class{
                     background-color: rgb(226, 226, 244);
                     color: blue;
@@ -254,7 +327,10 @@
             }
 
             .table-row:hover {
-                background: #f7f4ed;
+            background: rgba(114, 5, 231, 0.6);
+               font-weight: bold;
+               color: white !important;
+
             }
             .third{
                 border-bottom: none;
@@ -383,6 +459,10 @@
 
 
 }
+@media (max-width:992px) {
+
+
+}
 @media (max-width:768px) {
     .order-summary-container{
         flex-direction: column;
@@ -395,6 +475,7 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
+        padding: 1rem;
     }
     .recent-order{
         min-width: 100%;
