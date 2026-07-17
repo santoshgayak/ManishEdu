@@ -245,7 +245,7 @@
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             align-items: center;
-            font-size: 1cap;
+            font-size: 1rem;
         }
         .table-header {
             font-weight: bold;
@@ -260,6 +260,7 @@
             .table-row {
                  border-bottom: 1px solid #eee;
                  font-size: 1rem;
+                 padding: 1rem;
                   .name-image{
                  }
                  .class{
@@ -285,7 +286,7 @@
                     button{
                         background-color: transparent;
                         color: var(--text-link);
-                        font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
+                        font-size: clamp(1rem, 0.5vw + 0.2rem, 1rem);
                         text-decoration: none;
                         text-align: center;
                         padding: 0.5rem;
@@ -301,7 +302,7 @@
             }
 
             .table-row:hover {
-                background: #f7f4ed;
+                background: #c8f2f4;
             }
             .third{
                 border-bottom: none;
