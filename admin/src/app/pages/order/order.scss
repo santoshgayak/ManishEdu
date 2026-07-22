@@ -306,8 +306,6 @@
             .table-row {
                  border-bottom: 1px solid #eee;
                  transition: all 0.2s ease-in;
-
-               
                  .class{
                     background-color: rgb(226, 226, 244);
                     color: blue;
@@ -404,6 +402,14 @@
     gap: 0.8rem;
 
     
+}
+
+
+.empty-state {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile-view{

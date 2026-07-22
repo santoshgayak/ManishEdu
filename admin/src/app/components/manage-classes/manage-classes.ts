@@ -2,11 +2,12 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { ClassPlan } from '../../model/classes.model';
 import { DataService } from '../../services/data.service';
 import { inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Loader } from "../loader/loader";
 
 @Component({
   selector: 'app-manage-classes',
-  imports: [RouterLink],
+  imports: [RouterLink, RouterOutlet, Loader],
   templateUrl: './manage-classes.html',
   styleUrl: './manage-classes.scss',
 })
@@ -18,6 +19,7 @@ export class ManageClasses {
   constructor() {}
   ngOnInit() {
     this.loadClasses();
+    this.cdr.detectChanges();
   }
 
   private loadClasses(): void {

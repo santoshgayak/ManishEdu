@@ -13,6 +13,8 @@ import { EditProduct } from './pages/edit-product/edit-product';
 import { UpdateSuccessProduct } from './pages/update-success-product/update-success-product';
 import { authGuard } from './auth-guard';
 import { SignIn } from './pages/sign-in/sign-in';
+import { Profile } from './pages/profile/profile';
+import { Loader } from './components/loader/loader';
 
 export const routes: Routes = [
      {
@@ -20,13 +22,12 @@ export const routes: Routes = [
         component:Login
     },
     {
-      path:'',
-      component:Login
+      path:'loader',
+      component:Loader
     },
     {
-      path:'signIn',
-      component:SignIn
-
+      path:'',
+      component:Login
     },
       {
         path: 'dashboard',
@@ -38,6 +39,7 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'main-dashboard', pathMatch: 'full' },
             { path: 'order', component: Orders },
+            { path: 'profile', component: Profile },
             {path:'main-dashboard',component:MainDashboard},
             {path:'classes',component:Classes}, 
             {path:'products',component:Products}, 

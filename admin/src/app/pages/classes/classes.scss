@@ -517,6 +517,12 @@
     border-color: transparent;
 }
 
+.empty-state {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media (max-width:992px) {
     .row, .class-mgmt{
@@ -552,8 +558,7 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
-        background-color: #e4edf4;
-        box-shadow: rgb(106, 12, 193,0.2) 0px 4px 5px;
+    
         padding: 1rem;
     
         button{
@@ -562,5 +567,6 @@
         
         }
   }
+
 
 }

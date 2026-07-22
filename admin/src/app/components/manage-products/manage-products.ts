@@ -3,9 +3,10 @@ import { Product } from '../../model/products.model';
 import { DataService } from '../../services/data.service';
 import { Router, RouterLink } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { Loader } from "../loader/loader";
 @Component({
   selector: 'app-manage-products',
-  imports: [RouterLink],
+  imports: [RouterLink, Loader],
   templateUrl: './manage-products.html',
   styleUrl: './manage-products.scss',
 })
@@ -19,6 +20,7 @@ export class ManageProducts {
   constructor() {}
   ngOnInit() {
     this.loadProducts();
+    this.cdr.detectChanges();
   }
 
   private loadProducts(): void {

@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import { DataService } from "./data.service.js";
 import jwt from "jsonwebtoken";
 import { getDB } from "../db/mongo.js";
+import { hasSubscribers } from "node:diagnostics_channel";
 
  const dataService  = new DataService();
 
@@ -12,14 +13,16 @@ export class LoginService{
      someOtherPlaintextPassword = 'not_bacon';
 
     async login(data: loginData){
-        const hashedPassword = await bcrypt.hash(data.password, 10);
+ 
+        console.log(" I am in");
         const user = await dataService.getOne("admins",{email: data.email});
+        console.log("USR",user);
         if(!user){
             return null;
         }
         const passwordMatched = await bcrypt.compare(data.password,user.password);
 
-        if (data.email === user.email && passwordMatched && user.role == "admin"){
+        if (data.email === user.email && passwordMatched && user.role == "Senior Administrator"){
             const token = jwt.sign(
             {
                 id: user._id,
@@ -32,15 +35,10 @@ export class LoginService{
             }
         );
         console.log("Database user:", user);
-console.log("User email:", user.email);
+        console.log("User email:", user.email);
             return{
                     token: token,
-                    user: {
-                        id: 100,
-                        name: 'Santosh Gayak',
-                        email: user.email,
-                        role: 'admin'
-                    }
+                    user: user
                 };
             }
         //else return 

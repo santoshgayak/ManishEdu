@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 import { HttpClient } from '@angular/common/http';
 import { DataService} from "../../services/data.service";
 import { Order } from "../../model/order.model";
@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 
   @Component({
   selector: 'app-dashboard',
-  imports: [RouterLink, DatePipe, RouterOutlet],
+  imports: [RouterLink, DatePipe, RouterOutlet,RouterLinkActive],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

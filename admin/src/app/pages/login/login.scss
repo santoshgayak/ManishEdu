@@ -4,29 +4,41 @@
     align-items: center;
     justify-content: center;
 
+   
+          background: #6a0cc1;
+          height: 100dvh;
+
+
+ 
+
     .login-form {
         display: flex;
         flex-direction: column;
-        max-width: 500px;
+        max-height: max-content;
         gap: 1.3rem;
         color: var(--text-dark);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border-radius: 0; 
+        border-radius: 10px; 
         padding: 1rem 2rem;
-        box-shadow: 0px 2px 29px 1px rgb(247, 239, 239);
-        height: 100vh;
+        box-shadow: 0px 2px 2px 1px rgb(135, 134, 134);
+        height: 100dvh;
+        background-color: white;
+        width: 700px;
+        margin: 1rem;
+        background:linear-gradient(to bottom, rgb(215, 162, 246),white,white,white,white,rgb(248, 248, 249));
 
         .form-title {
             display: flex;
             align-items: center;
             flex-direction: column;
             img {
-                filter: drop-shadow(0 8px 20px rgba(243, 111, 2, 0.5));
+                filter: drop-shadow(0 8px 20px rgba(2, 66, 243, 0.5));
             }
             h3 {
                 font-size: 2rem;
                 text-align: center;
+                color:#6a0cc1;
             }
             p {
                 text-align: center;
@@ -63,7 +75,7 @@
                 background-color: rgba(255,255,255,0.4);
                 margin-bottom: 0.5rem;
                 &:focus {
-                    outline: 2px solid var(--text-dark);
+                    outline: 2px solid #6a0cc1;
                 }
             }
             
@@ -124,7 +136,7 @@
             margin-top: 1rem;
             
             button {
-                background-color: var(--btn-background-color);
+                background-color:#6a0cc1;
                 border-radius: 0.3rem;
                 border: none;
                 cursor: pointer;

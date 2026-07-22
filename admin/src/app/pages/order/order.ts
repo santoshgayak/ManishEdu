@@ -7,9 +7,10 @@ import * as echarts from 'echarts';
 
 import { DataService } from '../../services/data.service';
 import { Order } from '../../model/order.model';
+import { Loader } from "../../components/loader/loader";
 @Component({
   selector: 'app-order',
-  imports: [DatePipe, NgClass, RouterLink],
+  imports: [DatePipe, NgClass, RouterLink, Loader],
   templateUrl: './order.html',
   styleUrl: './order.scss',
 })

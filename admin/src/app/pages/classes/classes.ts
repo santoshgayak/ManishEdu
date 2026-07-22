@@ -7,10 +7,11 @@ import { ManageClasses } from '../../components/manage-classes/manage-classes';
 import { NgClass, NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { Order } from '../../model/order.model';
+import { Loader } from "../../components/loader/loader";
 
 @Component({
   selector: 'app-classes',
-  imports: [ManageClasses, RouterLink, NgClass, NgFor, RouterLink],
+  imports: [ManageClasses, RouterLink, NgClass, NgFor, RouterLink, Loader],
   templateUrl: './classes.html',
   styleUrl: './classes.scss',
 })

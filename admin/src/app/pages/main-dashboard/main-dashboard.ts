@@ -9,10 +9,11 @@ import { Order } from '../../model/order.model';
 import { RevenueAnalyticsService } from '../../services/revenue_analytics.service';
 import { ManageClasses } from "../../components/manage-classes/manage-classes";
 import { ManageProducts } from "../../components/manage-products/manage-products";
+import { Loader } from "../../components/loader/loader";
 @Component({
   selector: 'app-main-dashboard',
   standalone: true,
-  imports: [DatePipe, RouterLink, ManageClasses, ManageProducts, NgClass],
+  imports: [DatePipe, RouterLink, ManageClasses, ManageProducts, NgClass, Loader],
   templateUrl: './main-dashboard.html',
   styleUrl: './main-dashboard.scss',
 })
@@ -157,7 +158,7 @@ export class MainDashboard {
 
   tooltip: {
     trigger: 'item',
-    formatter: '{b}<br/>₹{c} ({d}%)'
+    formatter: '{b}<br/>${c} ({d}%)'
   },
 
 legend: {

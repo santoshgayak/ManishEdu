@@ -1,0 +1,135 @@
+<div class="breadcrumb">
+  <a routerLink="/dashboard">Dashboard</a>
+  <span class="separator">›</span>
+  <span class="current">Profile</span>
+</div>
+<div class="row">
+    <div class="left">
+        <img src="/images/manish/manish.jpg" alt="" height="200px">
+        <h3>{{user.role}}</h3>
+        <p><i class="fa-regular fa-envelope"></i>{{user.email}}</p>
+        <p><i class="fa-regular fa-calendar"></i>Joined on {{user?.joinedDate |date:'MMM dd, yyyy' }}</p>
+        <div class="accountStatus">
+            <p>Account Status</p>
+            <span>{{user.accountStatus}}</span>
+        </div>
+    </div>
+    <div class="right">
+        <div class="intro">
+                <div class="title">
+                    <h3>Personal Information</h3>
+                </div>
+                <button  class="editProfileBtn" (click)="editProfile()"><i class="fa-solid fa-plus"></i>{{ isEditable ? 'Save' : 'Edit Profile' }}</button>
+        </div>
+        <form action="submit" [formGroup]="AdminInfo">
+            <div class="form-left">
+                <div class="fields">
+                    <label for="fName"><i class="fa-regular fa-address-card"></i>First Name</label>
+                    <input formControlName="fName" type="text" >
+                </div>
+                  <div class="fields">
+                    <label for="pNumber"><i class="fa-solid fa-tty"></i>Phone</label>
+                    <input formControlName="pNumber" type="number" >
+                </div>
+                 <div class="fields">
+                    <label for="email"> <i class="fa-regular fa-envelope"></i>email</label>
+                    <input formControlName="email" type="email" >
+                </div>
+            </div>
+            <div class="form-right">
+                  <div class="fields">
+                    <label for="lName"><i class="fa-solid fa-address-card"></i>Last Name</label>
+                    <input formControlName="lName" type="text">
+                </div>
+          
+                 <div class="fields">
+                    <label for="role"> <i class="fa-solid fa-user"></i>Role</label>
+                    <input formControlName="role" type="text" >
+                </div>
+                
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<div class="row notification">
+    <div class="not-left">
+        <div class="intro">
+            <div class="title">
+                <h3><i class="fa-regular fa-bell"></i> Notification Preference</h3>
+            </div>
+        </div>
+        <div class="not-row">
+            <div class="fields">
+                <p>Email Notification</p>
+                <span>Recieve important updates via email.</span>
+            </div>
+             <div  
+                (click)="toggle('email')"                           
+                [ngClass]="emailNotification ? 'onClass' : 'offClass'"
+                class="fields toggleBtn">
+                <button   
+                         class="editProfileBtn" (click)="turnOnPreference()"></button>
+            </div>
+        </div>
+         <div class="not-row phone">
+            <div class="fields ">
+                <p>Phone Notification</p>
+                <span>Recieve important updates via phone.</span>
+            </div>
+            <div      
+                (click)="toggle('phone')"                                               
+                [ngClass]="phoneNotification ? 'onClass' : 'offClass'"
+                class="fields toggleBtn">                
+                <button  class="editProfileBtn" (click)="turnOnPreference()"></button>
+            </div>
+        </div>
+         <div class="not-row">
+            <div class="fields">
+                <p>Transaction Notification</p>
+                <span>Recieve important updates about transaction.</span>
+            </div>
+             <div     
+                (click)="toggle('transaction')"                                                   
+                [ngClass]="transactionNotification ? 'onClass' : 'offClass'"
+                class="fields toggleBtn">
+                <button  class="editProfileBtn" (click)="turnOnPreference()"></button>
+
+            </div>
+        </div>
+    </div>
+    <div class="not-right">
+            <div class="intro">
+                <div class="title">
+                    <h3><i class="fa-solid fa-shield-halved"></i> Security Settings</h3>
+                </div>
+            </div>
+            <div class="not-row">
+                <div class="fields">
+                    <h3>Update Password</h3>
+                </div>
+                <button class="changePassword" (click)="changePassword()">Change Password</button>
+            </div>
+            <div 
+                class="security-info"
+                [ngClass]="showPasswordChangeForm? 'hide': 'show'"
+
+            
+            >
+                <i class="fa-solid fa-shield-halved"></i>
+                <div class="msg">
+                    <h6>Keep your password strong</h6>
+                    <p>Use a combination of letters, numbers & symbols for better security.</p>
+                </div>
+            </div>
+            <form 
+                [ngClass]="showPasswordChangeForm? 'show': 'hide'"
+                class="not-row passwordChangeForm" 
+                [formGroup]="passwordChangeForm" >
+                <input type="password" formControlName="password" placeholder="Current Password">
+                <input type="password" formControlName="newPassword" placeholder="New Password">
+                <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+            </form>
+        </div>
+</div>

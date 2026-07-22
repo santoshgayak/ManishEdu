@@ -64,7 +64,7 @@
                                     <div>Status</div>
                                     <div>Date</div>
                                 </div>
-                                @for (order of orderList.slice(0,5); track order._id) {
+                                @for (order of orderList.slice(0,4); track order._id) {
                                     <div class="table-row">
                                         <div>#{{order.orderId}}</div>
                                         <div>J{{order.customerName}}</div>
@@ -76,12 +76,12 @@
                                     </div>
                                 }@empty {
                                     <div class="empty-state">
-                                        <p>No orders found. Check back later!</p>
+                                        <app-loader></app-loader>
                                     </div>
                                 }                           
                         </div>
                          <div class="mobile-view">
-                         @for (order of orderList.slice(0,5); track order._id) {
+                         @for (order of orderList.slice(0,4); track order._id) {
                                     <div class="order-card">
                                         <div class="order-status">
                                             <h3>#{{ order.orderId }}</h3>
@@ -125,7 +125,8 @@
                                     </div>
                                 }@empty {
                                     <div class="empty-state">
-                                        <p><i class="fa-solid fa-calender-days"></i>No orders found. Check back later!</p>
+                                        <app-loader></app-loader>
+
                                     </div>
                                 }        
 

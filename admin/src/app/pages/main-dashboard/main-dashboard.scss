@@ -5,7 +5,7 @@
     gap: 1rem;
     font-size: 0.9rem;
     color: var(--text-muted);
-    margin: 0.5rem;
+    margin: 1rem;
     a {
         text-decoration: none;      
     }
@@ -85,7 +85,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 
   .summary-card {
     flex: 1 1 240px;
@@ -258,7 +258,7 @@
         .table-header, .table-row{
             width: 100%;
             text-align: left;
-            padding: 0.5rem;
+            padding: 0.5rem 1rem;
             display: grid;
             grid-template-columns: 1fr 1.3fr 1fr 2fr 1fr 1fr 0.8fr;
             align-items: center;
@@ -387,7 +387,12 @@
         }
     }
 }
-
+.empty-state {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .mobile-view{
     width: 100%;
    display: none;

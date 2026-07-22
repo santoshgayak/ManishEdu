@@ -74,7 +74,7 @@
 
            <div class="features">
                 @for (item of classItem.features; track $index) {
-                    <span><i class="fa-solid fa-check-double" style="margin-right: 0.5rem; color:#6a0cc1;"></i>{{ item }}</span>
+                    <span>{{ item }}</span>
                 }
             </div>
             <div class="actions">
@@ -84,13 +84,14 @@
         </div>
         } @empty {
         <div class="empty-state">
-            <p>No classes available.</p>
+            <app-loader></app-loader>
         </div>
         }
 
     </div>
      <div class="class-cards-container mobile-view" >
-        <div class="class-card " *ngFor="let course of classList">
+        @for (course of classList; track course._id) {
+        <div class="class-card ">
             <div class="class-details">
                 <h3 class="class-title">{{course.title}}</h3>
                 <h3 class="class-price"><span>Rs</span>{{course.price}}</h3>
@@ -109,6 +110,12 @@
                 <button class="delete-btn" (click)="deleteClass(course._id)"><i class="fa-regular fa-trash-can"></i></button>
             </div>
         </div>
+    }@empty{
+        <div>
+            <app-loader></app-loader>
+        </div>
+
+    }
     </div>
 
 </div>

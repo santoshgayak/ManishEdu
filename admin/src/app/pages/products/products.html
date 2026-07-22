@@ -19,7 +19,7 @@
                         </div>
                         <div class="card-content">
                             <p class="title">Sarangi</p>
-                            <p class="number">$38000</p>
+                            <p class="number">${{this.sarangiRevenue}}</p>
                         </div>
                     </div>
                     <div class="summary-card">
@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-content">
                             <p class="title">Madal</p>
-                            <p class="number">$1238</p>
+                            <p class="number">${{this.madalRevenue}}</p>
                         </div>
                     </div>
                     <div class="summary-card">
@@ -37,7 +37,7 @@
                         </div>
                         <div class="card-content">
                             <p class="title">Bansuri</p>
-                            <p class="number">$12,9808</p>
+                            <p class="number">${{this.bansuriRevenue}}</p>
                         </div>
                     </div>
                      <div class="summary-card">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="card-content">
                             <p class="title">Total Revenue</p>
-                            <p class="number">$30,800</p>
+                            <p class="number">${{this.totalRevenue}}</p>
                         </div>
                     </div>
                    
@@ -79,7 +79,7 @@
         </div>
       } @empty {
         <div class="empty-state">
-          <p>No products available.</p>
+          <app-loader></app-loader>
         </div>
       }
 
@@ -87,7 +87,8 @@
 
   </div>
    <div class="products-card-container">
-            <div class="product-card" *ngFor="let product of productList">
+    @for (product of productList; track $index) {
+       <div class="product-card" *ngFor="let product of productList">
                 <img src="{{product.image}}" alt="Sarangi 1" class="product-image">
                 <div class="product-info">
                     <h3 class="product-name">{{product.name}}</h3>
@@ -99,6 +100,14 @@
                     </div>
                 </div>
             </div>
+
+    }@empty {
+        <div class="empty-state">
+          <app-loader></app-loader>
+        </div>.
+
+    }
+           
         </div>
 </div>
 
