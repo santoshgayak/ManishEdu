@@ -61,10 +61,6 @@ export class Products {
   }
 
 
-
-  navigate(){
-    
-  }
   addNewProduct(){
     this.router.navigate(['/dashboard/add-product']);
     
@@ -72,14 +68,8 @@ export class Products {
   
   //delete product
   deleteProduct(productId:string){
-    console.log("Delete button clicked in UI for ID:", productId);
-
-    // CRITICAL: You must use .subscribe() here to trigger the network request!
     this.dataService.deleteProduct(productId).subscribe({
-      next: (response) => {
-        console.log("Backend responded successfully:", response);
-        
-        // Optional: Remove the deleted class from your local array to update the UI instantly
+      next: (response) => {        
         this.productList = this.productList.filter(item => item._id !== productId);
         this.cdr.detectChanges();
       },
@@ -89,7 +79,6 @@ export class Products {
     });
   }
   editProduct(productId: string) {
-    console.log('Edit product with ID:', productId);
     this.router.navigate(['dashboard/edit-product',productId]);
   } 
 }

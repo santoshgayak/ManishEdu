@@ -1,89 +1,66 @@
-.container {
-    padding: 20px 200px;
-}
-.title h1{
-    font-size: 3rem;
-    text-align: center;
-    color: var(--text-dark);
-    margin:0;
-}
-.title p{
-      text-align: center;
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-}
-.cart-payment {
-    box-sizing: border-box;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-top: 70px;
-
+.container{
+    padding:0 5%;
+    width:100%;
+    box-sizing:border-box;
 }
 
-.customer-info {
-    display: flex;
-    gap: 3rem;
-    width: 100%;
-    flex: 2;
+.cart-payment{
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    gap:2rem;
+    width:100%;
+    margin-top:4rem;
 }
+
+.customer-info{
+    width:100%;
+}
+
 .custinfo{
-    padding: 1.5rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 1.5rem;
+    background:white;
+    padding:2.5rem;
+    border-radius:24px;
+    box-shadow:rgba(100,100,111,.15) 0 7px 29px;
+    width:100%;
 }
-.customer-info div {
-    width: 100%;
-}
+
 .title-info{
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    gap: 1rem;
-    border-bottom: 2px solid rgb(229, 228, 228);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    padding-bottom:1rem;
+    margin-bottom:2rem;
+    border-bottom:1px solid rgba(0,0,0,.1);
 }
+
 .title-info i{
-    font-size: 1rem;
-    color: white;
-    background-color: var(--text-dark);
-    border-radius: 50%;
-    padding: 0.6rem;
-    
-}
-.cardInfo .title-info i{
-    padding: 0.6rem 0.75rem;
-}
-
-.cardInfo {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    flex: 1;
-    height: 100%;
-    border-radius: 1.5rem;
-    padding: 2rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:var(--text-dark);
+    color:white;
+    font-size:1.2rem;
 }
 
-.customer-info h3{
-font-size: clamp(1.1rem, 0.5vw + 0.9rem, 1.5rem);
-color: var(--text-dark);
-
+.title-info h3{
+    font-size:clamp(1.2rem,2vw,1.8rem);
+    color:var(--text-dark);
 }
+
 
 .fullname,
 .contact-info,
 .cityAndState,
-.postcodeAndCountry {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 0.2rem;
+.postcodeAndCountry{
+    display:flex;
+    gap:1.5rem;
+    width:100%;
 }
+
 
 .fname,
 .lname,
@@ -92,254 +69,201 @@ color: var(--text-dark);
 .city,
 .state,
 .postcode,
-.country
- {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 1;
-    margin-bottom: 1rem;
+.country,
+.addresslines{
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+    flex:1;
+    margin-bottom:1.2rem;
 }
 
-.address {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 0rem;
+
+.address{
+    display:flex;
+    flex-direction:column;
 }
 
-.addressLine {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+
+label{
+    font-size:clamp(.9rem,1vw,1.1rem);
+    font-weight:600;
+    color:var(--text-dark);
 }
 
-.addresslines {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+
+input,
+select{
+    width:100%;
+    height:50px;
+    padding:0 1rem;
+    border-radius:12px;
+    border:1px solid rgba(0,0,0,.1);
+    background:white;
+    color:var(--text-dark);
+    font-size:1rem;
+    box-sizing:border-box;
+    transition:.3s ease;
 }
 
-label {
-    font-size: 1rem;
-    color: var(--text-dark);
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:var(--primary-blue);
+    box-shadow:0 0 0 3px rgba(37,99,235,.1);
 }
 
-input {
-    height: 2.5rem;
-    font-size: 1rem;
-    color: var(--text-dark);
-    border: 2px solid rgb(237, 233, 233, 0.1);
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-    box-shadow: 0px 2px 5px 1px rgb(237, 233, 233);
-    width: 100%;
-    padding: 0 10px;
+
+.addressLine{
+    display:flex;
+    flex-direction:column;
 }
 
-input:focus {
-    outline: none;
-    box-shadow: 0px 2px 8px 1px rgb(220, 220, 220);
+
+.processToPaymentBtn{
+    width:100%;
+    margin-top:1rem;
+    background:var(--text-dark);
+    color:white;
+    padding:16px 25px;
+    border-radius:50px;
+    border:none;
+    font-size:clamp(1rem,1vw,1.2rem);
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s ease;
 }
 
-select {
-    height: 3rem;
-    font-size: 1rem;
-    color: var(--text-dark);
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-    box-shadow: 0px 2px 5px 0.5px rgb(237, 233, 233);
-    width: 100%;
-    padding: 0 10px;
-    background: white;
-}
 
-.cardholder-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 0rem;
-    width: 100%;
-    height: auto;
-}
-
-.field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
-.processToPaymentBtn {
-   background-color: var(--text-dark);
-   color: white;
-   font-size: clamp();
-   padding: 1rem 2rem;
-   width: 100%;
-}
 .processToPaymentBtn i{
-    margin-right:0.7rem;
+    margin-right:.7rem;
 }
 
-.processToPaymentBtn:hover {
-    transform: scale(1.02);
+
+.processToPaymentBtn:hover{
+    background:var(--gradient-main);
+    transform:translateY(-3px);
 }
-form{
-    display: flex !important;
+
+
+
+
+.cardtypes-container{
+    margin-top:3rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:2rem;
+    width:100%;
+    padding:1.5rem;
+    background:white;
+    border-radius:24px;
+    box-shadow:rgba(100,100,111,.1) 0 7px 25px;
 }
-.expiryAndCvv{
-    display: flex;
+
+
+.cardtypes-container div{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
 }
-.termsAndCondition{
-    display: flex;
-    align-items: start;
-    margin: 1rem 0;
-    gap: 1rem;
+
+
+.cardtypes-container div:nth-child(2){
+    padding:0 3rem;
+    border-left:1px solid rgba(0,0,0,.2);
+    border-right:1px solid rgba(0,0,0,.2);
 }
-.terms{
-    margin: -5px;
-    font-size: 0.8rem;
+
+
+.cardtypes-container p{
+    font-size:.9rem;
+    color:var(--text-dark);
 }
-.termsAndCondition i{
-    margin: 0;
-    padding: 0;
-    color: green ;
-    font-size: 1.5rem;
+
+
+.cardtypes-container span{
+    font-weight:bold;
 }
 
 
 
 
 .securityNote{
-    display: flex;
-    gap: 1rem !important;
-    align-items: center !important;
-    color: green;
-    background-color: rgb(239, 251, 239);
-    padding: 1rem 1rem;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-    justify-content: left !important;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    background:#effbef;
+    padding:1rem;
+    border-radius:16px;
+    margin-top:1rem;
+}
 
-}
-.securityNote p{
-    font-size: 0.8rem;
-    color: var(--text-dark);
-}
-.securityNote p span{
-    font-weight: bold;
-    font-size: 1rem;
-}
+
 .securityNote i{
-    font-size: 2rem;
-}
-
-.cardtypes-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 2rem;
-}
-.cardtypes-container div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-.cardtypes-container div:nth-child(2){
-    border-right: 2px solid grey;
-    border-left: 2px solid grey;
-    padding: 0rem 3rem;
-}
-.cardtypes-container div p{
-    font-size: 0.8rem;
-    color: var(--text-dark);
-}
-.cardtypes-container div span{
-    font-weight: bold;
+    font-size:2rem;
+    color:green;
 }
 
 
-#checkout{
-    background-color: red;
-    box-shadow: 0px 2px 10px red;
-    border-radius: 2rem;
-}
-#checkout iframe{
-    background-color: grey !important;
-    color: red !important;
+.securityNote p{
+    color:var(--text-dark);
+    font-size:.9rem;
 }
 
-@media (max-width:768px) {
-    .container{
-        padding:0.5rem;
+
+
+@media(max-width:1024px){
+
+    .cart-payment{
+        flex-direction:column;
     }
-    .customer-info label{
-        font-size: clamp(0.75rem, 0.3vw + 0.7rem, 0.95rem);    }
-    .cardtypes-container{
-        flex-direction: column;
-        gap: 1rem;
-    }
-    .cardtypes-container div:nth-child(2){
-        border-right: none;
-        border-left: none;
-    }
+
     .custinfo{
-        gap: 0;
+        padding:2rem;
     }
-    .title-info{
-        margin-bottom: 1rem;
+
+}
+
+
+
+@media(max-width:768px){
+
+    .container{
+        padding:0 5%;
     }
-    
 
     .fullname,
-.contact-info,
-.cityAndState,
-.postcodeAndCountry {
-    display: flex;
-    gap: 1rem;
-    width: 100%;
-    margin-top: 0.2rem;
-}
+    .contact-info,
+    .cityAndState,
+    .postcodeAndCountry{
+        flex-direction:column;
+        gap:0;
+    }
 
-.fname,
-.lname,
-.phone,
-.email,
-.city,
-.state,
-.postcode,
-.country
- {
 
-    gap: 0.2rem;
+    .custinfo{
+        padding:1.5rem;
+    }
 
-}
 
-.address {
-    gap: 0.2rem;
+    .cardtypes-container{
+        flex-direction:column;
+        gap:1.5rem;
+    }
 
-}
 
-.addressLine {
-    gap: 0.2rem;
-}
+    .cardtypes-container div:nth-child(2){
+        border-left:none;
+        border-right:none;
+        padding:1rem 0;
+    }
 
-.addresslines {
 
-    gap: 0.2rem;
-}
-.processToPaymentBtn {
-   color: white;
-font-size: clamp(0.5rem, 1vw + 0.4rem, 1.35rem);   padding: 0.8rem 1rem
-   
-}
-.processToPaymentBtn i{
-    margin-right:0.7rem;
-}
-    
+    .processToPaymentBtn{
+        padding:14px;
+    }
+
 }

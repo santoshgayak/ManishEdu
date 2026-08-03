@@ -5,7 +5,7 @@
     align-items: center;
     gap: 1rem;
     padding-bottom: 100px;
-    margin-top: 70px;
+    padding-top: 3% !important;
 
 }
 .confirmationMsg{
@@ -45,13 +45,11 @@
 
 }
 .securityNote p{
-    font-size: 0.8rem;
     color: var(--text-dark);
-    text-align: left;
+    text-align: center;
 }
 .securityNote p span{
     font-weight: bold;
-    font-size: 1rem;
 }
 
 .securityNote i{
@@ -62,7 +60,7 @@
 }
 .confirmation-details-container{
     display: flex;
-    align-items: start;
+    align-items: stretch;
     justify-content: center;
     width: 90%;
     gap: 2rem;
@@ -87,10 +85,7 @@
     color: var(--text-dark);
     padding: 1rem 1rem;
 }
-.title h3{
-    font-size: 1rem;
 
-}
 .title i{
     font-size: 1.2rem;
     background-color: var(--text-dark);
@@ -108,13 +103,10 @@
     gap: 2rem;
     
 }
-.row p{
-    font-size: 0.9rem;
-}
+
 .row p:nth-child(2){
     color: var(--text-muted);
     font-weight: 500;
-    font-size: 0.8rem !important;
 }
 .row div{
     display: flex;
@@ -146,9 +138,7 @@
     justify-content: left !important;
     padding: 0.95rem; 
 }
-.right .row p{
-    font-size: 0.7rem !important;
-}
+
 .right .row span{
     font-size: 0.9rem;
 }
