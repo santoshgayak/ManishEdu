@@ -152,7 +152,7 @@
     padding: 15px;
     border: none;
     border-radius: 50px;
-    background: rgb(3, 16, 66);
+    background: orange;
     color: #fff;
     font-weight: 700;
     font-size: 1rem;
@@ -162,7 +162,7 @@
 }
 
 .enroll-button:hover {
-    background: orange;
+    background: var(--gradient-main);
     transform: translateY(-3px);
 }
 

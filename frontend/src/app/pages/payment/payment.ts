@@ -32,21 +32,21 @@ export class Payment {
 
   ngOnInit(): void {
     this.classId = this.route.snapshot.paramMap.get('classId') || '';
-  this.route.queryParams.subscribe((params) => {
+    this.route.queryParams.subscribe((params) => {
 
-    const flow = params['flow'];
-    if (flow === 'product') {
-       this.customerId = params['customerId'];
+      const flow = params['flow'];
+      if (flow === 'product') {
+        this.customerId = params['customerId'];
 
-    }
+      }
 
-    if (flow === 'class') {
-       this.classId = params['classId'];
-       this.studentId = params['studentId'];
+      if (flow === 'class') {
+        this.classId = params['classId'];
+        this.studentId = params['studentId'];
 
 
-    }
-});
+      }
+  });
 
   }
 

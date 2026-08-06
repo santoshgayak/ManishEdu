@@ -75,7 +75,7 @@ export class CustomerInfo {
           this.router.navigate(['/payment'],{
             queryParams:{
               flow:'product',
-              customerId : customerId
+              customerId : customerId,
             }
           }
           );
