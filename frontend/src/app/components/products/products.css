@@ -5,8 +5,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-top:  100px;
-    padding:  1rem 2rem;
+    padding:  1rem 2rem !important;
     width: 100%;
 }
 
@@ -24,6 +23,7 @@
     white-space: nowrap;
     box-sizing: border-box;
     margin-bottom: 2rem;
+    scrollbar-width: none;
 }
 .filterBtn{
     font-size: 1rem;
@@ -36,7 +36,7 @@
 }
 .filterBtn:hover{
     color: white;
-    background-color: rgb(145, 102, 23);
+    background-color: rgb(241, 178, 59);
 
 }
 .filterBtn.active{
@@ -86,7 +86,6 @@
         transition:all 0.3s ease;
 }
 .product-card:hover{
-    transform: translateY(-5px);
     cursor: pointer;
 }
 .product-card img{
@@ -114,7 +113,7 @@
     margin-bottom: 1rem;
 }       
 .product-card button{
-    background: var(--text-dark);
+    background: orange !important;
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -124,8 +123,7 @@
     font-size: 1rem;
 }
 .product-card button:hover{
-    background: var(--hover-blue);
-    color: white;
+    background: var(--text-dark) !important;
 
 }   
 
@@ -135,7 +133,6 @@
     }
     .product-filter{
         width: 100%;
-        border-radius: 0;
     }
     .products-section{
         padding: 0;

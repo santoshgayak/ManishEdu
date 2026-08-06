@@ -24,7 +24,7 @@
     margin-bottom: 1.5rem;
 }
 
-.section-content h3 {
+.section-content h2 {
     color: var(--text-dark);
     margin-bottom: 1.5rem;
 }
@@ -69,7 +69,7 @@
     width: clamp(35px, 5vw, 45px);
     height: clamp(35px, 5vw, 45px);
     border-radius: 50%;
-    background: rgba(255, 165, 0, .12);
+    background: rgba(255, 165, 0, .1);
     color: var(--accent-orange);
     display: flex;
     justify-content: center;

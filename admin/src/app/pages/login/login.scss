@@ -3,14 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-   
-          background: #6a0cc1;
+    background:var(--btn-background-color);
           height: 100dvh;
-
-
- 
-
     .login-form {
         display: flex;
         flex-direction: column;
@@ -20,13 +14,12 @@
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-radius: 10px; 
-        padding: 1rem 2rem;
+        padding: 2rem;
         box-shadow: 0px 2px 2px 1px rgb(135, 134, 134);
         height: 100dvh;
         background-color: white;
-        width: 700px;
+        width: 400px;
         margin: 1rem;
-        background:linear-gradient(to bottom, rgb(215, 162, 246),white,white,white,white,rgb(248, 248, 249));
 
         .form-title {
             display: flex;
@@ -38,7 +31,6 @@
             h3 {
                 font-size: 2rem;
                 text-align: center;
-                color:#6a0cc1;
             }
             p {
                 text-align: center;
@@ -75,7 +67,7 @@
                 background-color: rgba(255,255,255,0.4);
                 margin-bottom: 0.5rem;
                 &:focus {
-                    outline: 2px solid #6a0cc1;
+                    outline: 2px solid var(--text-dark);
                 }
             }
             
@@ -112,20 +104,7 @@
                     accent-color: var(--btn-background-color);
                 } 
             }
-            .forgotPasswordBtn {
-                width: 100%;
-                align-items: center;
-                border: none;
-                color: var(--text-link);
-                outline: none;
-                background: transparent;
-                cursor: pointer;
-                text-align: right;
-                font-size: 1rem;
-            }
-            .forgotPasswordBtn:hover {
-                color: orange;
-            }
+           
         }
 
         .signIn-container {
@@ -136,7 +115,7 @@
             margin-top: 1rem;
             
             button {
-                background-color:#6a0cc1;
+                background-color:var(--text-dark);
                 border-radius: 0.3rem;
                 border: none;
                 cursor: pointer;
@@ -169,7 +148,7 @@
             display: block;
             p {
                 text-align: center;
-                font-size: 0.8rem;
+                font-size: 1rem;
                 margin-top: 0.5rem;
                 a {
                     cursor: pointer;
@@ -191,13 +170,13 @@
 
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .form-container {
         padding: 0rem;
 
 
         .login-form {
-            height: 100vh;
+            height: 100dvh;
     
         }
     }

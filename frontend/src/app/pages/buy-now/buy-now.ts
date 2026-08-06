@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Footer } from "../../components/footer/footer";
 import { CartService } from '../../services/cart/cart.service'
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-buy-now',
-  imports: [ReactiveFormsModule, Footer, CommonModule],
+  imports: [ReactiveFormsModule, Footer, CommonModule, RouterLink],
   templateUrl: './buy-now.html',
   styleUrl: './buy-now.css',
 })

@@ -97,7 +97,7 @@ h3 {
 .btn {
     padding: 20px 30px;
     border: none;
-    border-radius: 2rem;
+    border-radius: 2 !important;
     font-size: clamp(1rem, 1.2vw, 1.2rem);
     font-weight: bold;
     color: var(--btn-text-primary);
@@ -130,15 +130,10 @@ h3 {
 
 
 .sectionTopLine {
-
     font-weight: 700;
-
     font-size: .9rem !important;
-
     color: var(--highlight-text) !important;
-
     text-transform: uppercase;
-
 }
 
 

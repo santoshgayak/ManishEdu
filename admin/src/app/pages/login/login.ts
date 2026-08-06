@@ -21,8 +21,8 @@ export class Login {
     ){}
 
     signIn = signal({
-      email:'',
-      password: '',
+      email:'manish_edu@gmail.com',
+      password: 'hello',
       checkbox: false
     });
 

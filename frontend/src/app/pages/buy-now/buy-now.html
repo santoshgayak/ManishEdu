@@ -1,28 +1,49 @@
     <section class="cart-section">
         <div class="cart-container">
-            <div class="cart-card-container">
-                <div class="cart-card" *ngFor="let item of cartItems">
-                    <img [src]="item.image" alt="Sarangi 1" class="cart-image">
-                    <div class="cart-info">
-                        <div class="top">
-                            <h3 class="cart-name">{{item.name}}</h3>
-                            <p><i class="fa-solid fa-circle-check"></i>In Stock</p>
-                        </div>    
-                        <p class="cart-description">{{item.description}}</p>
-                        <p class="cart-price">${{item.price*item.quantity}}          <span> (${{item.price}} ea)</span>  </p>
-                        <div class="buyNowBtnsContainer">
-                            <div  class="buyNow">
-                                <button class="minusBtn" (click)="subtractItem(item.id)">-</button>
-                                <p>{{item.quantity}}</p>
-                                <button class="addBtn" (click)="addItem(item.id)">+</button>
-                            </div>     
-                            <button class="deleteBtn" (click)="deleteItemFromCart(item.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+           <div class="cart-card-container">
+            @if (cartItems.length > 0) {
+
+                @for (item of cartItems; track item.id) {
+                    <div class="cart-card">
+                        <img [src]="item.image" alt="Sarangi" class="cart-image">
+
+                        <div class="cart-info">
+                            <div class="top">
+                                <h3 class="cart-name">{{ item.name }}</h3>
+                                <p><i class="fa-solid fa-circle-check"></i> In Stock</p>
+                            </div>
+
+                            <p class="cart-description">{{ item.description }}</p>
+
+                            <p class="cart-price">
+                                ${{ item.price * item.quantity }}
+                                <span>(${{ item.price }} ea)</span>
+                            </p>
+
+                            <div class="buyNowBtnsContainer">
+                                <div class="buyNow">
+                                    <button class="minusBtn" (click)="subtractItem(item.id)">-</button>
+                                    <p>{{ item.quantity }}</p>
+                                    <button class="addBtn" (click)="addItem(item.id)">+</button>
+                                </div>
+
+                                <button class=" btn deleteBtn" (click)="deleteItemFromCart(item.id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    
+                }
+
+            } @else {
+
+                <div class="empty-cart">
+                    <h2>Your cart is empty</h2>
+                        <a  class="btn" routerLink="/shop" routerLinkActive="active">Shop</a>
                 </div>
-               
-            </div>
+
+            }
+        </div>
             <div class="cart-payment">
                 <div class="order-summary-container">
                     <div class="summaryTop">

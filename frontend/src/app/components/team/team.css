@@ -70,16 +70,11 @@
 }
 
 
-.manishCard {
-    grid-row: span 2;
-    flex-direction: column;
-    text-align: center;
-}
 
 
 .team-img img {
-    width: clamp(120px, 15vw, 200px);
-    height: clamp(120px, 15vw, 200px);
+    width: clamp(120px, 15vw, 150px);
+    height: clamp(120px, 15vw, 150px);
     object-fit: cover;
     border-radius: 50%;
     border: 8px solid var(--border-color);

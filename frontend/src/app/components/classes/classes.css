@@ -45,6 +45,7 @@
 .class-card {
     flex: 1 1 320px;
     max-width: 360px;
+    min-height: fit-content;
     background: #fff;
     border-radius: 28px;
     padding: 2.5rem;
@@ -53,7 +54,7 @@
     flex-direction: column;
     justify-content: space-between;
     transition: all .35s ease;
-    box-shadow: rgba(0, 0, 0, .05) 0 15px 35px;
+    box-shadow: rgba(0, 0, 0, .1) 0 15px 35px;
     position: relative;
     overflow: hidden;
 }
@@ -70,7 +71,7 @@
 
 .class-card:hover {
     transform: translateY(-12px);
-    box-shadow: rgba(0, 0, 0, .12) 0 25px 50px;
+    box-shadow: rgba(0, 0, 0, .1) 0 25px 50px;
 }
 
 .class-details {
@@ -105,7 +106,7 @@
 
 .class-duration {
     display: inline-block;
-    background: rgba(255, 165, 0, .12);
+    background: rgba(255, 165, 0, .1);
     color: orange;
     padding: .45rem 1rem;
     border-radius: 30px;
@@ -131,12 +132,12 @@
     align-items: flex-start;
     gap: 1rem;
     color: var(--text-dark);
-    font-size: .97rem;
-    line-height: 1.6;
+    font-size: .9rem;
+    line-height: 1.5;
 }
 
 .class-description i {
-    color: green;
+    color: orange;
     margin-top: 4px;
     font-size: 1rem;
     flex-shrink: 0;
@@ -157,11 +158,11 @@
     font-size: 1rem;
     cursor: pointer;
     transition: .3s;
-    box-shadow: rgba(0, 0, 0, .08) 0 10px 25px;
+    box-shadow: rgba(0, 0, 0, .2) 0 10px 25px;
 }
 
 .enroll-button:hover {
-    background: rgb(3, 34, 161);
+    background: orange;
     transform: translateY(-3px);
 }
 

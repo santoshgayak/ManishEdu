@@ -74,6 +74,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 const myDomain = 'http://localhost:4200';
 
+/*
 app.post('/create-checkout-session', async (req, res) => {
     const {items}  = req.body;
   try {
@@ -93,9 +94,6 @@ app.post('/create-checkout-session', async (req, res) => {
       return_url: 'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
     });
 
-    console.log("✅ Session created:", session.id);
-    console.log("🔑 client_secret:", session.client_secret);
-
     if (!session.client_secret) {
       throw new Error("Missing client_secret from Stripe session");
     }
@@ -111,14 +109,12 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 
+*/
 
-
-app.post('/create-checkout-session1', async (req, res) => {
+app.post('/create-checkout-session', async (req, res) => {
     const {id}  = req.body;
-    console.log("BODY : ",req.body);
-    console.log("id from back:",id);
+
   try {
-    console.log("🔥 Create checkout session hit..daata",req.body);
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: 'embedded_page',
@@ -133,9 +129,6 @@ app.post('/create-checkout-session1', async (req, res) => {
       
       return_url: 'https://manish-edu-git-main-manish-edu.vercel.app/success?session_id={CHECKOUT_SESSION_ID}',
     });
-
-    console.log("✅ Session created:", session.id);
-    console.log("🔑 client_secret:", session.client_secret);
 
     if (!session.client_secret) {
       throw new Error("Missing client_secret from Stripe session");
@@ -176,14 +169,6 @@ app.get('/session-status', async (req: Request, res: Response) => {
         const charge =
         paymentIntent.latest_charge as Stripe.Charge;
 
-        console.log("Session:", session.id);
-        console.log("Payment Status:", paymentIntent.status);
-        console.log("Amount:", paymentIntent.amount);
-        console.log("Email:", session.customer_details?.email);
-        console.log("Card:", paymentMethod.card?.brand);
-        console.log("Last4:", paymentMethod.card?.last4);
-
-
         res.json({
         sessionId: session.id,
 
@@ -207,9 +192,6 @@ app.get('/session-status', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to fetch session' });
   }
 });
-
-
-
 
 
 // START SERVER

@@ -5,7 +5,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    padding: 0 0 100px 0;
+    padding-top: 20px !important;
 }
 .cart-section h2{
     font-size: 2rem;
@@ -32,6 +32,11 @@
     justify-content: space-around;
     gap: 1rem;
     position: relative;
+}
+.empty-cart a{
+    padding: 0.5rem 2rem;
+    text-decoration: none;
+    background-color: var(--text-dark);
 }
 
 
