@@ -74,7 +74,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 const myDomain = 'http://localhost:4200';
 
-/*
+
 app.post('/create-checkout-session', async (req, res) => {
     const {items}  = req.body;
   try {
@@ -91,7 +91,7 @@ app.post('/create-checkout-session', async (req, res) => {
       }))
       ,
 
-      return_url: 'http://localhost:4200/success?session_id={CHECKOUT_SESSION_ID}',
+      return_url: 'https://manish-edu-git-main-manish-edu.vercel.app/success?session_id={CHECKOUT_SESSION_ID}',
     });
 
     if (!session.client_secret) {
@@ -109,9 +109,9 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 
-*/
 
-app.post('/create-checkout-session', async (req, res) => {
+
+app.post('/create-checkout-session1', async (req, res) => {
     const {id}  = req.body;
 
   try {
