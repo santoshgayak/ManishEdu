@@ -215,7 +215,6 @@ app.get("/session-status", async (req: Request, res: Response) => {
 
       console.log("💾 ORDER UPDATED:", result);
     } else {
-      console.log("DIDNOT UPDATE STATUS");
       dataService.deleteOrder("order", sessionId);
     }
 
