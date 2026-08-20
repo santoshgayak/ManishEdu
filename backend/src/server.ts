@@ -135,7 +135,6 @@ app.post("/create-checkout-session1", async (req, res) => {
       error: "Course not found",
     });
   }
-  console.log("from session1 checkout CUSTOMER ID :", customerId);
   try {
     const orderPayload = {
       customerId,
@@ -155,7 +154,7 @@ app.post("/create-checkout-session1", async (req, res) => {
 
       line_items: [
         {
-          price: id,
+          price: course.id,
           quantity: 1,
         },
       ],
@@ -200,7 +199,6 @@ app.get("/session-status", async (req: Request, res: Response) => {
     const charge = paymentIntent.latest_charge as Stripe.Charge;
 
     const dataService = new DataService();
-    console.log("💳 PAYMENT INTENT STATUS:", paymentIntent.status);
     if (paymentIntent.status === "succeeded") {
       const result = await dataService.updateOne(
         "orders",
