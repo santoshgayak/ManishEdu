@@ -4,121 +4,121 @@
   <span class="current">Classes</span>
 </div>
 <div class="intro">
-        <div class="title">
-            <h3>Classes</h3>
-            <p>Create, update and manage all sarangi classes</p>
-        </div>
-        <button class="addNewClassBtn" (click)="addNewClass()"><i class="fa-solid fa-plus"></i>Add New Class</button>
+  <div class="title">
+    <h3>Classes</h3>
+    <p>Create, update and manage all sarangi classes</p>
+  </div>
+  <button class="addNewClassBtn" (click)="addNewClass()">
+    <i class="fa-solid fa-plus"></i>Add New Class
+  </button>
 </div>
- <div class="row">
-                <div class="summary-card-container">
-                    
-                    <div class="summary-card">
-                         <div class="card-icon order">
-                            <i class="fa-solid fa-music"></i>
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Basic Sarangi</p>
-                            <p class="number">${{basic_sarangi_revenue}}</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon revenue">
-                            <i class="fa-solid fa-guitar"></i>                        
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Intermediate Sarangi</p>
-                            <p class="number">${{intermediate_sarangi_revenue}}</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon student">
-                            <i class="fa-solid fa-crown "></i>
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Advanced Sarangi</p>
-                            <p class="number">${{advance_sarangi_revenue}}</p>
-                        </div>
-                    </div>
-                     <div class="summary-card">
-                         <div class="card-icon student">
-                            <i class="fa-solid fa-crown "></i>
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Total Revenue</p>
-                            <p class="number">${{total_revenue}}</p>
-                        </div>
-                    </div>
-                   
-                </div>
+<div class="row">
+  <div class="summary-card-container">
+    <div class="summary-card">
+      <div class="card-icon order">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Basic Sarangi</p>
+        <p class="number">${{ basic_sarangi_revenue }}</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon revenue">
+        <i class="fa-solid fa-guitar"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Intermediate Sarangi</p>
+        <p class="number">${{ intermediate_sarangi_revenue }}</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon student">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Advanced Sarangi</p>
+        <p class="number">${{ advance_sarangi_revenue }}</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon student">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Total Revenue</p>
+        <p class="number">${{ total_revenue }}</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="class-mgmt">
-       
-    <div class="card-content">
-        <div class="table-header">
-        <div>Class</div>
-        <div>Level</div>
-        <div>Price</div>
-        <div>Duration</div>
-        <div>Features</div>
-        <div>Actions</div>
-        </div>
-        @for (classItem of classList; track classItem._id) {
-        <div class="table-row">
-            
-            <div>{{ classItem.title }}</div>
-            <div>({{ classItem.level }})</div>
-            <div>${{ classItem.price }}</div>
-            <div>{{ classItem.duration }}</div>
-
-           <div class="features">
-                @for (item of classItem.features; track $index) {
-                    <span>{{ item }}</span>
-                }
-            </div>
-            <div class="actions">
-                <button class="edit-btn" (click)="editClass(classItem._id)"><i class="fa-regular fa-pen-to-square"></i></button>
-                <button class="delete-btn" (click)="deleteClass(classItem._id)"><i class="fa-regular fa-trash-can"></i></button>
-            </div>
-        </div>
-        } @empty {
-        <div class="empty-state">
-            <app-loader></app-loader>
-        </div>
-        }
-
+  <div class="card-content">
+    <div class="table-header">
+      <div>Class</div>
+      <div>Level</div>
+      <div>Price</div>
+      <div>Duration</div>
+      <div>Features</div>
+      <div>Actions</div>
     </div>
-     <div class="class-cards-container mobile-view" >
-        @for (course of classList; track course._id) {
-        <div class="class-card ">
-            <div class="class-details">
-                <h3 class="class-title">{{course.title}}</h3>
-                <h3 class="class-price"><span>Rs</span>{{course.price}}</h3>
-                <p class="class-duration">{{course.duration}} days</p>
-            </div>
-            <div class="class-features">
-                <ul >
-                    <div class="class-description" *ngFor="let feature of course.features">
-                        <i class='fas fa-check-double'></i>
-                        <li>{{feature}}</li>
-                    </div>
-                </ul>
-            </div>
-            <div class="actions">
-                <button class="edit-btn" (click)="editClass(course._id)"><i class="fa-regular fa-pen-to-square"></i></button>
-                <button class="delete-btn" (click)="deleteClass(course._id)"><i class="fa-regular fa-trash-can"></i></button>
-            </div>
-        </div>
-    }@empty{
-        <div>
-            <app-loader></app-loader>
-        </div>
+    @for (classItem of classList; track classItem._id) {
+      <div class="table-row">
+        <div>{{ classItem.title }}</div>
+        <div>({{ classItem.level }})</div>
+        <div>${{ classItem.price }}</div>
+        <div>{{ classItem.duration }}</div>
 
+        <div class="features">
+          @for (item of classItem.features; track $index) {
+            <span>{{ item }}</span>
+          }
+        </div>
+        <div class="actions">
+          <button class="edit-btn" (click)="editClass(classItem._id)">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+          <button class="delete-btn" (click)="deleteClass(classItem._id)">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <app-loader></app-loader>
+      </div>
     }
-    </div>
-
+  </div>
+  <div class="class-cards-container mobile-view">
+    @for (course of classList; track course._id) {
+      <div class="class-card">
+        <div class="class-details">
+          <h3 class="class-title">{{ course.title }}</h3>
+          <h3 class="class-price"><span>Rs</span>{{ course.price }}</h3>
+          <p class="class-duration">{{ course.duration }} days</p>
+        </div>
+        <div class="class-features">
+          <ul>
+            <div class="class-description" *ngFor="let feature of course.features">
+              <i class="fas fa-check-double"></i>
+              <li>{{ feature }}</li>
+            </div>
+          </ul>
+        </div>
+        <div class="actions">
+          <button class="edit-btn" (click)="editClass(course._id)">
+            <i class="fa-regular fa-pen-to-square"></i>
+          </button>
+          <button class="delete-btn" (click)="deleteClass(course._id)">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      </div>
+    } @empty {
+      <div>
+        <app-loader></app-loader>
+      </div>
+    }
+  </div>
 </div>
-       
-  
-

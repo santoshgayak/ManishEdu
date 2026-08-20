@@ -22,21 +22,19 @@ interface CustomerResponse {
   };
 }
 
-
 @Component({
   selector: 'app-customer-info',
-  imports: [ReactiveFormsModule,Footer],
+  imports: [ReactiveFormsModule, Footer],
   templateUrl: './customer-info.html',
   styleUrl: './customer-info.css',
 })
 export class CustomerInfo {
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private checkoutService: CheckoutService,
+  ) {}
 
-  constructor(private router: Router, 
-              private http: HttpClient,
-              private checkoutService: CheckoutService
-              ) {}
-
-  
   private fb = inject(FormBuilder);
 
   //paymentInfo form structure
@@ -51,41 +49,41 @@ export class CustomerInfo {
       city: [''],
       state: [''],
       postcode: [''],
-      country: ['']
-    })
+      country: [''],
+    }),
   });
 
-  proceedToPayment(){
+  proceedToPayment() {
     this.savedFormData();
-  } 
+  }
 
   //save form data and navigate to payment page
-  savedFormData(){
+  savedFormData() {
     const formData = this.paymentInfo.value;
-    console.log(" fomr dat:",formData);
-    this.http.post<CustomerResponse>('https://manisheduserver.onrender.com/api/save-customer-info',formData).
-    subscribe({
-      next:(res)=>{
-   console.log("THIS IS RES,", res);
+    console.log(' fomr dat:', formData);
+    this.http
+      .post<CustomerResponse>(
+        'https://manisheduserver.onrender.com/api/save-customer-info',
+        formData,
+      )
+      .subscribe({
+        next: (res) => {
+          console.log('THIS IS RES,', res);
 
-    const customerId = res.data.customer._id;
+          const customerId = res.data.customer._id;
 
-    console.log("CUSTOMER ID:", customerId);
+          console.log('CUSTOMER ID:', customerId);
 
-          this.router.navigate(['/payment'],{
-            queryParams:{
-              flow:'product',
-              customerId : customerId,
-            }
-          }
-          );
-      },
-      error:(err)=>{
-          console.error("Error saving data:", err);
-      }
-    })
-
+          this.router.navigate(['/payment'], {
+            queryParams: {
+              flow: 'product',
+              customerId: customerId,
+            },
+          });
+        },
+        error: (err) => {
+          console.error('Error saving data:', err);
+        },
+      });
   }
 }
-
-  

@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService{
-    isLoggedIn(): boolean {
-        const token = localStorage.getItem('token');
-        return !!token;
-    }
-    logOut(){
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-    }
+export class AuthService {
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+  logOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
 }

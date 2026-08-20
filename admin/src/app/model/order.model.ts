@@ -1,8 +1,8 @@
-import { OrderType } from "./order-type.model";
-import { PaymentStatus } from "./payment-status.model";
+import { OrderType } from './order-type.model';
+import { PaymentStatus } from './payment-status.model';
 
-export interface Order{
- _id?: string;
+export interface Order {
+  _id?: string;
   orderId: string;
   customerName: string;
   customerEmail?: string;

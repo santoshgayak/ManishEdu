@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Footer } from "../../components/footer/footer";
-import { CartService } from '../../services/cart/cart.service'
+import { Footer } from '../../components/footer/footer';
+import { CartService } from '../../services/cart/cart.service';
 import { CommonModule } from '@angular/common';
 import { CartItem } from '../../models/cart/cart-item.model';
-import { Product} from '../..//models/product/product.model'
+import { Product } from '../..//models/product/product.model';
 import { Products } from '../../components/products/products';
 import { HttpBackend, HttpClient } from '@angular/common/http';
 
@@ -15,8 +15,7 @@ import { HttpBackend, HttpClient } from '@angular/common/http';
   templateUrl: './buy-now.html',
   styleUrl: './buy-now.css',
 })
-export class BuyNow{
-
+export class BuyNow {
   cartItems: any = [];
   cartCount = 0;
   subTotal = 0;
@@ -26,54 +25,44 @@ export class BuyNow{
   discountRate = 10;
   discount = 0;
 
-
-  constructor(private router : Router, 
+  constructor(
+    private router: Router,
     private cartSerive: CartService,
-  private http:HttpClient){
+    private http: HttpClient,
+  ) {}
 
-  }
-
-
-  
-//calculate summary of the cart total
-  ngOnInit(){
-      this.cartSerive.cart$.subscribe(items=>{
+  //calculate summary of the cart total
+  ngOnInit() {
+    this.cartSerive.cart$.subscribe((items) => {
       this.cartItems = items;
 
-       this.subTotal = items.reduce(
-       (total,item)=>total + item.price*item.quantity,0);
+      this.subTotal = items.reduce((total, item) => total + item.price * item.quantity, 0);
 
-       this.discount = this.subTotal*this.discountRate/100;
-       this.tax = this.subTotal* this.taxRate;
-       this.orderTotal = this.subTotal + this.tax - this.discount;
+      this.discount = (this.subTotal * this.discountRate) / 100;
+      this.tax = this.subTotal * this.taxRate;
+      this.orderTotal = this.subTotal + this.tax - this.discount;
 
-       this.cartCount = items.reduce((sum,item)=>sum+item.quantity,0);
-
+      this.cartCount = items.reduce((sum, item) => sum + item.quantity, 0);
     });
-
   }
 
   //route to customer-info
-  proceedToPayment(){
+  proceedToPayment() {
     this.router.navigate(['/customer-info']);
   }
 
   //increase the quatitity of an item
-  addItem(id:string){
+  addItem(id: string) {
     this.cartSerive.incrementItemQuantity(id);
-
   }
 
   //substract the quantity of an item
-    subtractItem(id:string){
+  subtractItem(id: string) {
     this.cartSerive.decrementItemQuantity(id);
-   
   }
 
   //delete item from the cart
-    deleteItemFromCart(id:string){
+  deleteItemFromCart(id: string) {
     this.cartSerive.removeItemFromCart(id);
-   
   }
-
 }

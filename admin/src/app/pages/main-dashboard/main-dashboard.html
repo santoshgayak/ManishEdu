@@ -3,164 +3,161 @@
   <span class="separator">›</span>
 </div>
 <div class="main-dashboard">
+  <div class="row">
+    <div class="summary-card-container">
+      <div class="summary-card">
+        <div class="card-icon order">
+          <i class="fa-solid fa-shopping-bag"></i>
+        </div>
+        <div class="card-content">
+          <p>Total Orders</p>
+          <p class="number">28</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="card-icon revenue">
+          <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+        <div class="card-content">
+          <p>Total Revenue</p>
+          <p class="number">$1238</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="card-icon student">
+          <i class="fa-solid fa-user-group"></i>
+        </div>
+        <div class="card-content">
+          <p>Total Student</p>
+          <p class="number">308</p>
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="card-icon product">
+          <i class="fa-solid fa-kaaba"></i>
+        </div>
+        <div class="card-content">
+          <p>Total Products</p>
+          <p class="number">12</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="order-summary-container">
+      <div class="recent-order">
+        <div class="card-title">
+          <h3>Recent Orders</h3>
+          <a routerLink="/dashboard/order" class="view all">View All Orders</a>
+        </div>
+        <div class="card-content">
+          <div class="table-header">
+            <div>Order ID</div>
+            <div>Customer</div>
+            <div>Type</div>
+            <div>Item</div>
+            <div>Amount</div>
+            <div>Status</div>
+            <div>Date</div>
+          </div>
+          @for (order of orderList.slice(0, 4); track order._id) {
+            <div class="table-row">
+              <div>#{{ order.orderId }}</div>
+              <div>J{{ order.customerName }}</div>
+              <div class="type">
+                <p [ngClass]="{ class: order.type === 'Class', product: order.type === 'Product' }">
+                  {{ order.type }}
+                </p>
+              </div>
+              <div>{{ order.itemName }}</div>
+              <div>${{ order.totalPrice }}</div>
+              <div class="status">
+                <p [class]="order.paymentStatus?.toLowerCase()">{{ order.paymentStatus }}</p>
+              </div>
+              <div>{{ order.createdAt | date: 'mediumDate' }}</div>
+            </div>
+          } @empty {
+            <div class="empty-state">
+              <app-loader></app-loader>
+            </div>
+          }
+        </div>
+        <div class="mobile-view">
+          @for (order of orderList.slice(0, 4); track order._id) {
+            <div class="order-card">
+              <div class="order-status">
+                <h3>#{{ order.orderId }}</h3>
+                <p class="status">
+                  <span [class]="order.paymentStatus?.toLowerCase()">
+                    {{ order.paymentStatus }}
+                  </span>
+                </p>
+              </div>
+              <p><i class="fa-solid fa-circle-user"></i>{{ order.customerName }}</p>
+              <p><i class="fa-solid fa-kaaba"></i>{{ order.itemName }}</p>
 
-
- <div class="row">
-                <div class="summary-card-container">
-                    
-                    <div class="summary-card">
-                         <div class="card-icon order">
-                            <i class="fa-solid fa-shopping-bag "></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Total Orders</p>
-                            <p class="number">28</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon revenue">
-                            <i class="fa-solid fa-sack-dollar "></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Total Revenue</p>
-                            <p class="number">$1238</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon student">
-                            <i class="fa-solid fa-user-group "></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Total Student</p>
-                            <p class="number">308</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon product ">
-                            <i class="fa-solid fa-kaaba "></i>
-                        </div>
-                        <div class="card-content">
-                            <p>Total Products</p>
-                            <p class="number">12</p>
-                        </div>
-                    </div>
-                   
+              <div class="type-amount">
+                <div class="type">
+                  <p>Type</p>
+                  <p>
+                    <span
+                      [ngClass]="{
+                        class: order.type === 'Class',
+                        product: order.type === 'Product',
+                      }"
+                    >
+                      {{ order.type }}
+                    </span>
+                  </p>
                 </div>
-            </div>
-             <div class="row">
-                <div class="order-summary-container">
-                    <div class="recent-order">
-                        <div class="card-title">
-                            <h3>Recent Orders</h3>
-                            <a routerLink="/dashboard/order" class="view all">View All Orders</a>
-                        </div>
-                        <div class="card-content">
-                                <div class="table-header">
-                                    <div>Order ID</div>
-                                    <div>Customer</div>
-                                    <div>Type</div>
-                                    <div>Item</div>
-                                    <div>Amount</div>
-                                    <div>Status</div>
-                                    <div>Date</div>
-                                </div>
-                                @for (order of orderList.slice(0,4); track order._id) {
-                                    <div class="table-row">
-                                        <div>#{{order.orderId}}</div>
-                                        <div>J{{order.customerName}}</div>
-                                        <div class="type" ><p [ngClass]="{class: order.type === 'Class', product: order.type === 'Product'}">{{order.type}}</p></div>
-                                        <div>{{order.itemName}}</div>
-                                        <div>${{order.totalPrice}}</div>
-                                        <div class="status"><p [class]="order.paymentStatus?.toLowerCase()">{{order.paymentStatus}}</p></div>
-                                        <div>{{order.createdAt | date:'mediumDate'}}</div>
-                                    </div>
-                                }@empty {
-                                    <div class="empty-state">
-                                        <app-loader></app-loader>
-                                    </div>
-                                }                           
-                        </div>
-                         <div class="mobile-view">
-                         @for (order of orderList.slice(0,4); track order._id) {
-                                    <div class="order-card">
-                                        <div class="order-status">
-                                            <h3>#{{ order.orderId }}</h3>
-                                             <p class="status">
-                                            <span [class]="order.paymentStatus?.toLowerCase()">
-                                                {{ order.paymentStatus }}
-                                            </span>
-                                        </p>
-                                        </div>
-                                        <p><i class="fa-solid fa-circle-user"></i>{{ order.customerName }}</p>
-                                        <p><i class="fa-solid fa-kaaba"></i>{{ order.itemName }}</p>
 
-                                        <div class="type-amount">
-                                            <div class="type">
-                                                <p>Type</p>
-                                                <p>
-                                                    <span
-                                                        [ngClass]="{
-                                                        class: order.type === 'Class',
-                                                        product: order.type === 'Product'
-                                                        }">
-                                                        {{ order.type }}
-                                                    </span>
-                        
-                                                </p>
-                                            </div>
-                                           
-
-                                            <div class="amount">
-                                                <p>Amount</p>
-                                                <p>${{ order.totalPrice }}</p>
-
-
-                                            </div>
-                                        </div>
-                                        
-                                       <div class="createdAt">
-                                            <p>Date: {{ order.createdAt | date:'mediumDate' }}</p>
-                                       </div>
-
-                                    </div>
-                                }@empty {
-                                    <div class="empty-state">
-                                        <app-loader></app-loader>
-
-                                    </div>
-                                }        
-
-                    </div>
-                    </div>
-
-                   
-                    <div class="order-summary">
-                        <div class="card-title">
-                            <h3> Order Total</h3>
-                            <div class="order-summary-btn">
-                                <select id="period" name="period" class="period"  (change)="onPeriodChange($event)">
-                                    <option value="year" >This Year</option>
-                                    <option value="quarter" selected>This Quarter</option>
-                                    <option value="month">This Month</option>
-                                    <option value="week">This Week</option>
-                                </select>
-                            </div>
-                        </div>
-                          
-                        <div id="donut-chart" style="width: 100%; height: 165px;">
-                        </div>
-                        <div class="raw-data">
-                            <p>Enrollment Revenue: <span>${{ enrollment_total_period }}</span></p>
-                            <p>Product Sales: <span>${{ order_total_period }}</span></p>
-                        </div>
-                        
-                    </div>
-                </div> 
-            </div>
-             <div class="row">
-                <div class="class-product-mgmt-container">
-                    <app-manage-classes></app-manage-classes>
-                    <app-manage-products></app-manage-products>
+                <div class="amount">
+                  <p>Amount</p>
+                  <p>${{ order.totalPrice }}</p>
                 </div>
+              </div>
+
+              <div class="createdAt">
+                <p>Date: {{ order.createdAt | date: 'mediumDate' }}</p>
+              </div>
             </div>
+          } @empty {
+            <div class="empty-state">
+              <app-loader></app-loader>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="order-summary">
+        <div class="card-title">
+          <h3>Order Total</h3>
+          <div class="order-summary-btn">
+            <select id="period" name="period" class="period" (change)="onPeriodChange($event)">
+              <option value="year">This Year</option>
+              <option value="quarter" selected>This Quarter</option>
+              <option value="month">This Month</option>
+              <option value="week">This Week</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="donut-chart" style="width: 100%; height: 165px"></div>
+        <div class="raw-data">
+          <p>
+            Enrollment Revenue: <span>${{ enrollment_total_period }}</span>
+          </p>
+          <p>
+            Product Sales: <span>${{ order_total_period }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="class-product-mgmt-container">
+      <app-manage-classes></app-manage-classes>
+      <app-manage-products></app-manage-products>
+    </div>
+  </div>
 </div>

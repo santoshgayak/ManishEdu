@@ -1,49 +1,46 @@
-
 .breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin: 1rem;
-    a {
-        text-decoration: none;      
-    }
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 1rem;
+  a {
+    text-decoration: none;
+  }
 }
-.intro{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    h3{
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  h3 {
     color: var(--text-dark);
-
+  }
+  p {
+    color: var(--text-muted);
+  }
+  button {
+    width: max-content;
+    background-color: var(--text-link);
+    color: white;
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-align: left;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 0.5px solid var(--text-link);
+    display: flex;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--highlight-text);
+      color: white;
     }
-    p{
-        color: var(--text-muted);
+    i {
+      font-size: 1rem;
+      margin-right: 0.5rem;
     }
-    button{
-         width: max-content;
-                background-color: var(--text-link);
-                color: white;
-                font-size: 0.8rem;
-                text-decoration: none;
-                text-align: left;
-                padding: 0.8rem;
-                border-radius: 0.5rem;
-                border: 0.5px solid var(--text-link);
-                 display: flex;
-                cursor: pointer;
-                &:hover{
-                    background-color: var(--highlight-text);
-                    color: white;
-                }
-                i{
-                    font-size: 1rem;
-                    margin-right: 0.5rem;
-                }
-
-    }
+  }
 }
 .summary-card-container {
   display: flex;
@@ -189,384 +186,378 @@
   min-width: 0;
 }
 .class-mgmt {
-    flex: 1 1 0;
-    height: max-content;
-    min-width: 0;
-    width: auto;
-    margin-top: 2rem !important;
-    border: 2px solid var(--border-color);
-    border-radius: 1rem;
-    position: relative;
-    .card-title{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 0.8rem 1rem;
-        border-bottom: 2px solid var(--border-color);
-        h3{
-            font-size: 1rem;
-            color: var(--text-dark);
-        }
-        a{
-             background-color: transparent;
-                color: var(--text-link);
-                font-size: 0.8rem;
-                text-decoration: none;
-                text-align: center;
-                padding: 0.5rem;
-                border-radius: 0.5rem;
-                border: 0.5px solid var(--text-link);
-                cursor: pointer;
-                &:hover{
-                    background-color: var(--text-link);
-                    color: white;
-                }
-        }
-    }
-}
-.card-content{
-        padding: 0;
-        width: 100%;
-        color: var(--text-dark);
-         border-radius: 10px 10px 0 0 ;
-         overflow: hidden;
-
-        .table-header, .table-row{
-            width: 100%;
-            text-align: left;
-            padding: 0.5rem;
-            display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1fr 1.8fr 1fr;
-            align-items: center;
-            font-size: 1rem; 
-        }
-        .table-header {
-            font-weight: bold;
-            background: #f5f5f5;
-            border-bottom: 2px solid #ddd;
-            background: #6a0cc1;
-            padding: 1rem;
-            color: white;
-        }
-
-            .table-row {
-                 border-bottom: 1px solid #eee;
-                 align-items: flex-start;
-                 padding: 1rem;
-                 .class{
-                    background-color: rgb(226, 226, 244);
-                    color: blue;
-                    width: max-content;
-                    padding: 0.1rem 0.4rem;
-                    font-size: 1rem;
-                    border-radius: 5px;
-                 }
-                 .product{
-                    background-color: rgb(254, 242, 172);
-                    color: rgb(248, 200, 7);
-                    width: max-content;
-                    padding: 0.1rem 0.4rem;
-                    font-size: 0.9rem;
-                    border-radius: 5px;
-                 }
-                 .actions{
-                    display: flex;
-                    gap: 0.5rem;
-                    button{
-                        background-color: transparent;
-                        color: var(--text-link);
-                        font-size: 0.8rem;
-                        text-decoration: none;
-                        text-align: center;
-                        padding: 0.5rem;
-                        border-radius: 0.5rem;
-                        border: 0.5px solid var(--text-link);
-                        cursor: pointer;
-                        &:hover{
-                            background-color: var(--text-link);
-                            color: white;
-                        }
-                    }
-                 }  
-            }
-
-            .table-row:hover {
-                background: #f7f4ed;
-            }
-            .third{
-                border-bottom: none;
-
-            }
-    }
-.features{
+  flex: 1 1 0;
+  height: max-content;
+  min-width: 0;
+  width: auto;
+  margin-top: 2rem !important;
+  border: 2px solid var(--border-color);
+  border-radius: 1rem;
+  position: relative;
+  .card-title {
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-bottom: 2px solid var(--border-color);
+    h3 {
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+    a {
+      background-color: transparent;
+      color: var(--text-link);
+      font-size: 0.8rem;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 0.5px solid var(--text-link);
+      cursor: pointer;
+      &:hover {
+        background-color: var(--text-link);
+        color: white;
+      }
+    }
+  }
 }
-    .view-all-btn{
-        width: 100%;
-                background-color: transparent;
-                color: var(--text-link);
-                font-size: 0.8rem;
-                text-decoration: none;
-                text-align: left;
-                padding: 0.8rem;
-                border-radius: 0.5rem;
-                border: 0.5px solid var(--text-link);
-                 display: none;
-                cursor: pointer;
-                &:hover{
-                    background-color: var(--text-link);
-                    color: white;
-                }
-                i{
-                    font-size: 1.5rem;
-                    margin-right: 0.5rem;
-                }
-            }
-            .arrow{
-                margin-left: auto;
-                font-size: 1.5rem;
-                color: var(--text-link);
-            }
+.card-content {
+  padding: 0;
+  width: 100%;
+  color: var(--text-dark);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
 
+  .table-header,
+  .table-row {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1.8fr 1fr;
+    align-items: center;
+    font-size: 1rem;
+  }
+  .table-header {
+    font-weight: bold;
+    background: #f5f5f5;
+    border-bottom: 2px solid #ddd;
+    background: #6a0cc1;
+    padding: 1rem;
+    color: white;
+  }
 
+  .table-row {
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+    padding: 1rem;
+    .class {
+      background-color: rgb(226, 226, 244);
+      color: blue;
+      width: max-content;
+      padding: 0.1rem 0.4rem;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+    .product {
+      background-color: rgb(254, 242, 172);
+      color: rgb(248, 200, 7);
+      width: max-content;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.9rem;
+      border-radius: 5px;
+    }
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      button {
+        background-color: transparent;
+        color: var(--text-link);
+        font-size: 0.8rem;
+        text-decoration: none;
+        text-align: center;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: 0.5px solid var(--text-link);
+        cursor: pointer;
+        &:hover {
+          background-color: var(--text-link);
+          color: white;
+        }
+      }
+    }
+  }
+
+  .table-row:hover {
+    background: #f7f4ed;
+  }
+  .third {
+    border-bottom: none;
+  }
+}
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.view-all-btn {
+  width: 100%;
+  background-color: transparent;
+  color: var(--text-link);
+  font-size: 0.8rem;
+  text-decoration: none;
+  text-align: left;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 0.5px solid var(--text-link);
+  display: none;
+  cursor: pointer;
+  &:hover {
+    background-color: var(--text-link);
+    color: white;
+  }
+  i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+}
+.arrow {
+  margin-left: auto;
+  font-size: 1.5rem;
+  color: var(--text-link);
+}
 
 .class-cards-container {
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    align-items: stretch; 
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap; 
-    display: none;
-    margin-top: 4rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  display: none;
+  margin-top: 4rem;
 }
 
 .class-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 300px;
+  min-height: 480px;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, rgb(58, 11, 116), rgb(32, 57, 199), rgb(140, 157, 205));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  .actions {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1 1 300px; 
-    min-height: 480px;
-    padding: 2.5rem 2rem;
-    background:linear-gradient(135deg,rgb(58, 11, 116),rgb(32, 57, 199), rgb(140, 157, 205));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    overflow: hidden;
-    position: relative;
-    box-sizing: border-box;
-    .actions{
-                    display: flex;
-                    gap: 0.5rem;
-                    width: 100%;
-                    margin-top: 2rem;
-                    
-                    button{
-                        background-color: transparent;
-                        color: var(--text-link);
-                        font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
-                        text-decoration: none;
-                        text-align: center;
-                        padding: 1rem 2rem;
-                        font-size: 1rem;
-                        border-radius: 0.5rem;
-                        border: 0.5px solid var(--text-link);
-                        background-color: transparent ;
-                        border: 1px solid white;
-                        color: white;
-                        cursor: pointer;
-                        width: 100%;
-                        &:nth-child(2){
-                            background-color: red;
-                            color: white;
-                        }
-                        &:hover{
-                            background-color: var(--text-link);
-                            color: white;
-                        }
-                    }
-                 }  
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 2rem;
+
+    button {
+      background-color: transparent;
+      color: var(--text-link);
+      font-size: clamp(0.5rem, 0.5vw + 0.2rem, 0.8rem);
+      text-decoration: none;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 0.5px solid var(--text-link);
+      background-color: transparent;
+      border: 1px solid white;
+      color: white;
+      cursor: pointer;
+      width: 100%;
+      &:nth-child(2) {
+        background-color: red;
+        color: white;
+      }
+      &:hover {
+        background-color: var(--text-link);
+        color: white;
+      }
+    }
+  }
 }
 
 .class-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 20px 45px rgba(0, 0, 0, 0.12);
-    border-color: rgba(198, 236, 198, 0.2);
+  transform: translateY(-12px);
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 20px 45px rgba(0, 0, 0, 0.12);
+  border-color: rgba(198, 236, 198, 0.2);
 }
 
-
-
 .class-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding-bottom: 1rem;
-    border-bottom: 1px dotted green;
-    margin-bottom: 1rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 1rem;
+  border-bottom: 1px dotted green;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .class-details h3 {
-    font-size: 2rem;
-    color: var(--text-dark);
-    text-align: left;
-    color: white;
-    width: 100%;
+  font-size: 2rem;
+  color: var(--text-dark);
+  text-align: left;
+  color: white;
+  width: 100%;
 }
 
 .class-details h2 {
-    font-size: 2rem;
-    display: flex;
-    align-items: baseline;
-    color:whitesmoke;
-
+  font-size: 2rem;
+  display: flex;
+  align-items: baseline;
+  color: whitesmoke;
 }
 
 .class-details span {
-    font-size: 1.3rem;
-    margin-right: 0.4rem;
-    font-weight: 600;
-    color:whitesmoke;
-    text-align: left;
-
+  font-size: 1.3rem;
+  margin-right: 0.4rem;
+  font-weight: 600;
+  color: whitesmoke;
+  text-align: left;
 }
 
 .class-details p {
-    color: orange;
-    text-align: left;
-    font-weight: bold;
-    width: 100%;
+  color: orange;
+  text-align: left;
+  font-weight: bold;
+  width: 100%;
 }
 
-.class-desc{
-    color: white;
-    font-size: 0.8rem;
-    text-align: left;
-
+.class-desc {
+  color: white;
+  font-size: 0.8rem;
+  text-align: left;
 }
 .class-features {
-    margin-top: 1rem;
-    width: 100%;
-    flex-grow: 1; 
+  margin-top: 1rem;
+  width: 100%;
+  flex-grow: 1;
 }
 
 .class-features ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    width: 100%;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .class-features ul div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1rem;
-    font-size: 1rem;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .class-description {
-    color:whitesmoke;
+  color: whitesmoke;
 }
 
 .class-description i {
-    color: rgb(4, 152, 4);
-    flex-shrink: 0;
+  color: rgb(4, 152, 4);
+  flex-shrink: 0;
 }
 
 .class-action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
 }
 
-
 .enroll-button {
-    width: 100%;
-    padding: 12px 24px;
-    background: var(--bg-light);
-    color: var(--text-dark);
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 50px;
-    border: 1px dotted green;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: 1px dotted green;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 .enroll-button:hover {
-    background: var(--gradient-main);
-    color: white;
-    border-color: transparent;
+  background: var(--gradient-main);
+  color: white;
+  border-color: transparent;
 }
 
 .empty-state {
-    height: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  .row,
+  .class-mgmt {
+    margin: 1rem;
+  }
+}
+@media (max-width: 768px) {
+  .class-mgmt {
+    height: auto;
+    border: none;
+  }
+  .desk {
+    display: none;
+  }
+  .view-all-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-@media (max-width:992px) {
-    .row, .class-mgmt{
-        margin: 1rem;
-    }
-
-}
-@media (max-width:768px) {
-    .class-mgmt{
-        height: auto;
-        border: none;
-    }
-    .desk{
-        display: none;
-    }
-    .view-all-btn{
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        background-color: rgb(249, 249, 254);
-
-    }
-    .class-cards-container{
-        display: flex;
-    }
-    .card-content{
-        display: none;
-    }
-    
-}
-@media (max-width:570px) {
-     .intro{
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    
-        padding: 1rem;
-    
-        button{
-            width: 100%;
-            justify-content: center;
-        
-        }
+    gap: 0.5rem;
+    background-color: rgb(249, 249, 254);
   }
+  .class-cards-container {
+    display: flex;
+  }
+  .card-content {
+    display: none;
+  }
+}
+@media (max-width: 570px) {
+  .intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
 
+    padding: 1rem;
 
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
 }

@@ -3,7 +3,7 @@ import { ClassPlan } from '../../model/classes.model';
 import { DataService } from '../../services/data.service';
 import { inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { Loader } from "../loader/loader";
+import { Loader } from '../loader/loader';
 
 @Component({
   selector: 'app-manage-classes',
@@ -30,32 +30,30 @@ export class ManageClasses {
       },
       error: (err) => {
         console.error('Failed to load classes:', err);
-      }
+      },
     });
   }
-  navigate(){
+  navigate() {
     this.router.navigate(['/dashboard/classes']);
   }
-  editClass(classId: string){
-    this.router.navigate(['/dashboard/edit-class',classId]);
-
-
+  editClass(classId: string) {
+    this.router.navigate(['/dashboard/edit-class', classId]);
   }
-  deleteClass(classId:string){
-    console.log("Delete button clicked in UI for ID:", classId);
+  deleteClass(classId: string) {
+    console.log('Delete button clicked in UI for ID:', classId);
 
     // CRITICAL: You must use .subscribe() here to trigger the network request!
     this.dataService.deleteClass(classId).subscribe({
       next: (response) => {
-        console.log("Backend responded successfully:", response);
-        
+        console.log('Backend responded successfully:', response);
+
         // Optional: Remove the deleted class from your local array to update the UI instantly
-        this.classList = this.classList.filter(item => item._id !== classId);
+        this.classList = this.classList.filter((item) => item._id !== classId);
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error("An error occurred during deletion:", err);
-      }
+        console.error('An error occurred during deletion:', err);
+      },
     });
   }
 }

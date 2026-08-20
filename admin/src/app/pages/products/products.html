@@ -1,64 +1,61 @@
 <div class="breadcrumb">
-    <a routerLink="/dashboard">Dashboard</a>
-    <span class="separator">›</span>
-    <span class="current">Products</span>
+  <a routerLink="/dashboard">Dashboard</a>
+  <span class="separator">›</span>
+  <span class="current">Products</span>
 </div>
 <div class="intro">
-        <div class="title">
-            <h3>Product</h3>
-            <p>Create, update and manage all products.</p>
-        </div>
-        <button class="addNewClassBtn" (click)="addNewProduct()"><i class="fa-solid fa-plus"></i>Add New Product</button>
+  <div class="title">
+    <h3>Product</h3>
+    <p>Create, update and manage all products.</p>
+  </div>
+  <button class="addNewClassBtn" (click)="addNewProduct()">
+    <i class="fa-solid fa-plus"></i>Add New Product
+  </button>
 </div>
- <div class="row">
-                <div class="summary-card-container">
-                    
-                    <div class="summary-card">
-                         <div class="card-icon order">
-                            <i class="fa-solid fa-music"></i>
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Sarangi</p>
-                            <p class="number">${{this.sarangiRevenue}}</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon revenue">
-                            <i class="fa-solid fa-guitar"></i>                        
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Madal</p>
-                            <p class="number">${{this.madalRevenue}}</p>
-                        </div>
-                    </div>
-                    <div class="summary-card">
-                         <div class="card-icon student">
-                            <i class="fa-solid fa-crown "></i>
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Bansuri</p>
-                            <p class="number">${{this.bansuriRevenue}}</p>
-                        </div>
-                    </div>
-                     <div class="summary-card">
-                         <div class="card-icon student">
-                            <i class="fa-solid fa-crown "></i>
-                        </div>
-                        <div class="card-content">
-                            <p class="title">Total Revenue</p>
-                            <p class="number">${{this.totalRevenue}}</p>
-                        </div>
-                    </div>
-                   
-                </div>
+<div class="row">
+  <div class="summary-card-container">
+    <div class="summary-card">
+      <div class="card-icon order">
+        <i class="fa-solid fa-music"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Sarangi</p>
+        <p class="number">${{ this.sarangiRevenue }}</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon revenue">
+        <i class="fa-solid fa-guitar"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Madal</p>
+        <p class="number">${{ this.madalRevenue }}</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon student">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Bansuri</p>
+        <p class="number">${{ this.bansuriRevenue }}</p>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="card-icon student">
+        <i class="fa-solid fa-crown"></i>
+      </div>
+      <div class="card-content">
+        <p class="title">Total Revenue</p>
+        <p class="number">${{ this.totalRevenue }}</p>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <div class="product-mgmt">
   <div class="desk">
-
     <div class="card-content">
-
       <div class="table-header">
         <div>Product</div>
         <div>Category</div>
@@ -68,13 +65,19 @@
 
       @for (product of productList; track product._id) {
         <div class="table-row">
-          <div class="name-image"><img [src]="product.image" [alt]="product.name" height="30px">{{ product.name }}</div>
-          <div >{{ product.category }}</div>
+          <div class="name-image">
+            <img [src]="product.image" [alt]="product.name" height="30px" />{{ product.name }}
+          </div>
+          <div>{{ product.category }}</div>
           <div>${{ product.price }}</div>
 
           <div class="actions">
-            <button class="edit-btn" (click)="editProduct(product._id)" ><i class="fa-regular fa-pen-to-square"></i></button>
-            <button class="delete-btn" (click)="deleteProduct(product._id)"><i class="fa-regular fa-trash-can"></i></button>
+            <button class="edit-btn" (click)="editProduct(product._id)">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="delete-btn" (click)="deleteProduct(product._id)">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
           </div>
         </div>
       } @empty {
@@ -82,40 +85,31 @@
           <app-loader></app-loader>
         </div>
       }
-
     </div>
-
   </div>
-   <div class="products-card-container">
+  <div class="products-card-container">
     @for (product of productList; track $index) {
-       <div class="product-card" *ngFor="let product of productList">
-                <img src="{{product.image}}" alt="Sarangi 1" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">{{product.name}}</h3>
-                    <p class="product-description">{{product.description}}</p>
-                    <p class="product-price">${{product.price}}</p>
-                   <div class="actions">
-                        <button class="edit-btn" (click)="editProduct(product._id)" ><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button class="delete-btn" (click)="deleteProduct(product._id)"><i class="fa-regular fa-trash-can"></i></button>
-                    </div>
-                </div>
-            </div>
-
-    }@empty {
-        <div class="empty-state">
-          <app-loader></app-loader>
-        </div>.
-
-    }
-           
+      <div class="product-card" *ngFor="let product of productList">
+        <img src="{{ product.image }}" alt="Sarangi 1" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+          <p class="product-price">${{ product.price }}</p>
+          <div class="actions">
+            <button class="edit-btn" (click)="editProduct(product._id)">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="delete-btn" (click)="deleteProduct(product._id)">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
         </div>
+      </div>
+    } @empty {
+      <div class="empty-state">
+        <app-loader></app-loader>
+      </div>
+      .
+    }
+  </div>
 </div>
-
-
-
-
-
-
-
-       
-    

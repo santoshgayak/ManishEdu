@@ -1,80 +1,90 @@
-    
-    <section class="success-container">
-      <div class="confirmationMsg">
-            <i class="fa-solid fa-circle-check"></i>
-            <p><span>Payment Successful!</span><br>Thank you for your payment. Your transaction was completed succesfully.</p>
+<section class="success-container">
+  <div class="confirmationMsg">
+    <i class="fa-solid fa-circle-check"></i>
+    <p>
+      <span>Payment Successful!</span><br />Thank you for your payment. Your transaction was
+      completed succesfully.
+    </p>
+  </div>
+  <div class="securityNote">
+    <i class="fa-brands fa-expeditedssl"></i>
+    <p>
+      <span>Your payment is secure and encrypted.</span><br />A confirmation email has been sent to
+      <span id="email">{{ customerEmail }}</span>
+    </p>
+  </div>
+  <div class="confirmation-details-container">
+    <div class="detail-card" id="receipt">
+      <div class="title">
+        <i class="fa-solid fa-clipboard-list"></i>
+        <h3>Payment Details</h3>
+      </div>
+      <div class="row">
+        <p>Transaction</p>
+        <p>{{ tID }}</p>
+      </div>
+      <div class="row">
+        <p>Order ID</p>
+        <p>tzd_45hyf_ertf_34errt</p>
+      </div>
+      <div class="row">
+        <p>Payment Date</p>
+        <p>{{ formatted }}</p>
+      </div>
+      <div class="row">
+        <p>Payment Method</p>
+        <div>
+          <img src="/images/icons/visa.png" alt="visa logo" height="30px" />
+          <p>**** {{ cardLast4 }}</p>
         </div>
-         <div class="securityNote">
-            <i class="fa-brands fa-expeditedssl"></i>
-            <p><span>Your payment is secure and encrypted.</span><br>A confirmation email has been sent to <span id="email">{{customerEmail}}</span></p>
-        </div>
-        <div class="confirmation-details-container">
-            <div class="detail-card" id="receipt">
-                <div class="title">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                    <h3>Payment Details</h3>
-                </div>
-                <div class="row">
-                    <p>Transaction</p>
-                    <p>{{tID}}</p>
-                </div>
-                <div class="row">
-                     <p>Order ID</p>
-                    <p>tzd_45hyf_ertf_34errt</p>
-                </div>
-                <div class="row">
-                     <p>Payment Date</p>
-                    <p>{{formatted}}</p>
-                </div>
-                <div class="row">
-                     <p>Payment Method</p>
-                    <div>
-                        <img src="/images/icons/visa.png" alt="visa logo" height="30px">
-                        <p>**** {{cardLast4}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                     <p>Amount Paid</p>
-                    <p>{{amount}}</p>
-                </div>
-                <div class="row">
-                     <p>Amount Status</p>
-                    <p>{{paymentStatus}}</p>
-                </div>
-                <div class="row">
-                    <p>Reciept</p>
-                     <button id="downloadDiv" (click)="downloadReceipt()">
-                        <i class="fa-solid fa-download" id="donwloadIcon" ></i>                        
-                        <p id="downloadRecipt">Download Reciept</p>
-                     </button>
-                </div>
-            </div>
-            <div class="detail-card right">
-                 <div class="title">
-                    <i class="fa-regular fa-calendar"></i>
-                    <h3>What's Next? </h3>
-                </div>
-                <div class="row">
-                    <i class="fa-solid fa-envelope"></i>
-                    <p><span>Confirmation Email</span><br>You will recieve a confirmation email with your payment details and reciept shortly.</p>
-                </div>
-                <div class="row">
-                    <i class="fa-brands fa-servicestack"></i>
-                    <p><span>Access Your Servives</span><br>You can now access your purchased services and classes.</p>
-                </div>
-                <div class="row">
-                    <i class="fa-solid fa-clipboard-question"></i>
-                    <p><span>Need help?</span><br>If you have any questions, our support team is here to help.</p>
-                </div>
-                 <div class="row">
-                    <i class="fa-solid fa-headset"></i>
-                    <p><span>Contact Support</span><br>support@email.com (123) 456-7890</p>
-                </div>
-               
-
-            </div>
-        </div>
-
-    </section>
+      </div>
+      <div class="row">
+        <p>Amount Paid</p>
+        <p>{{ amount }}</p>
+      </div>
+      <div class="row">
+        <p>Amount Status</p>
+        <p>{{ paymentStatus }}</p>
+      </div>
+      <div class="row">
+        <p>Reciept</p>
+        <button id="downloadDiv" (click)="downloadReceipt()">
+          <i class="fa-solid fa-download" id="donwloadIcon"></i>
+          <p id="downloadRecipt">Download Reciept</p>
+        </button>
+      </div>
+    </div>
+    <div class="detail-card right">
+      <div class="title">
+        <i class="fa-regular fa-calendar"></i>
+        <h3>What's Next?</h3>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-envelope"></i>
+        <p>
+          <span>Confirmation Email</span><br />You will recieve a confirmation email with your
+          payment details and reciept shortly.
+        </p>
+      </div>
+      <div class="row">
+        <i class="fa-brands fa-servicestack"></i>
+        <p>
+          <span>Access Your Servives</span><br />You can now access your purchased services and
+          classes.
+        </p>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-clipboard-question"></i>
+        <p>
+          <span>Need help?</span><br />If you have any questions, our support team is here to help.
+        </p>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-headset"></i>
+        <p><span>Contact Support</span><br />support@email.com (123) 456-7890</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <app-footer></app-footer>

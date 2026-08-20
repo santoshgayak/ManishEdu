@@ -7,9 +7,9 @@ import * as echarts from 'echarts';
 import { DataService } from '../../services/data.service';
 import { Order } from '../../model/order.model';
 import { RevenueAnalyticsService } from '../../services/revenue_analytics.service';
-import { ManageClasses } from "../../components/manage-classes/manage-classes";
-import { ManageProducts } from "../../components/manage-products/manage-products";
-import { Loader } from "../../components/loader/loader";
+import { ManageClasses } from '../../components/manage-classes/manage-classes';
+import { ManageProducts } from '../../components/manage-products/manage-products';
+import { Loader } from '../../components/loader/loader';
 @Component({
   selector: 'app-main-dashboard',
   standalone: true,
@@ -18,7 +18,6 @@ import { Loader } from "../../components/loader/loader";
   styleUrl: './main-dashboard.scss',
 })
 export class MainDashboard {
-
   private dataService = inject(DataService);
   private revenueAnalyticsService = inject(RevenueAnalyticsService);
   private http = inject(HttpClient);
@@ -44,7 +43,7 @@ export class MainDashboard {
   //this month
   total_revenue_month = 0;
   enrollment_total_month = 0;
-  order_total_month= 0;
+  order_total_month = 0;
 
   //this week
   total_revenue_week = 0;
@@ -72,34 +71,32 @@ export class MainDashboard {
   private loadOrders(): void {
     this.dataService.getData('order', 'orders').subscribe({
       next: (res: any) => {
-
         this.orderList = res.data;
         // Calculate revenue metrics for different time periods
-        const revenueMetrics = this.revenueAnalyticsService.calculateThisYearRevenue(this.orderList);
+        const revenueMetrics = this.revenueAnalyticsService.calculateThisYearRevenue(
+          this.orderList,
+        );
         console.log('Revenue Metrics:', revenueMetrics);
 
         // Assign calculated metrics to respective variables
         this.enrollment_total_week = revenueMetrics.class.week;
         this.order_total_week = revenueMetrics.product.week;
         this.total_revenue_week = revenueMetrics.overall.week;
-      
 
         console.log('Weekly Metrics:', {
           enrollment_total_week: this.enrollment_total_week,
           order_total_week: this.order_total_week,
-          total_revenue_week: this.total_revenue_week
+          total_revenue_week: this.total_revenue_week,
         });
 
         this.enrollment_total_month = revenueMetrics.class.month;
         this.order_total_month = revenueMetrics.product.month;
         this.total_revenue_month = revenueMetrics.overall.month;
-   
 
-
-        console.log('Monthly Metrics:', {     
+        console.log('Monthly Metrics:', {
           enrollment_total_month: this.enrollment_total_month,
           order_total_month: this.order_total_month,
-          total_revenue_month: this.total_revenue_month
+          total_revenue_month: this.total_revenue_month,
         });
 
         this.enrollment_total_quater = revenueMetrics.class.quater;
@@ -109,16 +106,13 @@ export class MainDashboard {
         this.order_total_period = this.order_total_quater;
         this.total_revenue_period = this.total_revenue_quater;
 
-        this.updateChart(
-            this.enrollment_total_period,
-            this.order_total_period
-        );
-    
+        this.updateChart(this.enrollment_total_period, this.order_total_period);
+
         console.log('Quarterly Metrics:', {
           enrollment_total_quater: this.enrollment_total_quater,
           order_total_quater: this.order_total_quater,
-          total_revenue_quater: this.total_revenue_quater
-        });   
+          total_revenue_quater: this.total_revenue_quater,
+        });
 
         this.enrollment_total_yearly = revenueMetrics.class.year;
         this.order_total_yearly = revenueMetrics.product.year;
@@ -126,85 +120,81 @@ export class MainDashboard {
         console.log('Yearly Metrics:', {
           enrollment_total_yearly: this.enrollment_total_yearly,
           order_total_yearly: this.order_total_yearly,
-          total_revenue_yearly: this.total_revenue_yearly
-        }); 
+          total_revenue_yearly: this.total_revenue_yearly,
+        });
         this.cdr.detectChanges();
-
 
         this.resizeObserver = new ResizeObserver(() => {
           if (this.myChart) {
             this.myChart.resize();
-             // Refresh chart with new data
+            // Refresh chart with new data
             this.updateChart(this.enrollment_total_quater, this.order_total_quater);
           }
         });
 
-          this.resizeObserver.observe(this.myChart.getDom());
-
+        this.resizeObserver.observe(this.myChart.getDom());
       },
 
       error: (err) => {
         console.error(err);
-      }
+      },
     });
   }
 
   private updateChart(enrollmentValue: number, orderValue: number): void {
-
     if (!this.myChart) return;
 
     const option: echarts.EChartsOption = {
-  color: ['#5470e6', '#b7dd32'],
+      color: ['#5470e6', '#b7dd32'],
 
-  tooltip: {
-    trigger: 'item',
-    formatter: '{b}<br/>${c} ({d}%)'
-  },
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}<br/>${c} ({d}%)',
+      },
 
-legend: {
-  show:false
-},
+      legend: {
+        show: false,
+      },
 
-
-  series: [
-    {
-      name: 'Revenue',
-      type: 'pie',
-      radius: window.innerWidth < 768 ? ['40%', '70%'] : ['50%', '75%'],
-
-      data: [
+      series: [
         {
-          value: enrollmentValue,
-          name: 'Enrollment Revenue'
+          name: 'Revenue',
+          type: 'pie',
+          radius: window.innerWidth < 768 ? ['40%', '70%'] : ['50%', '75%'],
+
+          data: [
+            {
+              value: enrollmentValue,
+              name: 'Enrollment Revenue',
+            },
+            {
+              value: orderValue,
+              name: 'Product Revenue',
+            },
+          ],
+
+          itemStyle: {
+            borderRadius: 8,
+            borderColor: '#fff',
+            borderWidth: 3,
+          },
+
+          label: {
+            show: true,
+            formatter: '{b}\n{d}%',
+          },
+
+          labelLine: {
+            show: true,
+          },
+
+          emphasis: {
+            scale: true,
+            scaleSize: 8,
+          },
         },
-        {
-          value: orderValue,
-          name: 'Product Revenue'
-        }
       ],
-
-      itemStyle: {
-        borderRadius: 8,
-        borderColor: '#fff',
-        borderWidth: 3
-      },
-
-      label: {
-        show: true,
-        formatter: '{b}\n{d}%'
-      },
-
-      labelLine: {
-        show: true
-      },
-
-      emphasis: {
-        scale: true,
-        scaleSize: 8
-      }
-    }
-  ]
-};
+    };
 
     this.myChart.setOption(option, true);
   }
@@ -240,5 +230,5 @@ legend: {
 
     // Update the chart with the new values
     this.updateChart(this.enrollment_total_period, this.order_total_period);
-  } 
+  }
 }

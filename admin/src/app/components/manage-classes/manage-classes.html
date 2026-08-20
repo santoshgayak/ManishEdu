@@ -1,48 +1,45 @@
 <div class="class-mgmt">
-    <div class="desk">
-        <div class="card-title">
-        <h3>Manage Classes</h3>
-        <a routerLink="/dashboard/classes" class="view-all">
-        View All Classes
-        </a>
+  <div class="desk">
+    <div class="card-title">
+      <h3>Manage Classes</h3>
+      <a routerLink="/dashboard/classes" class="view-all"> View All Classes </a>
     </div>
     <div class="card-content">
-        <div class="table-header">
+      <div class="table-header">
         <div>Class</div>
         <div>Level</div>
         <div>Price</div>
         <div>Duration</div>
         <div>Actions</div>
-        </div>
-        @for (classItem of classList.slice(0,5); track classItem._id) {
+      </div>
+      @for (classItem of classList.slice(0, 5); track classItem._id) {
         <div class="table-row">
-            
-            <div>{{ classItem.title }}</div>
-            <div>{{ classItem.level }}</div>
-            <div>${{ classItem.price }}</div>
-            <div>{{ classItem.duration }}</div>
-            <div class="actions">
-            <button class="edit-btn" (click)="editClass(classItem._id)"><i class="fa-regular fa-pen-to-square"></i></button>
-            <button class="delete-btn" (click)="deleteClass(classItem._id)"><i class="fa-regular fa-trash-can"></i></button>
-            </div>
+          <div>{{ classItem.title }}</div>
+          <div>{{ classItem.level }}</div>
+          <div>${{ classItem.price }}</div>
+          <div>{{ classItem.duration }}</div>
+          <div class="actions">
+            <button class="edit-btn" (click)="editClass(classItem._id)">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="delete-btn" (click)="deleteClass(classItem._id)">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </div>
         </div>
-        } @empty {
+      } @empty {
         <div class="empty-state">
-            <app-loader></app-loader>
+          <app-loader></app-loader>
         </div>
-        }
-
+      }
     </div>
-
+  </div>
+  <button (click)="navigate()" class="view-all-btn">
+    <i class="fa-solid fa-graduation-cap"></i>
+    <div>
+      <h3>Manage Classes</h3>
+      <p>View and manage your classes</p>
     </div>
-        <button (click)="navigate()" class="view-all-btn">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <div>
-                <h3>Manage Classes</h3>
-                <p>View and manage your classes</p>
-            </div>
-            <i class="fa-solid fa-angle-right arrow"></i>
-
-        </button>     
-  
+    <i class="fa-solid fa-angle-right arrow"></i>
+  </button>
 </div>

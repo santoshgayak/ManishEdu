@@ -6,8 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './why-us.html',
   styleUrl: './why-us.css',
 })
-export class WhyUs {
-
-
-  
-}
+export class WhyUs {}

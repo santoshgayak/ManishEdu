@@ -6,18 +6,17 @@ import { Qualities } from './components/qualities/qualities';
 import { About } from './components/about/about';
 import { WhyUs } from './components/why-us/why-us';
 import { Classes } from './components/classes/classes';
-import { Services } from "./components/services/services";
-import { CallToAction } from "./components/call-to-action/call-to-action";
+import { Services } from './components/services/services';
+import { CallToAction } from './components/call-to-action/call-to-action';
 import { Team } from './components/team/team';
 import { Faq } from './components/faq/faq';
 import { Contact } from './components/contact/contact';
-import { Footer } from "./components/footer/footer";
+import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Navbar, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-}
+export class App {}

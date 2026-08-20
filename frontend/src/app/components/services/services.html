@@ -1,18 +1,24 @@
-    <section class="services-section" id="services-section">
-        <div class="section-content">
-            <p class="sectionTopLine">What we offer</p>
-            <h2 class="section-title">Services<span></span></h2>
-            <p class="section-description">Experience the Depth of Sarangi Expertise in a Range of Professional Endeavors. We offer tailored services to elevate your musical journey. Our mastery extends beyond classes to deliver exceptional results for your artistic endeavors.</p>
-        </div>
+<section class="services-section" id="services-section">
+  <div class="section-content">
+    <p class="sectionTopLine">What we offer</p>
+    <h2 class="section-title">Services<span></span></h2>
+    <p class="section-description">
+      Experience the Depth of Sarangi Expertise in a Range of Professional Endeavors. We offer
+      tailored services to elevate your musical journey. Our mastery extends beyond classes to
+      deliver exceptional results for your artistic endeavors.
+    </p>
+  </div>
 
-        <div class="services-cards-container">
-            <div class="service-card" *ngFor="let service of serviceList">
-                <div class="serviceTitle">
-                    <img [src]="service.icon" width="60px">
-                    <h3>{{service.title}}</h3>
-                </div>
-                <p>{{service.description}}</p>
-                <a href="#contact-section"  class="btn serviceContact">Contact Now <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
+  <div class="services-cards-container">
+    <div class="service-card" *ngFor="let service of serviceList">
+      <div class="serviceTitle">
+        <img [src]="service.icon" width="60px" />
+        <h3>{{ service.title }}</h3>
+      </div>
+      <p>{{ service.description }}</p>
+      <a href="#contact-section" class="btn serviceContact"
+        >Contact Now <i class="fa-solid fa-arrow-right"></i
+      ></a>
+    </div>
+  </div>
+</section>

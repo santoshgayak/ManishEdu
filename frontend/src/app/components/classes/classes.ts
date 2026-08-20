@@ -17,23 +17,23 @@ interface ApiResponse {
   styleUrl: './classes.css',
 })
 export class Classes {
-  classList: ClassPlan[] = [];  
+  classList: ClassPlan[] = [];
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private cdr: ChangeDetectorRef // 🌟 Injecting change tracker just in case
+    private cdr: ChangeDetectorRef, // 🌟 Injecting change tracker just in case
   ) {
     this.http.get<ApiResponse>('https://manisheduserver.onrender.com/api/data/courses').subscribe({
       next: (res) => {
-        console.log("Data successfully arrived:", res.data);
-        
-        this.classList = res.data; 
+        console.log('Data successfully arrived:', res.data);
+
+        this.classList = res.data;
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error("API error:", err);
-      }
+        console.error('API error:', err);
+      },
     });
   }
 

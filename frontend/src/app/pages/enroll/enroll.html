@@ -1,202 +1,186 @@
-    <div class="enrollment-form-container">
-
-      <form
-        class="enrollment-form"
-        [formGroup]="enrollmentInfo"
-        (ngSubmit)="proceedToPayment()"
-      >
-        <div class="form-left">
-
-          <div class="title">
-            <i class="fa-solid fa-graduation-cap"></i>
-            <div class="title-info">
-              <h3>Enroll in Class</h3>
-              <p>Complete your registration below to enroll in your selected class.</p>
-            </div>
-          </div>
-
-          <h4><span>1</span> Student Information</h4>
-
-          <div class="fullname">
-            <div class="fname">
-              <label>First Name</label>
-              <input type="text" formControlName="firstName" />
-            </div>
-
-            <div class="lname">
-              <label>Last Name</label>
-              <input type="text" formControlName="lastName" />
-            </div>
-          </div>
-
-          <div class="contact-info">
-            <div class="phone">
-              <label>Phone</label>
-              <input type="tel" formControlName="phone" />
-            </div>
-
-            <div class="email">
-              <label>Email</label>
-              <input type="email" formControlName="email" />
-            </div>
-          </div>
-
-          <div class="address" formGroupName="address">
-
-            <div class="addressLines">
-              <div class="addressLine1">
-                <label>Address Line 1</label>
-                <input type="text" formControlName="addressLine1" />
-              </div>
-
-              <div class="addressLine2">
-                <label>Address Line 2</label>
-                <input type="text" formControlName="addressLine2" />
-              </div>
-            </div>
-
-            <div class="cityAndState">
-              <div class="city">
-                <label>City</label>
-                <input type="text" formControlName="city" />
-              </div>
-
-              <div class="state">
-                <label>State</label>
-                <input type="text" formControlName="state" />
-              </div>
-            </div>
-
-            <div class="postcodeAndCountry">
-              <div class="postcode">
-                <label>Postcode</label>
-                <input type="text" formControlName="postcode" />
-              </div>
-
-              <div class="country">
-                <label>Country</label>
-                <select formControlName="country">
-                  <option value="" disabled>Select Country</option>
-                  <option value="DE">Germany</option>
-                  <option value="IN">India</option>
-                  <option value="US">United States</option>
-                </select>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- SECTION 2 -->
-          <h4><span>2</span> Classes & Schedule Preference</h4>
-
-          <div class="class-section">
-
-            <div class="selectClass">
-              <label>Select Class</label>
-              <select formControlName="course">
-                <option value="" disabled>Select Class</option>
-                <option value="basic">Basic Sarangi</option>
-                <option value="intermediate">Intermediate Sarangi</option>
-                <option value="advanced">Advanced Sarangi</option>
-              </select>
-            </div>
-
-            <div class="preffered-timing">
-              <label>Preferred Timing</label>
-              <select formControlName="preferredTime">
-                <option value="" disabled>Select Timing</option>
-                <option value="morning">Morning</option>
-                <option value="afternoon">Afternoon</option>
-                <option value="evening">Evening</option>
-              </select>
-            </div>
-
-          </div>
-
-          <!-- RADIO GROUPS -->
-          <div class="radio-group-container">
-
-            <div class="radio-group">
-              <label>Choose Class Level:</label>
-
-              <div class="radios-container">
-                <div>
-                  <label>Basic</label>
-                  <input type="radio" formControlName="classLevel" value="basic" />
-                </div>
-
-                <div>
-                  <label>Intermediate</label>
-                  <input type="radio" formControlName="classLevel" value="intermediate" />
-                </div>
-
-                <div>
-                  <label>Advanced</label>
-                  <input type="radio" formControlName="classLevel" value="advanced" />
-                </div>
-              </div>
-            </div>
-
-            <div class="radio-group">
-              <label>Have you learned music before?</label>
-
-              <div class="radios-container">
-                <div>
-                  <label>Yes</label>
-                  <input type="radio" formControlName="learnedMusic" value="yes" />
-                </div>
-
-                <div>
-                  <label>No</label>
-                  <input type="radio" formControlName="learnedMusic" value="no" />
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- SECTION 3 -->
-          <h4><span>3</span> Additional Information</h4>
-
-          <div class="addInfo">
-
-            <div class="survey">
-              <label>How did you hear about us?</label>
-              <select formControlName="survey">
-                <option value="friends">Friends</option>
-                <option value="google">Google Search</option>
-                <option value="website">Company Website</option>
-              </select>
-            </div>
-
-            <div class="comment">
-              <label>Do you have any request?</label>
-              <textarea formControlName="comment" rows="3"></textarea>
-            </div>
-
-          </div>
-          <div>
-  <label>
-    <input type="checkbox" formControlName="terms" />
-    I agree to terms and conditions
-  </label>
-</div>
-          <!-- PAYMENT BUTTON -->
-          <div>
-            <button
-              type="button"
-              class="btn processToPaymentBtn"
-              [disabled]="enrollmentInfo.invalid"
-              (click)="proceedToPayment()"
-            >
-              <i class="fa-regular fa-circle-right"></i>
-              Proceed to payment
-            </button>
-          </div>
-
+<div class="enrollment-form-container">
+  <form class="enrollment-form" [formGroup]="enrollmentInfo" (ngSubmit)="proceedToPayment()">
+    <div class="form-left">
+      <div class="title">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <div class="title-info">
+          <h3>Enroll in Class</h3>
+          <p>Complete your registration below to enroll in your selected class.</p>
         </div>
-      </form>
+      </div>
 
+      <h4><span>1</span> Student Information</h4>
+
+      <div class="fullname">
+        <div class="fname">
+          <label>First Name</label>
+          <input type="text" formControlName="firstName" />
+        </div>
+
+        <div class="lname">
+          <label>Last Name</label>
+          <input type="text" formControlName="lastName" />
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="phone">
+          <label>Phone</label>
+          <input type="tel" formControlName="phone" />
+        </div>
+
+        <div class="email">
+          <label>Email</label>
+          <input type="email" formControlName="email" />
+        </div>
+      </div>
+
+      <div class="address" formGroupName="address">
+        <div class="addressLines">
+          <div class="addressLine1">
+            <label>Address Line 1</label>
+            <input type="text" formControlName="addressLine1" />
+          </div>
+
+          <div class="addressLine2">
+            <label>Address Line 2</label>
+            <input type="text" formControlName="addressLine2" />
+          </div>
+        </div>
+
+        <div class="cityAndState">
+          <div class="city">
+            <label>City</label>
+            <input type="text" formControlName="city" />
+          </div>
+
+          <div class="state">
+            <label>State</label>
+            <input type="text" formControlName="state" />
+          </div>
+        </div>
+
+        <div class="postcodeAndCountry">
+          <div class="postcode">
+            <label>Postcode</label>
+            <input type="text" formControlName="postcode" />
+          </div>
+
+          <div class="country">
+            <label>Country</label>
+            <select formControlName="country">
+              <option value="" disabled>Select Country</option>
+              <option value="DE">Germany</option>
+              <option value="IN">India</option>
+              <option value="US">United States</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <h4><span>2</span> Classes & Schedule Preference</h4>
+
+      <div class="class-section">
+        <div class="selectClass">
+          <label>Select Class</label>
+          <select formControlName="course">
+            <option value="" disabled>Select Class</option>
+            <option value="basic">Basic Sarangi</option>
+            <option value="intermediate">Intermediate Sarangi</option>
+            <option value="advanced">Advanced Sarangi</option>
+          </select>
+        </div>
+
+        <div class="preffered-timing">
+          <label>Preferred Timing</label>
+          <select formControlName="preferredTime">
+            <option value="" disabled>Select Timing</option>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- RADIO GROUPS -->
+      <div class="radio-group-container">
+        <div class="radio-group">
+          <label>Choose Class Level:</label>
+
+          <div class="radios-container">
+            <div>
+              <label>Basic</label>
+              <input type="radio" formControlName="classLevel" value="basic" />
+            </div>
+
+            <div>
+              <label>Intermediate</label>
+              <input type="radio" formControlName="classLevel" value="intermediate" />
+            </div>
+
+            <div>
+              <label>Advanced</label>
+              <input type="radio" formControlName="classLevel" value="advanced" />
+            </div>
+          </div>
+        </div>
+
+        <div class="radio-group">
+          <label>Have you learned music before?</label>
+
+          <div class="radios-container">
+            <div>
+              <label>Yes</label>
+              <input type="radio" formControlName="learnedMusic" value="yes" />
+            </div>
+
+            <div>
+              <label>No</label>
+              <input type="radio" formControlName="learnedMusic" value="no" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <h4><span>3</span> Additional Information</h4>
+
+      <div class="addInfo">
+        <div class="survey">
+          <label>How did you hear about us?</label>
+          <select formControlName="survey">
+            <option value="friends">Friends</option>
+            <option value="google">Google Search</option>
+            <option value="website">Company Website</option>
+          </select>
+        </div>
+
+        <div class="comment">
+          <label>Do you have any request?</label>
+          <textarea formControlName="comment" rows="3"></textarea>
+        </div>
+      </div>
+      <div>
+        <label>
+          <input type="checkbox" formControlName="terms" />
+          I agree to terms and conditions
+        </label>
+      </div>
+      <!-- PAYMENT BUTTON -->
+      <div>
+        <button
+          type="button"
+          class="btn processToPaymentBtn"
+          [disabled]="enrollmentInfo.invalid"
+          (click)="proceedToPayment()"
+        >
+          <i class="fa-regular fa-circle-right"></i>
+          Proceed to payment
+        </button>
+      </div>
     </div>
+  </form>
+</div>
 
 <app-footer></app-footer>

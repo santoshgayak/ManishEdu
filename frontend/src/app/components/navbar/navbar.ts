@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; 
-import { CartService } from '../../services/cart/cart.service'
+import { RouterModule } from '@angular/router';
+import { CartService } from '../../services/cart/cart.service';
 import { CommonModule } from '@angular/common';
 import { HostListener } from '@angular/core';
 @Component({
@@ -12,22 +12,19 @@ import { HostListener } from '@angular/core';
 })
 export class Navbar {
   cartCount = 0;
-    isMenuOpen = false;
+  isMenuOpen = false;
 
-
-  constructor (private cartService: CartService){
-    this.cartService.cart$.subscribe(item=>{
-      this.cartCount = item.reduce((sum,item)=> sum+item.quantity,0);
+  constructor(private cartService: CartService) {
+    this.cartService.cart$.subscribe((item) => {
+      this.cartCount = item.reduce((sum, item) => sum + item.quantity, 0);
     });
   }
 
-
-  toggleMenu(){
+  toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-    
   }
-  closeMenu(){
-    this.isMenuOpen=false;
+  closeMenu() {
+    this.isMenuOpen = false;
   }
 
   @HostListener('window:resize', ['$event'])
@@ -36,6 +33,4 @@ export class Navbar {
       this.isMenuOpen = false;
     }
   }
-  
-
 }

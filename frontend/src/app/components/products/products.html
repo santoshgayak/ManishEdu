@@ -1,22 +1,24 @@
-    <section class="products-section">
-        <h2 class="section-title">Our Products</h2>
-        <div class="product-filter">
-            
-                <button *ngFor="let category of categories"
-                        class="filterBtn"
-                        [class.active]="selectedCategory === category"
-                        (click)="setCategory(category)"
-                >{{category}}</button>
-        </div>
-        <div class="products-card-container">
-            <div class="product-card" *ngFor="let product of filteredProducts">
-                <img src="{{product.image}}" alt="Sarangi 1" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-name">{{product.name}}</h3>
-                    <p class="product-description">{{product.description}}</p>
-                    <p class="product-price">${{product.price}}</p>
-                    <button  (click)="addToCart(product.id)" class="btn buyNow">Add to Cart</button> 
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="products-section">
+  <h2 class="section-title">Our Products</h2>
+  <div class="product-filter">
+    <button
+      *ngFor="let category of categories"
+      class="filterBtn"
+      [class.active]="selectedCategory === category"
+      (click)="setCategory(category)"
+    >
+      {{ category }}
+    </button>
+  </div>
+  <div class="products-card-container">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <img src="{{ product.image }}" alt="Sarangi 1" class="product-image" />
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-price">${{ product.price }}</p>
+        <button (click)="addToCart(product.id)" class="btn buyNow">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>

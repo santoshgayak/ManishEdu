@@ -1,4 +1,9 @@
-import { ApplicationConfig, inject, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,
+} from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
@@ -16,7 +21,9 @@ const configureAnchorScrollOffset = () => {
     const navbar = document.querySelector('.navbar') as HTMLElement | null;
 
     // Fallback to any sticky container at top if `.navbar` not found.
-    const sticky = document.querySelector('[style*="position: sticky"], .container') as HTMLElement | null;
+    const sticky = document.querySelector(
+      '[style*="position: sticky"], .container',
+    ) as HTMLElement | null;
 
     const height = (navbar && navbar.offsetHeight) || (sticky && sticky.offsetHeight) || 80;
 
@@ -47,16 +54,17 @@ const configureAnchorScrollOffset = () => {
   }
 };
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideAppInitializer(configureAnchorScrollOffset),
-    provideRouter(routes,
+    provideRouter(
+      routes,
       withInMemoryScrolling({
-        anchorScrolling:'enabled',
-        scrollPositionRestoration:'enabled'
-      }))
-  ]
+        anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'enabled',
+      }),
+    ),
+  ],
 };

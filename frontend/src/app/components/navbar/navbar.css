@@ -1,190 +1,152 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 80px;
-    padding: 0 5%;
-    background: var(--bg-light);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    box-shadow: rgba(100,100,111,0.15) 0 7px 25px;
-    box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 0 5%;
+  background: var(--bg-light);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: rgba(100, 100, 111, 0.15) 0 7px 25px;
+  box-sizing: border-box;
 }
-
 
 .logoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
-
 
 .logoContainer img {
-    width: auto;
-    height: clamp(35px, 5vw, 45px);
-    object-fit: contain;
+  width: auto;
+  height: clamp(35px, 5vw, 45px);
+  object-fit: contain;
 }
-
 
 .logoContainer i {
-    display: none;
-    font-size: 1.8rem;
-    color: var(--text-dark);
-    cursor: pointer;
+  display: none;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  cursor: pointer;
 }
-
 
 .navbar ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(1rem, 2vw, 2rem);
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-
 
 .navbar ul li a {
-    text-decoration: none;
-    color: var(--text-dark);
-    font-size: clamp(0.9rem, 1vw, 1.1rem);
-    font-weight: 600;
-    transition: all .3s ease;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
-
 
 .navbar ul li a:hover,
 .navbar ul li a.active {
-    color: orange;
+  color: orange;
 }
-
-
 
 .basket {
-    width: 22px;
-    height: auto;
+  width: 22px;
+  height: auto;
 }
-
 
 .badge {
-    background: orange;
-    color: white;
-    font-size: .75rem;
-    font-weight: bold;
-    padding: 3px 7px;
-    border-radius: 50px;
-    margin-left: 5px;
+  background: orange;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 7px;
+  border-radius: 50px;
+  margin-left: 5px;
 }
-
-
 
 /* TABLET */
 
-@media(max-width:1024px){
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 3%;
+  }
 
-    .navbar{
-        padding:0 3%;
-    }
-
-
-    .navbar ul{
-        gap:1rem;
-    }
-
+  .navbar ul {
+    gap: 1rem;
+  }
 }
-
-
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 5%;
+    background: white;
+  }
 
+  .logoContainer {
+    width: 100%;
+    justify-content: space-between;
+  }
 
-    .navbar{
-        flex-direction: column;
-        height:auto;
-        padding:1rem 5%;
-        background:white;
-    }
+  .logoContainer i {
+    display: block;
+  }
 
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
 
-    .logoContainer{
-        width:100%;
-        justify-content:space-between;
-    }
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
 
+    transition: 0.4s ease;
+  }
 
-    .logoContainer i{
-        display:block;
-    }
+  .navbar ul.open {
+    max-height: 600px;
+    opacity: 1;
 
+    padding: 1rem 0;
 
+    background: var(--text-dark);
 
-    .navbar ul{
+    border-radius: 20px;
+    margin-top: 1rem;
+  }
 
-        flex-direction:column;
-        width:100%;
-        gap:0;
+  .navbar ul li {
+    width: 100%;
+    text-align: center;
 
-        max-height:0;
-        overflow:hidden;
-        opacity:0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
 
-        transition:.4s ease;
-    }
+  .navbar ul li:last-child {
+    border-bottom: none;
+  }
 
+  .navbar ul li a {
+    display: block;
+    padding: 12px;
 
+    font-size: 1.1rem;
 
-    .navbar ul.open{
+    color: white;
+  }
 
-        max-height:600px;
-        opacity:1;
-
-        padding:1rem 0;
-
-        background:var(--text-dark);
-
-        border-radius:20px;
-        margin-top:1rem;
-    }
-
-
-
-    .navbar ul li{
-
-        width:100%;
-        text-align:center;
-
-        border-bottom:1px solid rgba(255,255,255,.2);
-
-    }
-
-
-
-    .navbar ul li:last-child{
-        border-bottom:none;
-    }
-
-
-
-    .navbar ul li a{
-
-        display:block;
-        padding:12px;
-
-        font-size:1.1rem;
-
-        color:white;
-    }
-
-
-
-    .navbar ul li a:hover{
-        color:orange;
-    }
-
+  .navbar ul li a:hover {
+    color: orange;
+  }
 }

@@ -7,19 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './faq.css',
 })
 export class Faq {
-
-
   toggleDetails(element: any) {
     const answer = element.nextElementSibling;
 
-    answer.classList.toggle("hidden");
+    answer.classList.toggle('hidden');
 
-    const arrow = element.querySelector("img");
+    const arrow = element.querySelector('img');
 
-    if (answer.classList.contains("hidden")) {
-        arrow.style.transform = "rotate(0deg)";
+    if (answer.classList.contains('hidden')) {
+      arrow.style.transform = 'rotate(0deg)';
     } else {
-        arrow.style.transform = "rotate(180deg)";
+      arrow.style.transform = 'rotate(180deg)';
     }
-}
+  }
 }

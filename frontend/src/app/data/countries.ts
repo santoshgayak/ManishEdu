@@ -64,5 +64,5 @@ export const COUNTRIES = [
   { code: 'AE', name: 'United Arab Emirates' },
   { code: 'GB', name: 'United Kingdom' },
   { code: 'US', name: 'United States' },
-  { code: 'VN', name: 'Vietnam' }
+  { code: 'VN', name: 'Vietnam' },
 ];

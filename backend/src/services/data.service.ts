@@ -1,44 +1,41 @@
-import { getDB } from "../db/mongo.js"; 
-import { ObjectId } from 'mongodb'; 
+import { getDB } from "../db/mongo.js";
+import { ObjectId } from "mongodb";
 
-export class DataService{
-      constructor(){
-        console.log("DataService from data.service.ts loaded");
-    }
-    async getAll(collection: string){
-        const db = getDB();
-        return await db.collection(collection).find().toArray();
-    }
-    async getbyId(collection: string, id:string){
-        const db = getDB();
-        return await db.collection(collection).findOne({id});
-    }
-    async getOne(collection:string, filter: object){
-            const db = getDB();
-            return await db.collection(collection).findOne(filter)
-    }
-    async saveData(collection:string, updatedData:any){
-        const db = getDB();
-        const { _id, ...payload } = updatedData;
+export class DataService {
+  constructor() {
+    console.log("DataService from data.service.ts loaded");
+  }
+  async getAll(collection: string) {
+    const db = getDB();
+    return await db.collection(collection).find().toArray();
+  }
+  async getbyId(collection: string, id: string) {
+    const db = getDB();
+    return await db.collection(collection).findOne({ id });
+  }
+  async getOne(collection: string, filter: object) {
+    const db = getDB();
+    return await db.collection(collection).findOne(filter);
+  }
+  async saveData(collection: string, updatedData: any) {
+    const db = getDB();
+    const { _id, ...payload } = updatedData;
 
-                // CREATE
-        if (!_id || _id.trim() === '') {
-            return await db.collection(collection).insertOne(payload);
-        }
-        return await db.collection(collection).replaceOne(
-        { _id: new ObjectId(_id) }, 
-        payload,
-           {upsert: true}
-        );
+    // CREATE
+    if (!_id || _id.trim() === "") {
+      return await db.collection(collection).insertOne(payload);
     }
-      async deleteClass(collection:string, id:string){
-        const db = getDB();
-        return db.collection(collection).deleteOne({
-            _id: new ObjectId(id)
-        });
-    }
-    async deleteProduct(collection:string, id:string){
-
+    return await db
+      .collection(collection)
+      .replaceOne({ _id: new ObjectId(_id) }, payload, { upsert: true });
+  }
+  async deleteClass(collection: string, id: string) {
+    const db = getDB();
+    return db.collection(collection).deleteOne({
+      _id: new ObjectId(id),
+    });
+  }
+  async deleteProduct(collection: string, id: string) {
     const db = getDB();
 
     console.log("Database:", db.databaseName);
@@ -46,20 +43,17 @@ export class DataService{
     console.log("Delete ID received:", id);
 
     const before = await db.collection(collection).findOne({
-        _id: new ObjectId(id)
+      _id: new ObjectId(id),
     });
 
     console.log("Document found before delete:", before);
 
-
     const result = await db.collection(collection).deleteOne({
-        _id: new ObjectId(id)
+      _id: new ObjectId(id),
     });
-
 
     console.log("Delete result:", result);
 
     return result;
-}
-
+  }
 }

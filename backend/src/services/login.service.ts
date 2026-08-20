@@ -5,44 +5,46 @@ import jwt from "jsonwebtoken";
 import { getDB } from "../db/mongo.js";
 import { hasSubscribers } from "node:diagnostics_channel";
 
- const dataService  = new DataService();
+const dataService = new DataService();
 
-export class LoginService{
-     saltRounds = 10;
-     myPlaintextPassword = 's0/\/\P4$$w0rD';
-     someOtherPlaintextPassword = 'not_bacon';
+export class LoginService {
+  saltRounds = 10;
+  myPlaintextPassword = "s0/\/\P4$$w0rD";
+  someOtherPlaintextPassword = "not_bacon";
 
-    async login(data: loginData){
- 
-        console.log(" I am in");
-        const user = await dataService.getOne("admins",{email: data.email});
-        console.log("USR",user);
-        if(!user){
-            return null;
-        }
-        const passwordMatched = await bcrypt.compare(data.password,user.password);
+  async login(data: loginData) {
+    console.log(" I am in");
+    const user = await dataService.getOne("admins", { email: data.email });
+    console.log("USR", user);
+    if (!user) {
+      return null;
+    }
+    const passwordMatched = await bcrypt.compare(data.password, user.password);
 
-        if (data.email === user.email && passwordMatched && user.role == "Senior Administrator"){
-            const token = jwt.sign(
-            {
-                id: user._id,
-                email: user.email,
-                role: user.role
-            },
-            process.env.JWT_SECRET!,
-            {
-                expiresIn: "1h"
-            }
-        );
-        console.log("Database user:", user);
-        console.log("User email:", user.email);
-            return{
-                    token: token,
-                    user: user
-                };
-            }
-        //else return 
-        return null;  
-    }       
-       
+    if (
+      data.email === user.email &&
+      passwordMatched &&
+      user.role == "Senior Administrator"
+    ) {
+      const token = jwt.sign(
+        {
+          id: user._id,
+          email: user.email,
+          role: user.role,
+        },
+        process.env.JWT_SECRET!,
+        {
+          expiresIn: "1h",
+        },
+      );
+      console.log("Database user:", user);
+      console.log("User email:", user.email);
+      return {
+        token: token,
+        user: user,
+      };
+    }
+    //else return
+    return null;
+  }
 }

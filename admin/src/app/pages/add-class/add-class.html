@@ -1,63 +1,52 @@
+<div class="breadcrumb">
+  <a routerLink="/dashboard">Dashboard</a>
+  <span>></span>
+  <a routerLink="/dashboard/classes">Class</a>
+  <span>></span>
+  <span>Add Class</span>
+</div>
 
-    <div class="breadcrumb">
-      <a routerLink="/dashboard">Dashboard</a>
-      <span>></span>
-      <a routerLink="/dashboard/classes">Class</a>
-      <span>></span>
-      <span>Add Class</span>
-    </div>
-
-
-    <div class="intro">
-        <div class="title">
-            <h3>Add a new class</h3>
-            <p>Create, update and manage all sarangi classes</p>
-        </div>
-        <div class="btns">
-            <button class="addNewClass" (click)="addNewClass()"><i class="fa-solid fa-plus"></i>Save Class</button>
-            <button class="cancelAddClass" (click)="onCancel()"><i class="fa-solid fa-angles-left"></i>Cancel Class</button>
-
-        </div>
+<div class="intro">
+  <div class="title">
+    <h3>Add a new class</h3>
+    <p>Create, update and manage all sarangi classes</p>
   </div>
-  
-
+  <div class="btns">
+    <button class="addNewClass" (click)="addNewClass()">
+      <i class="fa-solid fa-plus"></i>Save Class
+    </button>
+    <button class="cancelAddClass" (click)="onCancel()">
+      <i class="fa-solid fa-angles-left"></i>Cancel Class
+    </button>
+  </div>
+</div>
 
 <form class="add-class" [formGroup]="classForm">
-
   <!-- Basic Information -->
   <div class="card">
     <h3>Basic Information</h3>
 
     <div class="form-grid">
-
       <div class="form-group full-width">
         <label> <i class="fa-solid fa-music Class Name"></i>Class Name</label>
-        <input
-          type="text"
-          placeholder="Class name"
-            formControlName="className"
-        >
+        <input type="text" placeholder="Class name" formControlName="className" />
       </div>
-       <div class="form-group full-width">
+      <div class="form-group full-width">
         <label><i class="fa-solid fa-file-image"></i>Image (Cloud Link) </label>
-        <input
-          type="string"
-          placeholder="link to image"
-            formControlName="image"
->
+        <input type="string" placeholder="link to image" formControlName="image" />
       </div>
 
       <div class="form-group">
         <label><i class="fa-solid fa-arrow-turn-up"></i>Level</label>
 
-        <select   formControlName="level">
+        <select formControlName="level">
           <option value="basic">Beginner</option>
           <option value="intermediate">Intermediate</option>
           <option value="advanced">Advanced</option>
         </select>
       </div>
 
-      <div class="form-group"   >
+      <div class="form-group">
         <label><i class="fa-solid fa-bars-progress"></i>Status</label>
 
         <select formControlName="status">
@@ -68,17 +57,12 @@
 
       <div class="form-group">
         <label><i class="fa-solid fa-hourglass-start"></i>Price ($)</label>
-        <input
-          type="number"
-          placeholder="Amount"
-            formControlName="price">
+        <input type="number" placeholder="Amount" formControlName="price" />
       </div>
 
       <div class="form-group">
         <label><i class="fa-solid fa-hourglass-start"></i>Duration (Days)</label>
-        <input
-          type="number"
-          placeholder="number of months"  formControlName="duration">
+        <input type="number" placeholder="number of months" formControlName="duration" />
       </div>
 
       <div class="form-group full-width">
@@ -87,36 +71,24 @@
         <textarea
           rows="5"
           placeholder="Write class description..."
-            formControlName="description"></textarea>
+          formControlName="description"
+        ></textarea>
       </div>
-     
-
     </div>
-
   </div>
 
   <!-- Features -->
   <div class="card">
-
     <div class="card-header">
       <h3>Course Features</h3>
 
-      <button
-        type="button"
-        class="btn-add">
-        + Add Feature
-      </button>
+      <button type="button" class="btn-add">+ Add Feature</button>
     </div>
 
     <div class="feature-list">
-
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots"  style="color: saddlebrown;"></i>
-        <input
-          type="text"
-          placeholder="feature 1"
-            formControlName="feature1"
-          >
+        <i class="fa-solid fa-arrow-up-right-dots" style="color: saddlebrown"></i>
+        <input type="text" placeholder="feature 1" formControlName="feature1" />
 
         <button type="button" class="delete-btn">
           <i class="fa-regular fa-trash-can"></i>
@@ -124,12 +96,8 @@
       </div>
 
       <div class="feature-item">
-        
-        <i class="fa-solid fa-arrow-up-right-dots"  style="color: rgb(223, 2, 223);"></i>
-        <input
-          type="text"
-          placeholder="feature 2"  
-          formControlName="feature2">
+        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(223, 2, 223)"></i>
+        <input type="text" placeholder="feature 2" formControlName="feature2" />
 
         <button type="button" class="delete-btn">
           <i class="fa-regular fa-trash-can"></i>
@@ -137,11 +105,8 @@
       </div>
 
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots"  style="color: rgb(184, 184, 13);"></i>
-        <input
-          type="text"
-          placeholder="feature 3"   
-          formControlName="feature3">
+        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(184, 184, 13)"></i>
+        <input type="text" placeholder="feature 3" formControlName="feature3" />
 
         <button type="button" class="delete-btn">
           <i class="fa-regular fa-trash-can"></i>
@@ -149,10 +114,8 @@
       </div>
 
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(232, 27, 27);"></i>
-        <input
-          type="text"
-          placeholder="feature 4"  formControlName="feature4">
+        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(232, 27, 27)"></i>
+        <input type="text" placeholder="feature 4" formControlName="feature4" />
 
         <button type="button" class="delete-btn">
           <i class="fa-regular fa-trash-can"></i>
@@ -160,18 +123,13 @@
       </div>
 
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots"  style="color: rgb(64, 64, 232);"></i>
-        <input
-          type="text"
-          placeholder="feature 5"   formControlName="feature5">
+        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(64, 64, 232)"></i>
+        <input type="text" placeholder="feature 5" formControlName="feature5" />
 
         <button type="button" class="delete-btn">
           <i class="fa-regular fa-trash-can"></i>
         </button>
       </div>
-
     </div>
-
   </div>
-
 </form>

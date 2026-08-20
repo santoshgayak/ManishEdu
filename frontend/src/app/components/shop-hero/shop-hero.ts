@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './shop-hero.css',
 })
 export class ShopHero {
-    shopNow() {
-        console.log("Shop Now clicked!");
-    }
+  shopNow() {
+    console.log('Shop Now clicked!');
+  }
 }

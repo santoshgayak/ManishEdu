@@ -1,9 +1,8 @@
 import { getDB } from "../db/mongo.js";
 
-
 interface Address {
   addressLine1: string;
-  addressLine2?: string; 
+  addressLine2?: string;
   city: string;
   state: string;
   postcode: string;
@@ -16,31 +15,32 @@ interface CustomerData {
   lastName: string;
   phone: string;
   email: string;
-  address: Address; 
+  address: Address;
 }
 export class SaveCustomerInfoService {
-
-  constructor() {};
+  constructor() {}
 
   async savedToDb(data: CustomerData) {
     console.log("Now saving to db (mock):", data);
     const db = getDB();
 
-    const customer = await db.collection("customers").findOne({email: data.email});
-      
+    const customer = await db
+      .collection("customers")
+      .findOne({ email: data.email });
+
     if (customer) {
       return {
         success: true,
         alreadyExists: true,
-        customer
+        customer,
       };
     }
 
-      const result = await db.collection("customers").insertOne(data);
-      return {
-        success: true,
-        alreadyExists: false,
-        insertedId: result.insertedId
-      };
-    }
+    const result = await db.collection("customers").insertOne(data);
+    return {
+      success: true,
+      alreadyExists: false,
+      insertedId: result.insertedId,
+    };
+  }
 }

@@ -1,175 +1,177 @@
 <div class="toast" *ngIf="showToast">
-    <div class="icon">
-        <i class="fa-solid fa-circle-check"></i>
-    </div>
-    <div class="success-msg">
-        <h3>Product Updated Succesfully!</h3>
-        <p>The product details have been updated. The new information is displayed below</p>
-    </div>
-    <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
+  <div class="icon">
+    <i class="fa-solid fa-circle-check"></i>
+  </div>
+  <div class="success-msg">
+    <h3>Product Updated Succesfully!</h3>
+    <p>The product details have been updated. The new information is displayed below</p>
+  </div>
+  <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
 </div>
 <div class="toast" *ngIf="showDeleteToast">
-    <div class="icon">
-        <i class="fa-solid fa-circle-check"></i>
-    </div>
-    <div class="success-msg">
-        <h3>Product Deleted Succesfully!</h3>
-        <p>The product details have been deleted.</p>
-    </div>
-    <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
+  <div class="icon">
+    <i class="fa-solid fa-circle-check"></i>
+  </div>
+  <div class="success-msg">
+    <h3>Product Deleted Succesfully!</h3>
+    <p>The product details have been deleted.</p>
+  </div>
+  <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
 </div>
-
 
 <div class="breadcrumb">
-    <a routerLink="/dashboard/products" ><i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i>Back to Products</a>
+  <a routerLink="/dashboard/products"
+    ><i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem"></i>Back to Products</a
+  >
 </div>
 <div class="top-content">
-        <div>
-            <h3>Product Details <span>(added)</span></h3>
-     </div>
-        <div class="actions">
-                <button class="delete-btn"   [disabled]="!filteredProduct" (click)="deleteProduct(filteredProduct!._id)"><i class="fa-regular fa-trash-can"></i><p>Delete Product</p></button>
-                <button class="edit-btn"   [disabled]="!filteredProduct" (click)="editClass(filteredProduct!._id)"><i class="fa-regular fa-pen-to-square"></i><p>Edit Product</p></button>
-        </div>
+  <div>
+    <h3>Product Details <span>(added)</span></h3>
+  </div>
+  <div class="actions">
+    <button
+      class="delete-btn"
+      [disabled]="!filteredProduct"
+      (click)="deleteProduct(filteredProduct!._id)"
+    >
+      <i class="fa-regular fa-trash-can"></i>
+      <p>Delete Product</p>
+    </button>
+    <button
+      class="edit-btn"
+      [disabled]="!filteredProduct"
+      (click)="editClass(filteredProduct!._id)"
+    >
+      <i class="fa-regular fa-pen-to-square"></i>
+      <p>Edit Product</p>
+    </button>
+  </div>
 </div>
-<div class="detail-content-container" *ngIf="filteredProduct; else noProduct">  
-    
-    <div class="left">
-        
-   
+<div class="detail-content-container" *ngIf="filteredProduct; else noProduct">
+  <div class="left">
     <div class="img-container">
-            <img [src]="filteredProduct?.image" alt="Class students" height="300px">
-        </div>
-        <div class="class-detail-container">
-            <h3>{{filteredProduct?.name}}</h3>
-            <p>{{filteredProduct?.description}}</p>
-            <div class="pdl-container">
-                <div class="card price-container">
-                    <div class="icon">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                    </div>
-                    <div class="detail">
-                        <p class="detail-title">Price</p>
-                        <p class="detail-p">${{ filteredProduct?.price }}</p>
-                    </div>
-                </div>
-                  <div class="card price-container">
-                    <div class="icon">
-                        <i class="fa-brands fa-pix"></i>
-                    </div>
-                    <div class="detail">
-                        <p class="detail-title">Stock</p>
-                        <p class="detail-p">${{ filteredProduct?.stock }}</p>
-                    </div>
-                </div>
-                <div class="card level-container">
-                    <div class="icon">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <div class="detail">
-                        <p class="detail-title">Category</p>
-                        <p class="detail-p">{{ filteredProduct?.category }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <img [src]="filteredProduct?.image" alt="Class students" height="300px" />
     </div>
-   
-   
-    <div class="right">
-        <h3>Creation Info</h3>
-        <div class="detail">
-            <p class="detail-title">Created At</p>
-            <p>{{filteredProduct?.createdAt}}</p>
+    <div class="class-detail-container">
+      <h3>{{ filteredProduct?.name }}</h3>
+      <p>{{ filteredProduct?.description }}</p>
+      <div class="pdl-container">
+        <div class="card price-container">
+          <div class="icon">
+            <i class="fa-solid fa-sack-dollar"></i>
+          </div>
+          <div class="detail">
+            <p class="detail-title">Price</p>
+            <p class="detail-p">${{ filteredProduct?.price }}</p>
+          </div>
         </div>
-         <div class="detail">
-            <p class="detail-title">Last Updated</p>
-            <p>{{filteredProduct?.updatedAt}}</p>
+        <div class="card price-container">
+          <div class="icon">
+            <i class="fa-brands fa-pix"></i>
+          </div>
+          <div class="detail">
+            <p class="detail-title">Stock</p>
+            <p class="detail-p">${{ filteredProduct?.stock }}</p>
+          </div>
         </div>
-        <div class="detail">
-            <p class="detail-title">Total Sold</p>
-            <p>20</p>
+        <div class="card level-container">
+          <div class="icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div class="detail">
+            <p class="detail-title">Category</p>
+            <p class="detail-p">{{ filteredProduct?.category }}</p>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+
+  <div class="right">
+    <h3>Creation Info</h3>
+    <div class="detail">
+      <p class="detail-title">Created At</p>
+      <p>{{ filteredProduct?.createdAt }}</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Last Updated</p>
+      <p>{{ filteredProduct?.updatedAt }}</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Total Sold</p>
+      <p>20</p>
+    </div>
+  </div>
 </div>
 <ng-template #noProduct>
-        <p>No Products to display</p>
-</ng-template>  
+  <p>No Products to display</p>
+</ng-template>
 <div class="bottom-content" *ngIf="filteredProduct">
+  <div class="right">
+    <div class="class-glance-card">
+      <h3>Product Highlights</h3>
 
-    <div class="right">
-
-        <div class="class-glance-card">
-
-            <h3>Product Highlights</h3>
-
-            <div class="glance-grid">
-
-                <div class="glance-item">
-                    <div class="icon green">
-                        <i class="fa-solid fa-guitar"></i>
-                    </div>
-                    <div>
-                        <h4>Authentic Craftsmanship</h4>
-                        <p>Traditional Nepali instruments handcrafted by skilled artisans.</p>
-                    </div>
-                </div>
-
-                <div class="glance-item">
-                    <div class="icon purple">
-                        <i class="fa-solid fa-award"></i>
-                    </div>
-                    <div>
-                        <h4>Premium Quality</h4>
-                        <p>Carefully selected materials for excellent sound and durability.</p>
-                    </div>
-                </div>
-
-                <div class="glance-item">
-                    <div class="icon blue">
-                        <i class="fa-solid fa-music"></i>
-                    </div>
-                    <div>
-                        <h4>Rich Traditional Sound</h4>
-                        <p>Designed to preserve the authentic tones of Nepali music.</p>
-                    </div>
-                </div>
-
-                <div class="glance-item">
-                    <div class="icon orange">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <div>
-                        <h4>Worldwide Shipping</h4>
-                        <p>Secure packaging with reliable international delivery.</p>
-                    </div>
-                </div>
-
-                <div class="glance-item">
-                    <div class="icon violet">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <div>
-                        <h4>Quality Guaranteed</h4>
-                        <p>Every instrument is inspected before shipping to ensure satisfaction.</p>
-                    </div>
-                </div>
-
-                <div class="glance-item">
-                    <div class="icon pink">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <div>
-                        <h4>Customer Support</h4>
-                        <p>We're here to help with product guidance and after-sales support.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="glance-grid">
+        <div class="glance-item">
+          <div class="icon green">
+            <i class="fa-solid fa-guitar"></i>
+          </div>
+          <div>
+            <h4>Authentic Craftsmanship</h4>
+            <p>Traditional Nepali instruments handcrafted by skilled artisans.</p>
+          </div>
         </div>
+
+        <div class="glance-item">
+          <div class="icon purple">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div>
+            <h4>Premium Quality</h4>
+            <p>Carefully selected materials for excellent sound and durability.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon blue">
+            <i class="fa-solid fa-music"></i>
+          </div>
+          <div>
+            <h4>Rich Traditional Sound</h4>
+            <p>Designed to preserve the authentic tones of Nepali music.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon orange">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div>
+            <h4>Worldwide Shipping</h4>
+            <p>Secure packaging with reliable international delivery.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon violet">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <h4>Quality Guaranteed</h4>
+            <p>Every instrument is inspected before shipping to ensure satisfaction.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon pink">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div>
+            <h4>Customer Support</h4>
+            <p>We're here to help with product guidance and after-sales support.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-
-
-
-
-

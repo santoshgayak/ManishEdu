@@ -16,26 +16,23 @@ interface ApiResponse {
   styleUrl: './services.css',
 })
 export class Services {
-
   serviceList: Service[] = [];
 
   constructor(
     private http: HttpClient,
-    private cdr: ChangeDetectorRef
-  ){}
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   //load service data from database
-  ngOnInit(){
-          this.http.get<ApiResponse>('https://manisheduserver.onrender.com/api/data/services').subscribe({
-        next:(res)=>{
-          this.serviceList = res.data;
-          this.cdr.detectChanges();
-        },
-        error: (err) =>{
-          console.error("API error:", err);
-
-        }
-  });
+  ngOnInit() {
+    this.http.get<ApiResponse>('https://manisheduserver.onrender.com/api/data/services').subscribe({
+      next: (res) => {
+        this.serviceList = res.data;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('API error:', err);
+      },
+    });
   }
-
 }

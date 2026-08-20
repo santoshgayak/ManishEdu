@@ -1,1 +1,1 @@
-export const collectionList = ['courses','services','products','orders'];
+export const collectionList = ["courses", "services", "products", "orders"];

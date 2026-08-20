@@ -3,7 +3,7 @@ import { Product } from '../../model/products.model';
 import { DataService } from '../../services/data.service';
 import { Router, RouterLink } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
-import { Loader } from "../loader/loader";
+import { Loader } from '../loader/loader';
 @Component({
   selector: 'app-manage-products',
   imports: [RouterLink, Loader],
@@ -32,34 +32,30 @@ export class ManageProducts {
       },
       error: (err) => {
         console.error('Failed to load products:', err);
-      }
+      },
     });
   }
-  navigate(){
+  navigate() {
     this.router.navigate(['/dashboard/products']);
   }
-  editProduct(productId:string){
-    this.router.navigate(['/dashboard/edit-product',productId]);
-
-
+  editProduct(productId: string) {
+    this.router.navigate(['/dashboard/edit-product', productId]);
   }
 
   //delete product
-  deleteProduct(productId:string){
-    console.log("Delete button clicked in UI for ID:", productId);
+  deleteProduct(productId: string) {
+    console.log('Delete button clicked in UI for ID:', productId);
 
     this.dataService.deleteProduct(productId).subscribe({
       next: (response) => {
-        console.log("Backend responded successfully:", response);
-        
-        this.productList = this.productList.filter(item => item._id !== productId);
+        console.log('Backend responded successfully:', response);
+
+        this.productList = this.productList.filter((item) => item._id !== productId);
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error("An error occurred during deletion of product:", err);
-      }
+        console.error('An error occurred during deletion of product:', err);
+      },
     });
   }
-
-
 }

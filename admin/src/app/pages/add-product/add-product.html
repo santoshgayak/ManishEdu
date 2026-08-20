@@ -1,32 +1,32 @@
+<div class="breadcrumb">
+  <a routerLink="/dashboard">Dashboard</a>
+  <span>></span>
+  <a routerLink="/dashboard/products">Product</a>
+  <span>></span>
+  <span>Add Product</span>
+</div>
 
-    <div class="breadcrumb">
-      <a routerLink="/dashboard">Dashboard</a>
-      <span>></span>
-      <a routerLink="/dashboard/products">Product</a>
-      <span>></span>
-      <span>Add Product</span>
-    </div>
-
-
-    <div class="intro">
-        <div class="title">
-            <h3>Add a new product</h3>
-            <p>Create, update and manage all products</p>
-        </div>
-        <div class="btns">
-            <button class="cancelAddClass" (click)="onCancel()"><i class="fa-solid fa-angles-left"></i>Cancel</button>
-            <button class="addNewClass" (click)="addNewProduct()"><i class="fa-solid fa-plus"></i>Save Product</button>
-        </div>
+<div class="intro">
+  <div class="title">
+    <h3>Add a new product</h3>
+    <p>Create, update and manage all products</p>
   </div>
-  
-<form class="add-product" [formGroup]="productForm">
+  <div class="btns">
+    <button class="cancelAddClass" (click)="onCancel()">
+      <i class="fa-solid fa-angles-left"></i>Cancel
+    </button>
+    <button class="addNewClass" (click)="addNewProduct()">
+      <i class="fa-solid fa-plus"></i>Save Product
+    </button>
+  </div>
+</div>
 
+<form class="add-product" [formGroup]="productForm">
   <!-- Product Information -->
   <div class="card">
     <h3>Product Information</h3>
 
     <div class="form-grid">
-
       <!-- Product Name -->
       <div class="form-group full-width">
         <label>
@@ -34,10 +34,7 @@
           Product Name
         </label>
 
-        <input
-          type="text"
-          placeholder="Enter product name"
-          formControlName="name">
+        <input type="text" placeholder="Enter product name" formControlName="name" />
       </div>
 
       <!-- Image URL -->
@@ -47,10 +44,7 @@
           Product Image URL
         </label>
 
-        <input
-          type="text"
-          placeholder="https://example.com/image.jpg"
-          formControlName="image">
+        <input type="text" placeholder="https://example.com/image.jpg" formControlName="image" />
       </div>
 
       <!-- Category -->
@@ -75,10 +69,7 @@
           Stock Quantity
         </label>
 
-        <input
-          type="number"
-          placeholder="Available stock"
-          formControlName="stock">
+        <input type="number" placeholder="Available stock" formControlName="stock" />
       </div>
 
       <!-- Price -->
@@ -88,10 +79,7 @@
           Price ($)
         </label>
 
-        <input
-          type="number"
-          placeholder="Product price"
-          formControlName="price">
+        <input type="number" placeholder="Product price" formControlName="price" />
       </div>
 
       <div class="form-group">
@@ -100,10 +88,7 @@
           Product SKU / ID
         </label>
 
-        <input
-          type="text"
-          placeholder="Optional custom ID"
-          formControlName="id">
+        <input type="text" placeholder="Optional custom ID" formControlName="id" />
       </div>
 
       <!-- Description -->
@@ -113,14 +98,9 @@
           Product Description
         </label>
 
-        <textarea
-          rows="6"
-          placeholder="Write product description..."
-          formControlName="description">
+        <textarea rows="6" placeholder="Write product description..." formControlName="description">
         </textarea>
       </div>
-
     </div>
   </div>
-
 </form>

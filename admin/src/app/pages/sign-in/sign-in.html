@@ -1,63 +1,60 @@
-
-
-
-
 <div class="form-container">
-    <form class="login-form" (submit)="onSubmit($event)">
-        <div class="form-title">
-            <img src="logo.png" alt="company logo" height="150px">
-            <h3>Admin Login</h3>
-            <P>Enter your credentials to continue</P>
-        </div>
-        <div class="row">
-            <label>
-                <i class="fa-solid fa-envelope"></i>
-                Email Address
-                <span>*</span>
-            </label>
-            <input [formField]="signInForm.email" id="email" type="email" placeholder="admin@email.com">
-        </div>
-        <div class="row">
-            <label> 
-                <i class="fa-solid fa-lock"></i>
-                Password
-                <span>*</span>
-            </label>
-            <div class="input-container">
-                <input [formField]="signInForm.password" id="password" type="password" placeholder="Enter your password">
-                <i class="fa-solid fa-eye"></i>
-            </div>
-        </div>
-        <div class="remmember-password">
-            <div class="remember-row"> 
-                <input [formField]="signInForm.checkbox" id="rememberMeCheckbox" type="checkbox">
-                <label>Remember Me</label>
-            </div>
-            <button class="forgotPasswordBtn">Forgot password?</button>
-        </div>
-        <div class="signIn-container">
-            <button >       
-                <i class="fa-solid fa-right-to-bracket"></i>
-                Sign In
-            </button>
-        </div>
-        <div class="terms-container">
-            <p class="terms-text">
-                By signing in, you agree to our
-                <a routerLink="/terms">Terms of Service</a>
-                and
-                <a routerLink="/privacy">Privacy Policy</a>.
-            </p>  
-            <p>© 2026 Manish Edu</p>
-        </div>
-            <div class="loginInfo">
-                <h3>Login Details for Demo</h3>
-                <p>email: manish_edu@gmail.com</p>
-                password: hello
-            </div>
-        
-
-    </form>
-
+  <form class="login-form" (submit)="onSubmit($event)">
+    <div class="form-title">
+      <img src="logo.png" alt="company logo" height="150px" />
+      <h3>Admin Login</h3>
+      <P>Enter your credentials to continue</P>
+    </div>
+    <div class="row">
+      <label>
+        <i class="fa-solid fa-envelope"></i>
+        Email Address
+        <span>*</span>
+      </label>
+      <input [formField]="signInForm.email" id="email" type="email" placeholder="admin@email.com" />
+    </div>
+    <div class="row">
+      <label>
+        <i class="fa-solid fa-lock"></i>
+        Password
+        <span>*</span>
+      </label>
+      <div class="input-container">
+        <input
+          [formField]="signInForm.password"
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+        />
+        <i class="fa-solid fa-eye"></i>
+      </div>
+    </div>
+    <div class="remmember-password">
+      <div class="remember-row">
+        <input [formField]="signInForm.checkbox" id="rememberMeCheckbox" type="checkbox" />
+        <label>Remember Me</label>
+      </div>
+      <button class="forgotPasswordBtn">Forgot password?</button>
+    </div>
+    <div class="signIn-container">
+      <button>
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Sign In
+      </button>
+    </div>
+    <div class="terms-container">
+      <p class="terms-text">
+        By signing in, you agree to our
+        <a routerLink="/terms">Terms of Service</a>
+        and
+        <a routerLink="/privacy">Privacy Policy</a>.
+      </p>
+      <p>© 2026 Manish Edu</p>
+    </div>
+    <div class="loginInfo">
+      <h3>Login Details for Demo</h3>
+      <p>email: manish_edu@gmail.com</p>
+      password: hello
+    </div>
+  </form>
 </div>
-

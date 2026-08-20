@@ -1,211 +1,203 @@
 .container {
-    background: var(--bg-light);
-    width: 100%;
-    box-sizing: border-box;
+  background: var(--bg-light);
+  width: 100%;
+  box-sizing: border-box;
 }
-
 
 .hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(2rem, 5vw, 4rem);
-    width: 100%;
-    min-height: calc(100vh - 100px);
-    padding: clamp(2rem, 5vw, 4rem) 5%;
-    box-sizing: border-box;
-    background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  padding: clamp(2rem, 5vw, 4rem) 5%;
+  box-sizing: border-box;
+  background: var(--bg-white);
 }
-
 
 .hero-left {
-    flex: 1 1 55%;
-    display: flex;
-    align-items: center;
+  flex: 1 1 55%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 2rem;
 }
-
 
 .hero-left h1 {
-    color: var(--text-dark);
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  line-height: 1.2;
+  font-size: clamp(3rem, 4vw + 0.5rem, 5rem);
 }
-
 
 .hero-left h1 span {
-    color: orange;
+  color: orange;
 }
-
 
 .hero-left p {
-    color: var(--text-muted);
-    margin-bottom: 2rem;
+  color: var(--text-muted);
+  font-size: clamp(1.3rem, 1.5vw + 0.3rem, 2rem);
 }
-
 
 .hero-right {
-    flex: 1 1 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .hero-right img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 4rem 4rem 4rem 25rem;
-    box-shadow: rgba(0,0,0,.08) 0 20px 40px;
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 4rem 4rem 4rem 25rem;
+  box-shadow: rgba(0, 0, 0, 0.08) 0 20px 40px;
 }
-
 
 .hero-btn-container {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 1.5rem;
+  width: 100%;
 }
-
 
 .enrollNowBtn {
-    background: var(--btn-background-color);
-    color: white;
-    font-weight: 700;
+  background: var(--btn-background-color);
+  color: white;
+  font-weight: 700;
 }
-
 
 .enrollNowBtn:hover {
-    background: var(--primary-dark);
+  background: var(--primary-dark);
 }
-
 
 .watchVideosBtn {
-    background: var(--bg-light);
-    color: var(--text-dark);
-    font-weight: 700;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  font-weight: 700;
 }
-
 
 .watchVideosBtn:hover {
-    background: orange;
-    color: white;
+  background: orange;
+  color: white;
 }
-
-
 
 .video-modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    backdrop-filter: blur(15px);
-    padding: 20px;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(15px);
+  padding: 20px;
 }
-
 
 .video-box {
-    width: 100%;
-    max-width: 450px;
-    height: 85vh;
-    max-height: 750px;
-    background: black;
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 85vh;
+  max-height: 750px;
+  background: black;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
 }
-
 
 .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(0,0,0,.6);
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-
 
 .close-btn:hover {
-    background: #ff2d55;
+  background: #ff2d55;
 }
-
 
 .hidden {
-    display: none !important;
+  display: none !important;
 }
 
+@media (max-width: 1023px) {
+  .hero-section {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 1rem;
+    padding: 0;
+  }
+  .hero-left {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    padding: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    overflow: hidden;
+  }
 
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background:
+      linear-gradient(to right, rgba(245, 201, 126, 0.5), rgba(37, 39, 50, 0.9)),
+      url('/images/manish/manish.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(8px);
+    z-index: 0;
+    transform: scale(1.05);
+  }
 
-@media(max-width:1023px) {
+  .hero-left > * {
+    position: relative;
+    z-index: 1;
+  }
 
-    .hero-section {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 2.5rem;
-        padding: 5rem 5%;
-    }
+  .hero-left p,
+  .hero-left h1 {
+    text-align: center;
+    color: white;
+  }
 
+  .hero-right {
+    display: none;
+  }
 
-    .hero-left,
-    .hero-right {
-        width: 100%;
-        justify-content: center;
-    }
+  .hero-btn-container {
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-
-    .hero-left > div {
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-
-    .hero-left p {
-        text-align: center;
-    }
-
-
-    .hero-right img {
-        max-width: 320px;
-    }
-
-
-    .hero-btn-container {
-        width: 100%;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-
-    .hero-btn-container button {
-        width: 100%;
-    }
-
+  .hero-btn-container button {
+    width: 100%;
+  }
 }
 
+@media (max-width: 768px) {
+  .hero-right img {
+    aspect-ratio: 12 / 9;
+  }
 
-
-@media(max-width:768px) {
-
-    .hero-right {
-        display: none;
-    }
-
-
-    .hero-left h1 {
-        text-align: center;
-    }
-
+  .hero-left h1 {
+    text-align: center;
+  }
 }

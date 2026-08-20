@@ -1,15 +1,11 @@
-
 <div class="product-mgmt">
   <div class="desk">
-     <div class="card-title">
+    <div class="card-title">
       <h3>Manage Products</h3>
-      <a routerLink="/dashboard/products" class="view-all">
-        View All Products
-      </a>
+      <a routerLink="/dashboard/products" class="view-all"> View All Products </a>
     </div>
 
     <div class="card-content">
-
       <div class="table-header">
         <div>Product</div>
         <div>Category</div>
@@ -17,15 +13,21 @@
         <div>Actions</div>
       </div>
 
-      @for (product of productList.slice(0,5); track product._id) {
+      @for (product of productList.slice(0, 5); track product._id) {
         <div class="table-row">
-          <div class="name-image"><img [src]="product.image" [alt]="product.name" height="30px">{{ product.name }}</div>
+          <div class="name-image">
+            <img [src]="product.image" [alt]="product.name" height="30px" />{{ product.name }}
+          </div>
           <div>{{ product.category }}</div>
           <div>${{ product.price }}</div>
 
           <div class="actions">
-            <button class="edit-btn" (click)="editProduct(product._id)"><i class="fa-regular fa-pen-to-square"></i></button>
-            <button class="delete-btn" (click)="deleteProduct(product._id)"><i class="fa-regular fa-trash-can"></i></button>
+            <button class="edit-btn" (click)="editProduct(product._id)">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+            <button class="delete-btn" (click)="deleteProduct(product._id)">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
           </div>
         </div>
       } @empty {
@@ -33,17 +35,15 @@
           <app-loader></app-loader>
         </div>
       }
-
     </div>
-
   </div>
- 
-   <button (click)="navigate()" class="view-all-btn">
-            <i class="fa-solid fa-kaaba "></i>
-            <div>
-                <h3>Manage Products</h3>
-                <p>View and manage your products</p>
-            </div>
-            <i class="fa-solid fa-angle-right arrow"></i>
-        </button>     
+
+  <button (click)="navigate()" class="view-all-btn">
+    <i class="fa-solid fa-kaaba"></i>
+    <div>
+      <h3>Manage Products</h3>
+      <p>View and manage your products</p>
+    </div>
+    <i class="fa-solid fa-angle-right arrow"></i>
+  </button>
 </div>

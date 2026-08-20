@@ -1,172 +1,181 @@
 <div class="toast" *ngIf="showToast">
-    <div class="icon">
-        <i class="fa-solid fa-circle-check"></i>
-    </div>
-    <div class="success-msg">
-        <h3>Class Updated Succesfully!</h3>
-        <p>The class details have been updated. The new information is displayed below</p>
-    </div>
-    <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
+  <div class="icon">
+    <i class="fa-solid fa-circle-check"></i>
+  </div>
+  <div class="success-msg">
+    <h3>Class Updated Succesfully!</h3>
+    <p>The class details have been updated. The new information is displayed below</p>
+  </div>
+  <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
 </div>
 <div class="toast" *ngIf="showDeleteToast">
-    <div class="icon">
-        <i class="fa-solid fa-circle-check"></i>
-    </div>
-    <div class="success-msg">
-        <h3>Class has been deleted Succesfully!</h3>
-        <p>The class details have been deleted.</p>
-    </div>
-    <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
+  <div class="icon">
+    <i class="fa-solid fa-circle-check"></i>
+  </div>
+  <div class="success-msg">
+    <h3>Class has been deleted Succesfully!</h3>
+    <p>The class details have been deleted.</p>
+  </div>
+  <span (click)="closeToast()"><i class="fa-solid fa-xmark"></i></span>
 </div>
 <div class="breadcrumb">
-    <a routerLink="/dashboard/classes" ><i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem;"></i>Back to Classes</a>
+  <a routerLink="/dashboard/classes"
+    ><i class="fa-solid fa-arrow-left" style="margin-right: 0.5rem"></i>Back to Classes</a
+  >
 </div>
 <div class="top-content">
-        <div>
-            <h3>Class Details <span>(added)</span></h3>
-        </div>
-        <div class="actions">
-                <button class="delete-btn" [disabled]="!filteredClass"  (click)="deleteClass(filteredClass!._id)"><i class="fa-regular fa-trash-can"></i><p>Delete Class</p></button>
-                <button class="edit-btn"  [disabled]="!filteredClass" (click)="editClass(filteredClass!._id)"><i class="fa-regular fa-pen-to-square"></i><p>Edit Class</p></button>
-        </div>
+  <div>
+    <h3>Class Details <span>(added)</span></h3>
+  </div>
+  <div class="actions">
+    <button
+      class="delete-btn"
+      [disabled]="!filteredClass"
+      (click)="deleteClass(filteredClass!._id)"
+    >
+      <i class="fa-regular fa-trash-can"></i>
+      <p>Delete Class</p>
+    </button>
+    <button class="edit-btn" [disabled]="!filteredClass" (click)="editClass(filteredClass!._id)">
+      <i class="fa-regular fa-pen-to-square"></i>
+      <p>Edit Class</p>
+    </button>
+  </div>
 </div>
 <div class="detail-content-container" *ngIf="filteredClass">
-    <div class="left">
-        <div class="img-container">
-            <img src="/images/class/class-students.jpg" alt="Class students" height="300px">
-        </div>
-        <div class="class-detail-container">
-            <span>{{filteredClass?.level}}</span>
-            <h3>{{filteredClass?.title}}</h3>
-            <p>{{filteredClass?.description}}</p>
-            <div class="pdl-container">
-                <div class="card price-container">
-                    <div class="icon">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                    </div>
-                    <div class="detail">
-                        <p class="detail-title">Price</p>
-                        <p class="detail-p">${{ filteredClass?.price }}</p>
-                    </div>
-                </div>
-                <div class="card duration-container">
-                    <div class="icon">
-                        <i class="fa-regular fa-clock"></i>
-                    </div>
-                    <div class="detail">
-                        <p class="detail-title">Duration</p>
-                        <p class="detail-p">{{ filteredClass?.duration }}</p>
-                    </div>
-                </div>
-                <div class="card level-container">
-                    <div class="icon">
-                        <i class="fa-solid fa-layer-group"></i>
-                    </div>
-                    <div class="detail">
-                        <p class="detail-title">Level</p>
-                        <p class="detail-p">{{ filteredClass?.level }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="left">
+    <div class="img-container">
+      <img src="/images/class/class-students.jpg" alt="Class students" height="300px" />
     </div>
-    <div class="right">
-        <h3>Creation Info</h3>
-        <div class="detail">
-            <p class="detail-title">Created At</p>
-            <p>{{filteredClass.createdAt}}</p>
+    <div class="class-detail-container">
+      <span>{{ filteredClass?.level }}</span>
+      <h3>{{ filteredClass?.title }}</h3>
+      <p>{{ filteredClass?.description }}</p>
+      <div class="pdl-container">
+        <div class="card price-container">
+          <div class="icon">
+            <i class="fa-solid fa-sack-dollar"></i>
+          </div>
+          <div class="detail">
+            <p class="detail-title">Price</p>
+            <p class="detail-p">${{ filteredClass?.price }}</p>
+          </div>
         </div>
-         <div class="detail">
-            <p class="detail-title">Last Updated</p>
-            <p>{{filteredClass.updatedAt}}</p>
+        <div class="card duration-container">
+          <div class="icon">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <div class="detail">
+            <p class="detail-title">Duration</p>
+            <p class="detail-p">{{ filteredClass?.duration }}</p>
+          </div>
         </div>
-        <div class="detail">
-            <p class="detail-title">Status</p>
-            <p class="status">{{filteredClass?.status}}</p>
+        <div class="card level-container">
+          <div class="icon">
+            <i class="fa-solid fa-layer-group"></i>
+          </div>
+          <div class="detail">
+            <p class="detail-title">Level</p>
+            <p class="detail-p">{{ filteredClass?.level }}</p>
+          </div>
         </div>
-        <div class="detail">
-            <p class="detail-title">Total enrolled</p>
-            <p>20</p>
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="right">
+    <h3>Creation Info</h3>
+    <div class="detail">
+      <p class="detail-title">Created At</p>
+      <p>{{ filteredClass.createdAt }}</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Last Updated</p>
+      <p>{{ filteredClass.updatedAt }}</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Status</p>
+      <p class="status">{{ filteredClass?.status }}</p>
+    </div>
+    <div class="detail">
+      <p class="detail-title">Total enrolled</p>
+      <p>20</p>
+    </div>
+  </div>
 </div>
 <div class="bottom-content" *ngIf="filteredClass">
-    <div class="left">
-        <h3>What you will Learning</h3>
-        <div class="features">
-            @for (feature of filteredClass?.features; track $index) {
-                <p><i class="fa-regular fa-circle-check"></i>{{feature}}</p>
-            }
+  <div class="left">
+    <h3>What you will Learning</h3>
+    <div class="features">
+      @for (feature of filteredClass?.features; track $index) {
+        <p><i class="fa-regular fa-circle-check"></i>{{ feature }}</p>
+      }
+    </div>
+  </div>
+  <div class="right">
+    <div class="class-glance-card">
+      <h3>Class At a Glance</h3>
+
+      <div class="glance-grid">
+        <div class="glance-item">
+          <div class="icon green">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          <div>
+            <h4>Course Access</h4>
+            <p>Lifetime access to all course materials</p>
+          </div>
         </div>
-       
-    </div>
-    <div class="right">
-        <div class="class-glance-card">
-            <h3>Class At a Glance</h3>
 
-        <div class="glance-grid">
-            <div class="glance-item">
-                <div class="icon green">
-                    <i class="fa-solid fa-book-open-reader"></i>
-                </div>
-                <div>
-                    <h4>Course Access</h4>
-                    <p>Lifetime access to all course materials</p>
-                </div>
-            </div>
-
-            <div class="glance-item">
-                <div class="icon purple">
-                    <i class="fa-regular fa-clock"></i>
-                </div>
-                <div>
-                    <h4>Learn at Your Pace</h4>
-                    <p>Study anytime, anywhere.</p>
-                </div>
-            </div>
-
-            <div class="glance-item">
-                <div class="icon blue">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                </div>
-                <div>
-                    <h4>Resources Included</h4>
-                    <p>Notes, PDFs, exercises and supporting materials.</p>
-                </div>
-            </div>
-
-            <div class="glance-item">
-                <div class="icon orange">
-                    <i class="fa-solid fa-certificate"></i>
-                </div>
-                <div>
-                    <h4>Certificate</h4>
-                    <p>Receive a certificate after completion.</p>
-                </div>
-            </div>
-
-            <div class="glance-item">
-                <div class="icon violet">
-                    <i class="fa-solid fa-computer"></i>
-                </div>
-                <div>
-                    <h4>Multi-device Access</h4>
-                    <p>Desktop, tablet and mobile friendly.</p>
-                </div>
-            </div>
-
-            <div class="glance-item">
-                <div class="icon pink">
-                    <i class="fa-solid fa-people-group"></i>
-                </div>
-                <div>
-                    <h4>Community Support</h4>
-                    <p>Connect with instructors and fellow learners.</p>
-                </div>
-            </div>
-
+        <div class="glance-item">
+          <div class="icon purple">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <div>
+            <h4>Learn at Your Pace</h4>
+            <p>Study anytime, anywhere.</p>
+          </div>
         </div>
-    </div>
 
+        <div class="glance-item">
+          <div class="icon blue">
+            <i class="fa-solid fa-clipboard-list"></i>
+          </div>
+          <div>
+            <h4>Resources Included</h4>
+            <p>Notes, PDFs, exercises and supporting materials.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon orange">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div>
+            <h4>Certificate</h4>
+            <p>Receive a certificate after completion.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon violet">
+            <i class="fa-solid fa-computer"></i>
+          </div>
+          <div>
+            <h4>Multi-device Access</h4>
+            <p>Desktop, tablet and mobile friendly.</p>
+          </div>
+        </div>
+
+        <div class="glance-item">
+          <div class="icon pink">
+            <i class="fa-solid fa-people-group"></i>
+          </div>
+          <div>
+            <h4>Community Support</h4>
+            <p>Connect with instructors and fellow learners.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
