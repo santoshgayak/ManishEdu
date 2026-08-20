@@ -68,16 +68,14 @@ export class CustomerInfo {
       )
       .subscribe({
         next: (res) => {
-          console.log('THIS IS RES,', res);
-
-          const customerId = res.data.customer._id;
-
-          console.log('CUSTOMER ID:', customerId);
+          console.log('🔥 FULL CUSTOMER RESPONSE:', JSON.stringify(res, null, 2));
+          const customer = res.data;
+          console.log('CUSTOMER:', customer);
 
           this.router.navigate(['/payment'], {
             queryParams: {
               flow: 'product',
-              customerId: customerId,
+              customerId: customer.customer._id,
             },
           });
         },

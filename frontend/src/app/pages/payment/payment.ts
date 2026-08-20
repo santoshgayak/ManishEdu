@@ -52,7 +52,7 @@ export class Payment {
       if (this.classId) {
         this.stripeCheckoutService.proceedToPayment(this.classId, this.studentId);
       } else {
-        this.checkoutService.proceedToPayment();
+        this.checkoutService.proceedToPayment(this.customerId);
       }
     });
   }

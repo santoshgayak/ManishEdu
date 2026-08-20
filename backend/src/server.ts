@@ -74,11 +74,12 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 const myDomain = "http://localhost:4200";
 
 app.post("/create-checkout-session", async (req, res) => {
-  const { items } = req.body;
+  const { items, customerId } = req.body;
   console.log("ITEM : ", items);
-  try {
-    console.log("🔥 Create checkout session hit..daata", req.body);
+  console.log("CUSTOMER ID : ", customerId);
 
+  try {
+    console.log("🔥 Checkout request:", req.body);
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded_page",
       mode: "payment",
