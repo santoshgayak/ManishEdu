@@ -128,8 +128,10 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 app.post("/create-checkout-session1", async (req, res) => {
   const { id, customerId } = req.body;
+  console.log("CUSTOMER ID IS ", customerId);
   const dataService = new DataService();
   const course = await dataService.getOne("courses", { id: id });
+  console.log("COURSE IS :", course);
   if (!course) {
     return res.status(404).json({
       error: "Course not found",
@@ -139,8 +141,8 @@ app.post("/create-checkout-session1", async (req, res) => {
     const orderPayload = {
       customerId,
       itemId: course.id,
-      itemName: course.name,
-      quantity: course.quantity,
+      itemName: course.title,
+      quantity: 1,
       unitPrice: course.price,
       totalPrice: course.price,
       paymentStatus: "Pending",
@@ -161,6 +163,8 @@ app.post("/create-checkout-session1", async (req, res) => {
       return_url:
         "https://manish-edu.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
     });
+
+    orderPayload.stripeSessionId = session.id;
 
     const result = await dataService.saveData("orders", orderPayload);
 
