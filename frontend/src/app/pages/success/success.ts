@@ -10,10 +10,9 @@ import { CartService } from '../../services/cart/cart.service';
   standalone: true,
   imports: [CommonModule, Footer],
   templateUrl: './success.html',
-  styleUrls: ['./success.css']
+  styleUrls: ['./success.css'],
 })
 export class Success implements OnInit {
-
   today = new Date();
   formatted = this.today.toLocaleDateString('en-GB');
 
@@ -39,11 +38,10 @@ export class Success implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private cdr: ChangeDetectorRef,
-    private cartService: CartService
+    private cartService: CartService,
   ) {}
 
   ngOnInit(): void {
-
     // Get session id from URL
     this.sessionId = this.route.snapshot.queryParamMap.get('session_id') || '';
 
@@ -53,38 +51,33 @@ export class Success implements OnInit {
     }
 
     // Fetch Stripe session from backend
-    this.http.get<any>(`https://manisheduserver.onrender.com/session-status?session_id=${this.sessionId}`).subscribe({
-      next: (res) => {
-        console.log('✅ Session Data:', res);
+    this.http
+      .get<any>(`https://manisheduserver.onrender.com/session-status?session_id=${this.sessionId}`)
+      .subscribe({
+        next: (res) => {
+          console.log('✅ Session Data:', res);
 
-        this.paymentStatus = res.paymentStatus;
-        this.paymentIntentId = res.paymentIntentId;
-        this.tID=this.paymentIntentId;
+          this.paymentStatus = res.paymentStatus;
+          this.paymentIntentId = res.paymentIntentId;
+          this.tID = this.paymentIntentId;
+          this.amount = (res.amount / 100).toFixed(2);
+          this.currency = res.currency;
+          this.customerEmail = res.customerEmail;
+          this.cardBrand = res.cardBrand;
+          this.cardLast4 = res.cardLast4;
+          this.chargeId = res.chargeId;
+          this.receiptUrl = res.receiptUrl;
+          this.cartService.clearCart();
+          this.cdr.detectChanges();
+        },
 
-        this.amount = (res.amount / 100).toFixed(2);
-        this.currency = res.currency;
-
-        this.customerEmail = res.customerEmail;
-
-        this.cardBrand = res.cardBrand;
-        this.cardLast4 = res.cardLast4;
-
-        this.chargeId = res.chargeId;
-        this.receiptUrl = res.receiptUrl;
-        
-        this.cartService.clearCart(); 
-
-        this.cdr.detectChanges();
-      },
-
-      error: (err) => {
-        console.error('❌ Error fetching session:', err);
-      }
-    });
+        error: (err) => {
+          console.error('❌ Error fetching session:', err);
+        },
+      });
   }
 
   downloadReceipt() {
-
     const pdf = new jsPDF('p', 'mm', 'a4');
 
     // HEADER
@@ -125,12 +118,9 @@ export class Success implements OnInit {
     pdf.setFontSize(10);
     pdf.setTextColor(100);
 
-    pdf.text(
-      'Thank you for your purchase. For support contact support@email.com',
-      105,
-      270,
-      { align: 'center' }
-    );
+    pdf.text('Thank you for your purchase. For support contact support@email.com', 105, 270, {
+      align: 'center',
+    });
 
     pdf.save(`receipt_${this.paymentIntentId}.pdf`);
   }

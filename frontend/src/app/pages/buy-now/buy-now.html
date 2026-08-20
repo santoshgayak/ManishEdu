@@ -1,103 +1,108 @@
-    <section class="cart-section">
-        <div class="cart-container">
-           <div class="cart-card-container">
-            @if (cartItems.length > 0) {
+<section class="cart-section">
+  <div class="cart-container">
+    <div class="cart-card-container">
+      @if (cartItems.length > 0) {
+        @for (item of cartItems; track item.id) {
+          <div class="cart-card">
+            <img [src]="item.image" alt="Sarangi" class="cart-image" />
 
-                @for (item of cartItems; track item.id) {
-                    <div class="cart-card">
-                        <img [src]="item.image" alt="Sarangi" class="cart-image">
+            <div class="cart-info">
+              <div class="top">
+                <h3 class="cart-name">{{ item.name }}</h3>
+                <p>Stock: {{ item.stock }}</p>
+                <p>
+                  <i class="fa-solid fa-circle-check"></i>
+                  {{ item.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+                </p>
+              </div>
 
-                        <div class="cart-info">
-                            <div class="top">
-                                <h3 class="cart-name">{{ item.name }}</h3>
-                                <p><i class="fa-solid fa-circle-check"></i> In Stock</p>
-                            </div>
+              <p class="cart-description">{{ item.description }}</p>
 
-                            <p class="cart-description">{{ item.description }}</p>
+              <p class="cart-price">
+                ${{ item.price * item.quantity }}
+                <span>(${{ item.price }} ea)</span>
+              </p>
 
-                            <p class="cart-price">
-                                ${{ item.price * item.quantity }}
-                                <span>(${{ item.price }} ea)</span>
-                            </p>
-
-                            <div class="buyNowBtnsContainer">
-                                <div class="buyNow">
-                                    <button class="minusBtn" (click)="subtractItem(item.id)">-</button>
-                                    <p>{{ item.quantity }}</p>
-                                    <button class="addBtn" (click)="addItem(item.id)">+</button>
-                                </div>
-
-                                <button class=" btn deleteBtn" (click)="deleteItemFromCart(item.id)">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                }
-
-            } @else {
-
-                <div class="empty-cart">
-                    <h2>Your cart is empty</h2>
-                        <a  class="btn" routerLink="/shop" routerLinkActive="active">Shop</a>
+              <div class="buyNowBtnsContainer">
+                <div class="buyNow">
+                  <button class="minusBtn" (click)="subtractItem(item.id)">-</button>
+                  <p>{{ item.quantity }}</p>
+                  <button class="addBtn" (click)="addItem(item.id)">+</button>
                 </div>
 
-            }
-        </div>
-            <div class="cart-payment">
-                <div class="order-summary-container">
-                    <div class="summaryTop">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <h2 class="cart-title">Your Cart Summary</h2>
-                        <p>{{cartCount}}items</p>
-                    </div>
-                    
-                    <div class="subtotal">
-                        <p>Subtotal</p>
-                        <p>${{subTotal}}</p>
-                    </div>
-                    <div class="discount">
-                        <p>Discount</p>
-                        <p>-${{discount}}</p>
-                    </div>
-                    
-                    <div class="tax">
-                        <p>Tax (10%)</p>
-                        <p>${{tax}}</p>
-                    </div>
-                    
-                     <div class="orderTotal">
-                        <p>Order Total</p>
-                        <p>${{orderTotal}}</p>
-                    </div>
-                    <div class="savingNote">
-                        <i class="fa-solid fa-sack-dollar"></i>
-                        <p><span>You saved ${{discount}} on this order.</span><br>Great Choice! Enjoy your music</p>
-                    </div>
-                     <div>
-                        <button (click)="proceedToPayment()"type="button" class="btn processToPaymentBtn"><i class="fa-regular fa-circle-right"></i>Proceed to payment</button>
-                    </div>
-
-                    <div class="securePayment">
-                        <div>
-                            <i class="fa-brands fa-expeditedssl"></i>
-                            <p>Secure SSL <br>encryption</p>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-arrow-rotate-left"></i>
-                            <p>Easy<br>Returns</p>
-                        </div>
-                        <div>
-                            <i class="fa-solid fa-headset"></i>
-                            <p>24/7<br>Support</p>
-                        </div>
-                    </div>    
-                    <div class="secureConfirmation">
-                        <i class="fa-brands fa-expeditedssl"></i>
-                        <p>You paymemnt is safe and secure.</p>
-                    </div>
-                </div>
+                <button class="btn deleteBtn" (click)="deleteItemFromCart(item.id)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
             </div>
+          </div>
+        }
+      } @else {
+        <div class="empty-cart">
+          <h2>Your cart is empty</h2>
+          <a class="btn" routerLink="/shop" routerLinkActive="active">Shop</a>
         </div>
-    </section>
+      }
+    </div>
+    <div class="cart-payment">
+      <div class="order-summary-container">
+        <div class="summaryTop">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <h2 class="cart-title">Your Cart Summary</h2>
+          <p>{{ cartCount }}items</p>
+        </div>
+
+        <div class="subtotal">
+          <p>Subtotal</p>
+          <p>${{ subTotal }}</p>
+        </div>
+        <div class="discount">
+          <p>Discount</p>
+          <p>-${{ discount }}</p>
+        </div>
+
+        <div class="tax">
+          <p>Tax (10%)</p>
+          <p>${{ tax }}</p>
+        </div>
+
+        <div class="orderTotal">
+          <p>Order Total</p>
+          <p>${{ orderTotal }}</p>
+        </div>
+        <div class="savingNote">
+          <i class="fa-solid fa-sack-dollar"></i>
+          <p>
+            <span>You saved ${{ discount }} on this order.</span><br />Great Choice! Enjoy your
+            music
+          </p>
+        </div>
+        <div>
+          <button (click)="proceedToPayment()" type="button" class="btn processToPaymentBtn">
+            <i class="fa-regular fa-circle-right"></i>Proceed to payment
+          </button>
+        </div>
+
+        <div class="securePayment">
+          <div>
+            <i class="fa-brands fa-expeditedssl"></i>
+            <p>Secure SSL <br />encryption</p>
+          </div>
+          <div>
+            <i class="fa-solid fa-arrow-rotate-left"></i>
+            <p>Easy<br />Returns</p>
+          </div>
+          <div>
+            <i class="fa-solid fa-headset"></i>
+            <p>24/7<br />Support</p>
+          </div>
+        </div>
+        <div class="secureConfirmation">
+          <i class="fa-brands fa-expeditedssl"></i>
+          <p>You paymemnt is safe and secure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <app-footer></app-footer>

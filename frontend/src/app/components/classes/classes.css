@@ -3,6 +3,7 @@
     padding: 6rem 5%;
     background: #fff;
     box-sizing: border-box;
+    background-color: rgb(35, 124, 176)
 }
 
 .section-content {
@@ -15,7 +16,7 @@
 .sectionTopLine {
     font-size: 0.9rem;
     font-weight: 700;
-    color: orange;
+    color: orange !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 1rem;
@@ -32,6 +33,7 @@
     font-size: clamp(1rem, 1.3vw, 1.2rem);
     color: var(--text-muted);
     line-height: 1.8;
+    color: white;
 }
 
 .class-cards-container {

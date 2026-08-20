@@ -126,8 +126,6 @@ app.post('/create-checkout-session1', async (req, res) => {
           quantity: 1
         }
       ],
-      
-      
       return_url: 'https://manish-edu-git-main-manish-edu.vercel.app/success?session_id={CHECKOUT_SESSION_ID}',
     });
 
@@ -172,18 +170,13 @@ app.get('/session-status', async (req: Request, res: Response) => {
 
         res.json({
         sessionId: session.id,
-
         paymentIntentId: paymentIntent.id,
         paymentStatus: paymentIntent.status,
-
         amount: paymentIntent.amount,
         currency: paymentIntent.currency,
-
         customerEmail: session.customer_details?.email,
-
         cardBrand: paymentMethod.card?.brand,
         cardLast4: paymentMethod.card?.last4,
-
         chargeId: charge.id,
         receiptUrl: charge.receipt_url
         });

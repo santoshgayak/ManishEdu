@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CartItem } from '../../models/cart/cart-item.model';
 import { CartService } from '../../services/cart/cart.service'
-import { PRODUCTS } from '../../data/products';
 import { Product} from '../..//models/product/product.model'
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -89,7 +88,8 @@ export class Products {
       price: product.price,
       description:product.description,
       quantity: 1,
-      image:product.image
+      image:product.image,
+      stock:product.stock
     });
   }
 }

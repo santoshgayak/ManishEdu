@@ -1,3 +1,4 @@
+/*
 import { Product } from "../models/product/product.model";
 export const PRODUCTS: Product[] = [
   {
@@ -25,3 +26,4 @@ export const PRODUCTS: Product[] = [
     description: 'High-quality madal designed for both beginners and professional musicians.'
   }
 ];
+*/

@@ -5,7 +5,6 @@ import { Footer } from "../../components/footer/footer";
 import { CartService } from '../../services/cart/cart.service'
 import { CommonModule } from '@angular/common';
 import { CartItem } from '../../models/cart/cart-item.model';
-import { PRODUCTS } from '../../data/products';
 import { Product} from '../..//models/product/product.model'
 import { Products } from '../../components/products/products';
 import { HttpBackend, HttpClient } from '@angular/common/http';
