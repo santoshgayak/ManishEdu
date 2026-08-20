@@ -203,9 +203,10 @@ app.get("/session-status", async (req: Request, res: Response) => {
     const paymentMethod = paymentIntent.payment_method as Stripe.PaymentMethod;
 
     const charge = paymentIntent.latest_charge as Stripe.Charge;
+
+    const dataService = new DataService();
     console.log("💳 PAYMENT INTENT STATUS:", paymentIntent.status);
     if (paymentIntent.status === "succeeded") {
-      const dataService = new DataService();
       const result = await dataService.updateOne(
         "orders",
         {
@@ -220,6 +221,7 @@ app.get("/session-status", async (req: Request, res: Response) => {
       console.log("💾 ORDER UPDATED:", result);
     } else {
       console.log("DIDNOT UPDATE STATUS");
+      dataService.deleteOrder("order", sessionId);
     }
 
     res.json({

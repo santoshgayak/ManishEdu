@@ -43,23 +43,26 @@ export class DataService {
   }
   async deleteProduct(collection: string, id: string) {
     const db = getDB();
-
     console.log("Database:", db.databaseName);
     console.log("Collection:", collection);
     console.log("Delete ID received:", id);
-
     const before = await db.collection(collection).findOne({
       _id: new ObjectId(id),
     });
-
     console.log("Document found before delete:", before);
-
     const result = await db.collection(collection).deleteOne({
       _id: new ObjectId(id),
     });
-
     console.log("Delete result:", result);
+    return result;
+  }
 
+  async deleteOrder(collection: string, stripeSessionId: string) {
+    const db = getDB();
+    const result = await db.collection(collection).deleteOne({
+      stripeSessionId: stripeSessionId,
+    });
+    console.log("Deleted order result:", result);
     return result;
   }
 }
