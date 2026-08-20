@@ -25,7 +25,7 @@ export class StripeCheckoutService {
     });
   }
 
-  async proceedToPayment(id: any) {
+  async proceedToPayment(id: any, customerId: any) {
     this.stripe = await this.stripePromise;
     if (!this.stripe) {
       console.error('Stripe failed to load...');
@@ -47,6 +47,7 @@ export class StripeCheckoutService {
             },
             body: JSON.stringify({
               id: id,
+              customerId: customerId,
             }),
           });
 

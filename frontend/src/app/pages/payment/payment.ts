@@ -50,7 +50,7 @@ export class Payment {
     this.changeDetector.detectChanges();
     requestAnimationFrame(() => {
       if (this.classId) {
-        this.stripeCheckoutService.proceedToPayment(this.classId);
+        this.stripeCheckoutService.proceedToPayment(this.classId, this.studentId);
       } else {
         this.checkoutService.proceedToPayment();
       }

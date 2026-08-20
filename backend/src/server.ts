@@ -105,8 +105,8 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 app.post("/create-checkout-session1", async (req, res) => {
-  const { id } = req.body;
-
+  const { id, customerId } = req.body;
+  console.log("from session1 checkout CUSTOMER ID :", customerId);
   try {
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded_page",
