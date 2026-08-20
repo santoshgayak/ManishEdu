@@ -17,6 +17,12 @@ export class DataService {
     const db = getDB();
     return await db.collection(collection).findOne(filter);
   }
+  async updateOne(collection: string, filter: object, update: object) {
+    const db = getDB();
+    return await db.collection(collection).updateOne(filter, {
+      $set: update,
+    });
+  }
   async saveData(collection: string, updatedData: any) {
     const db = getDB();
     const { _id, ...payload } = updatedData;

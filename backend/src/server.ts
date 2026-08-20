@@ -18,7 +18,7 @@ import getDeleteClassRoutes from "./routes/deleteClass.routes.js";
 import getSaveProductRoutes from "./routes/saveProduct.routes.js";
 import getDeleteProductRoutes from "./routes/deleteProduct.routes.js";
 import { verifyToken } from "./middleware/auth.middleware.js";
-
+import { DataService } from "./services/data.service.js";
 const app = express();
 
 // Middleware
@@ -75,11 +75,40 @@ const myDomain = "http://localhost:4200";
 
 app.post("/create-checkout-session", async (req, res) => {
   const { items, customerId } = req.body;
-  console.log("ITEM : ", items);
-  console.log("CUSTOMER ID : ", customerId);
+
+  console.log("ITEMS:", items);
+  console.log("CUSTOMER ID:", customerId);
 
   try {
-    console.log("🔥 Checkout request:", req.body);
+    // 1. Build the order payload
+    const orderPayload = {
+      customerId,
+
+      items: items.map((item: any) => ({
+        itemId: item.id,
+        itemName: item.name,
+        quantity: item.quantity,
+        unitPrice: item.price,
+        totalPrice: item.price * item.quantity,
+      })),
+
+      totalPrice: items.reduce(
+        (total: number, item: any) => total + item.price * item.quantity,
+        0,
+      ),
+
+      paymentStatus: "Pending",
+
+      stripeSessionId: "",
+
+      createdAt: new Date(),
+    };
+
+    console.log("📦 ORDER PAYLOAD:", orderPayload);
+
+    // 2. Create Stripe Checkout Session
+    console.log("🔥 Creating Stripe Checkout Session...");
+
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded_page",
       mode: "payment",
@@ -88,23 +117,39 @@ app.post("/create-checkout-session", async (req, res) => {
         price: item.id,
         quantity: item.quantity || 1,
       })),
+
       return_url:
         "https://manish-edu.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
     });
 
+    console.log("✅ Session created:", session.id);
+
+    // 3. Add Stripe Session ID to our order
+    orderPayload.stripeSessionId = session.id;
+
+    console.log("📦 FINAL ORDER:", orderPayload);
+    const dataService = new DataService();
+
+    const result = await dataService.saveData("orders", orderPayload);
+
+    console.log("💾 ORDER SAVED:", result);
+    // 4. Make sure Stripe returned a client secret
     if (!session.client_secret) {
       throw new Error("Missing client_secret from Stripe session");
     }
 
+    // 5. Send client secret back to Angular
     res.json({
       clientSecret: session.client_secret,
     });
   } catch (error: any) {
     console.error("❌ Stripe session error:", error.message);
-    res.status(500).json({ error: error.message });
+
+    res.status(500).json({
+      error: error.message,
+    });
   }
 });
-
 app.post("/create-checkout-session1", async (req, res) => {
   const { id, customerId } = req.body;
   console.log("from session1 checkout CUSTOMER ID :", customerId);
@@ -158,6 +203,24 @@ app.get("/session-status", async (req: Request, res: Response) => {
     const paymentMethod = paymentIntent.payment_method as Stripe.PaymentMethod;
 
     const charge = paymentIntent.latest_charge as Stripe.Charge;
+    console.log("💳 PAYMENT INTENT STATUS:", paymentIntent.status);
+    if (paymentIntent.status === "succeeded") {
+      const dataService = new DataService();
+      const result = await dataService.updateOne(
+        "orders",
+        {
+          stripeSessionId: sessionId,
+        },
+        {
+          paymentStatus: "Paid",
+          paidAt: new Date(),
+        },
+      );
+
+      console.log("💾 ORDER UPDATED:", result);
+    } else {
+      console.log("DIDNOT UPDATE STATUS");
+    }
 
     res.json({
       sessionId: session.id,
