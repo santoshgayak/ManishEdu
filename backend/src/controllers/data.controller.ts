@@ -5,6 +5,7 @@ import { collectionList } from "../config/collection-names.js";
 export const getData = async (req: Request, res: Response) => {
   const service = new DataService();
   const collection = req.params.collection.toString().toLowerCase();
+  console.log(" collecction: ", collection);
   if (!collectionList.includes(collection)) {
     return res.status(400).json({
       success: false,
