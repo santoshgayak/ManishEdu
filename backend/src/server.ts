@@ -11,6 +11,7 @@ import getDataRoutes from "./routes/data.routes.js";
 import { connectDB } from "./db/mongo.js";
 import loginRoutes from "./routes/login.routes.js";
 import getOrderRoutes from "./routes/order.routes.js";
+import getCustomerRoutes from "./routes/customers.routes.js";
 import getClassRoutes from "./routes/class.routes.js";
 import getProductRoutes from "./routes/product.routes.js";
 import getSaveClassRoutes from "./routes/saveClass.routes.js";
@@ -50,6 +51,8 @@ app.use("/api/save-student-info", saveStudentInfoRoutes);
 app.use("/api/data", getDataRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/data/order", verifyToken, getOrderRoutes);
+app.use("/api/data/customer", verifyToken, getOrderRoutes);
+
 app.use("/api/data/class", verifyToken, getClassRoutes);
 app.use("/api/data/product", verifyToken, getProductRoutes);
 app.use("/api/save/class", verifyToken, getSaveClassRoutes);

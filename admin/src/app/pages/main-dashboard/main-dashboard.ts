@@ -11,6 +11,7 @@ import { ManageProducts } from '../../components/manage-products/manage-products
 import { Loader } from '../../components/loader/loader';
 import { OrderType } from '../../model/order-type.model';
 import { PaymentStatus } from '../../model/payment-status.model';
+import { Products } from '../products/products';
 
 interface Order {
   _id?: string;
@@ -44,6 +45,11 @@ export class MainDashboard {
   private resizeObserver!: ResizeObserver;
 
   orderList: Order[] = [];
+
+  total_orders = 0;
+  total_enrollments = 0;
+  total_revenue = 0;
+  total_products = 0;
 
   total_revenue_period = 0;
   enrollment_total_period = 0;
@@ -88,10 +94,36 @@ export class MainDashboard {
   }
 
   private loadOrders(): void {
+    this.dataService.getData('product', 'products').subscribe({
+      next: (res) => {
+        const productList = res.data;
+        this.total_products = productList.length;
+        this.cdr.detectChanges();
+      },
+    });
+    this.dataService.getData('customers', 'customers').subscribe({
+      next: (res) => {
+        const customersList = res.data;
+        console.log('Customer Listis :::: ', customersList);
+        this.cdr.detectChanges();
+      },
+    });
+
     this.dataService.getData('order', 'orders').subscribe({
       next: (res: any) => {
         this.orderList = res.data;
-        console.log('Reciever orderlist', this.orderList);
+        console.log(this.orderList);
+        this.total_orders = this.orderList.length;
+
+        this.total_enrollments = this.orderList.filter(
+          (order) => order.type === 'Class' && order.paymentStatus === 'Paid',
+        ).length;
+        this.total_revenue = this.orderList.reduce(
+          (total, order) =>
+            total + order.items.reduce((orderTotal, item) => orderTotal + item.totalPrice, 0),
+          0,
+        );
+
         // Calculate revenue metrics for different time periods
         const revenueMetrics = this.revenueAnalyticsService.calculateThisYearRevenue(
           this.orderList,
@@ -165,8 +197,7 @@ export class MainDashboard {
     if (!this.myChart) return;
 
     const option: echarts.EChartsOption = {
-      color: ['#5470e6', '#b7dd32'],
-
+      color: ['#8B5CF6', '#22D3EE'],
       tooltip: {
         trigger: 'item',
         formatter: '{b}<br/>${c} ({d}%)',

@@ -11,7 +11,7 @@
         </div>
         <div class="card-content">
           <p>Total Orders</p>
-          <p class="number">28</p>
+          <p class="number">{{ total_orders }}</p>
         </div>
       </div>
       <div class="summary-card">
@@ -20,7 +20,7 @@
         </div>
         <div class="card-content">
           <p>Total Revenue</p>
-          <p class="number">$1238</p>
+          <p class="number">{{ total_revenue }}</p>
         </div>
       </div>
       <div class="summary-card">
@@ -28,8 +28,8 @@
           <i class="fa-solid fa-user-group"></i>
         </div>
         <div class="card-content">
-          <p>Total Student</p>
-          <p class="number">308</p>
+          <p>Total Enrollments</p>
+          <p class="number">{{ total_enrollments }}</p>
         </div>
       </div>
       <div class="summary-card">
@@ -37,8 +37,8 @@
           <i class="fa-solid fa-kaaba"></i>
         </div>
         <div class="card-content">
-          <p>Total Products</p>
-          <p class="number">12</p>
+          <p>Total Product SKUs</p>
+          <p class="number">{{ total_products }}</p>
         </div>
       </div>
     </div>
@@ -57,13 +57,12 @@
             <div>Type</div>
             <div>Item</div>
             <div>Amount</div>
-            <div>Status</div>
             <div>Date</div>
           </div>
           @for (order of orderList.slice(0, 4); track order._id) {
             <div class="table-row">
               <div>#{{ order.orderId }}</div>
-              <div>{{ order.items[0].itemName }}</div>
+              <div>{{ order._id }}</div>
               <div class="type">
                 <p [ngClass]="{ class: order.type === 'Class', product: order.type === 'Product' }">
                   {{ order.type }}
@@ -71,12 +70,11 @@
               </div>
               @for (item of order.items; track $index) {
                 <div>{{ item.itemName }}</div>
+              }
+              @for (item of order.items; track $index) {
                 <div>${{ item.totalPrice }}</div>
               }
 
-              <div class="status">
-                <p [class]="order.paymentStatus?.toLowerCase()">{{ order.paymentStatus }}</p>
-              </div>
               <div>{{ order.createdAt | date: 'mediumDate' }}</div>
             </div>
           } @empty {
