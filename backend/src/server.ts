@@ -210,9 +210,9 @@ app.get("/session-status", async (req: Request, res: Response) => {
         expand: ["payment_method", "latest_charge"],
       },
     );
-    const paymentMethod = paymentIntent.payment_method as Stripe.PaymentMethod;
-    const charge = paymentIntent.latest_charge as Stripe.Charge;
-
+    const paymentMethod =
+      paymentIntent.payment_method as Stripe.PaymentMethod | null;
+    const charge = paymentIntent.latest_charge as Stripe.Charge | null;
     const dataService = new DataService();
 
     console.log("💳 PAYMENT STATUS:", paymentIntent.status);
@@ -247,10 +247,12 @@ app.get("/session-status", async (req: Request, res: Response) => {
       amount: paymentIntent.amount,
       currency: paymentIntent.currency,
       customerEmail: session.customer_details?.email,
-      cardBrand: paymentMethod.card?.brand,
-      cardLast4: paymentMethod.card?.last4,
-      chargeId: charge.id,
-      receiptUrl: charge.receipt_url,
+
+      cardBrand: paymentMethod?.card?.brand ?? "",
+      cardLast4: paymentMethod?.card?.last4 ?? "",
+
+      chargeId: charge?.id ?? "",
+      receiptUrl: charge?.receipt_url ?? "",
     });
   } catch (error) {
     console.error("Session fetch error:", error);
