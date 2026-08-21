@@ -194,6 +194,7 @@ app.post("/create-checkout-session1", async (req, res) => {
 // GET SESSION STATUS
 
 app.get("/session-status", async (req: Request, res: Response) => {
+  let newOrderId = "";
   try {
     const sessionId = req.query.session_id as string;
 
@@ -217,7 +218,7 @@ app.get("/session-status", async (req: Request, res: Response) => {
     console.log("💳 PAYMENT STATUS:", paymentIntent.status);
 
     if (paymentIntent.status === "succeeded") {
-      const newOrderId = await dataService.getNextOrderId();
+      newOrderId = await dataService.getNextOrderId();
 
       console.log("🆔 NEW ORDER ID:", newOrderId);
 
@@ -240,6 +241,7 @@ app.get("/session-status", async (req: Request, res: Response) => {
 
     res.json({
       sessionId: session.id,
+      orderId: newOrderId,
       paymentIntentId: paymentIntent.id,
       paymentStatus: paymentIntent.status,
       amount: paymentIntent.amount,

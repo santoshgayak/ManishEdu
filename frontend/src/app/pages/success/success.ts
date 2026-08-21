@@ -17,7 +17,7 @@ export class Success implements OnInit {
   formatted = this.today.toLocaleDateString('en-GB');
 
   sessionId = '';
-
+  orderId = '';
   paymentIntentId = '';
   paymentStatus = '';
 
@@ -58,6 +58,7 @@ export class Success implements OnInit {
           console.log('✅ Session Data:', res);
 
           this.paymentStatus = res.paymentStatus;
+          this.orderId = res.orderId;
           this.paymentIntentId = res.paymentIntentId;
           this.tID = this.paymentIntentId;
           this.amount = (res.amount / 100).toFixed(2);
