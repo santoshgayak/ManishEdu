@@ -11,9 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 
 interface SaveStudentResponse {
   success: boolean;
-  alreadyExists: boolean;
+  message: string;
   data: {
-    _id: string;
+    alreadyExists: boolean;
+    data: {
+      _id: string;
+      success: boolean;
+    };
   };
 }
 
@@ -83,7 +87,8 @@ export class Enroll {
           console.log('Saved student information succesfully', res);
           console.log('✅ API success:', res);
 
-          const studentId = res.data._id;
+          const studentId = res.data.data._id;
+          console.log(' STUDENT IN AFTER SAVING :::', studentId);
           this.router.navigate(['/payment'], {
             queryParams: {
               flow: 'class',

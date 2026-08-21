@@ -59,7 +59,6 @@ export class Classes {
             case 'Intermediate Sarangi Skills':
               this.intermediate_sarangi_revenue += price;
               console.log(this.intermediate_sarangi_revenue);
-
               break;
 
             case 'Advanced Sarangi Mastery':

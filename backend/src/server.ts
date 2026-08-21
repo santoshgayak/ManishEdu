@@ -19,6 +19,7 @@ import getSaveProductRoutes from "./routes/saveProduct.routes.js";
 import getDeleteProductRoutes from "./routes/deleteProduct.routes.js";
 import { verifyToken } from "./middleware/auth.middleware.js";
 import { DataService } from "./services/data.service.js";
+import { error } from "node:console";
 const app = express();
 
 // Middleware
@@ -78,6 +79,7 @@ app.post("/create-checkout-session", async (req, res) => {
   try {
     const orderPayload = {
       customerId,
+      orderId: "",
       items: items.map((item: any) => ({
         itemId: item.id,
         itemName: item.name,
@@ -90,6 +92,7 @@ app.post("/create-checkout-session", async (req, res) => {
         (total: number, item: any) => total + item.price * item.quantity,
         0,
       ),
+      type: "Product",
       paymentStatus: "Pending",
       stripeSessionId: "",
       createdAt: new Date(),
@@ -140,11 +143,18 @@ app.post("/create-checkout-session1", async (req, res) => {
   try {
     const orderPayload = {
       customerId,
-      itemId: course.id,
-      itemName: course.title,
-      quantity: 1,
-      unitPrice: course.price,
-      totalPrice: course.price,
+      orderId: "",
+      items: [
+        {
+          itemId: course.id,
+          itemName: course.title,
+          quantity: 1,
+          unitPrice: course.price,
+          totalPrice: course.price,
+        },
+      ],
+
+      type: "Class",
       paymentStatus: "Pending",
       stripeSessionId: "",
       createdAt: new Date(),
@@ -203,13 +213,21 @@ app.get("/session-status", async (req: Request, res: Response) => {
     const charge = paymentIntent.latest_charge as Stripe.Charge;
 
     const dataService = new DataService();
+
+    console.log("💳 PAYMENT STATUS:", paymentIntent.status);
+
     if (paymentIntent.status === "succeeded") {
+      const newOrderId = await dataService.getNextOrderId();
+
+      console.log("🆔 NEW ORDER ID:", newOrderId);
+
       const result = await dataService.updateOne(
         "orders",
         {
           stripeSessionId: sessionId,
         },
         {
+          orderId: newOrderId,
           paymentStatus: "Paid",
           paidAt: new Date(),
         },
@@ -217,7 +235,7 @@ app.get("/session-status", async (req: Request, res: Response) => {
 
       console.log("💾 ORDER UPDATED:", result);
     } else {
-      dataService.deleteOrder("order", sessionId);
+      console.log("❌ PAYMENT NOT SUCCESSFUL:", paymentIntent.status);
     }
 
     res.json({

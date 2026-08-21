@@ -1,6 +1,6 @@
 import { getDB } from "../db/mongo.js";
 import { ObjectId } from "mongodb";
-
+import { Document } from "mongodb";
 export class DataService {
   constructor() {
     console.log("DataService from data.service.ts loaded");
@@ -16,6 +16,15 @@ export class DataService {
   async getOne(collection: string, filter: object) {
     const db = getDB();
     return await db.collection(collection).findOne(filter);
+  }
+  async getLastOrder(collection: string) {
+    const db = getDB();
+    return await db.collection(collection).findOne(
+      {},
+      {
+        sort: { createdAt: -1 },
+      },
+    );
   }
   async updateOne(collection: string, filter: object, update: object) {
     const db = getDB();
@@ -64,5 +73,28 @@ export class DataService {
     });
     console.log("Deleted order result:", result);
     return result;
+  }
+
+  async getNextOrderId() {
+    const db = getDB();
+
+    const counters = db.collection<{ _id: string; sequence: number }>(
+      "counters",
+    );
+
+    const result = await counters.findOneAndUpdate(
+      { _id: "orders" },
+      { $inc: { sequence: 1 } },
+      {
+        upsert: true,
+        returnDocument: "after",
+      },
+    );
+
+    if (!result) {
+      throw new Error("Could not generate order ID");
+    }
+
+    return `ORD-${result.sequence}`;
   }
 }

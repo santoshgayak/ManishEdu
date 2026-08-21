@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './hero.css',
 })
 export class Hero {
-  openVideo() {
-    const modal = document.getElementById('videoModal');
-    if (modal) {
-      modal.classList.remove('hidden');
-    }
+  isVideoOpen = false;
+
+  openVideo(): void {
+    this.isVideoOpen = true;
+    document.body.style.overflow = 'hidden';
   }
 
   //close the video modal
