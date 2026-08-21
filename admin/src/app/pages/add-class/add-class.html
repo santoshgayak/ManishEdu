@@ -1,74 +1,140 @@
-<div class="breadcrumb">
+<div class="breadcrumb" aria-label="Breadcrumb">
   <a routerLink="/dashboard">Dashboard</a>
-  <span>></span>
-  <a routerLink="/dashboard/classes">Class</a>
-  <span>></span>
-  <span>Add Class</span>
+  <span aria-hidden="true">></span>
+
+  <a routerLink="/dashboard/classes">Classes</a>
+  <span aria-hidden="true">></span>
+
+  <span aria-current="page">Add Class</span>
 </div>
 
 <div class="intro">
   <div class="title">
-    <h3>Add a new class</h3>
+    <h1>Add a new class</h1>
     <p>Create, update and manage all sarangi classes</p>
   </div>
+
   <div class="btns">
-    <button class="addNewClass" (click)="addNewClass()">
-      <i class="fa-solid fa-plus"></i>Save Class
+    <button
+      type="submit"
+      class="addNewClass"
+      (click)="addNewClass()"
+      [disabled]="classForm.invalid"
+    >
+      <i class="fa-solid fa-plus" aria-hidden="true"></i>
+      Save Class
     </button>
-    <button class="cancelAddClass" (click)="onCancel()">
-      <i class="fa-solid fa-angles-left"></i>Cancel Class
+
+    <button type="button" class="cancelAddClass" (click)="onCancel()">
+      <i class="fa-solid fa-angles-left" aria-hidden="true"></i>
+      Cancel Class
     </button>
   </div>
 </div>
 
-<form class="add-class" [formGroup]="classForm">
+<form class="add-class" [formGroup]="classForm" (ngSubmit)="addNewClass()">
   <!-- Basic Information -->
   <div class="card">
-    <h3>Basic Information</h3>
+    <h2>Basic Information</h2>
 
     <div class="form-grid">
+      <!-- Class Name -->
       <div class="form-group full-width">
-        <label> <i class="fa-solid fa-music Class Name"></i>Class Name</label>
-        <input type="text" placeholder="Class name" formControlName="className" />
-      </div>
-      <div class="form-group full-width">
-        <label><i class="fa-solid fa-file-image"></i>Image (Cloud Link) </label>
-        <input type="string" placeholder="link to image" formControlName="image" />
+        <label for="className">
+          <i class="fa-solid fa-music" aria-hidden="true"></i>
+          Class Name
+        </label>
+
+        <input
+          id="className"
+          type="text"
+          placeholder="Class name"
+          formControlName="className"
+          autocomplete="off"
+        />
       </div>
 
+      <!-- Image -->
+      <div class="form-group full-width">
+        <label for="image">
+          <i class="fa-solid fa-file-image" aria-hidden="true"></i>
+          Image (Cloud Link)
+        </label>
+
+        <input id="image" type="url" placeholder="Link to image" formControlName="image" />
+      </div>
+
+      <!-- Level -->
       <div class="form-group">
-        <label><i class="fa-solid fa-arrow-turn-up"></i>Level</label>
+        <label for="level">
+          <i class="fa-solid fa-arrow-turn-up" aria-hidden="true"></i>
+          Level
+        </label>
 
-        <select formControlName="level">
+        <select id="level" formControlName="level">
           <option value="basic">Beginner</option>
           <option value="intermediate">Intermediate</option>
           <option value="advanced">Advanced</option>
         </select>
       </div>
 
+      <!-- Status -->
       <div class="form-group">
-        <label><i class="fa-solid fa-bars-progress"></i>Status</label>
+        <label for="status">
+          <i class="fa-solid fa-bars-progress" aria-hidden="true"></i>
+          Status
+        </label>
 
-        <select formControlName="status">
+        <select id="status" formControlName="status">
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
       </div>
 
+      <!-- Price -->
       <div class="form-group">
-        <label><i class="fa-solid fa-hourglass-start"></i>Price ($)</label>
-        <input type="number" placeholder="Amount" formControlName="price" />
+        <label for="price">
+          <i class="fa-solid fa-dollar-sign" aria-hidden="true"></i>
+          Price ($)
+        </label>
+
+        <input
+          id="price"
+          type="number"
+          placeholder="Amount"
+          formControlName="price"
+          min="0"
+          step="0.01"
+          inputmode="decimal"
+        />
       </div>
 
+      <!-- Duration -->
       <div class="form-group">
-        <label><i class="fa-solid fa-hourglass-start"></i>Duration (Days)</label>
-        <input type="number" placeholder="number of months" formControlName="duration" />
+        <label for="duration">
+          <i class="fa-solid fa-hourglass-start" aria-hidden="true"></i>
+          Duration (Days)
+        </label>
+
+        <input
+          id="duration"
+          type="number"
+          placeholder="Number of days"
+          formControlName="duration"
+          min="1"
+          inputmode="numeric"
+        />
       </div>
 
+      <!-- Description -->
       <div class="form-group full-width">
-        <label><i class="fa-solid fa-circle-info"></i>Description</label>
+        <label for="description">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          Description
+        </label>
 
         <textarea
+          id="description"
           rows="5"
           placeholder="Write class description..."
           formControlName="description"
@@ -80,54 +146,97 @@
   <!-- Features -->
   <div class="card">
     <div class="card-header">
-      <h3>Course Features</h3>
+      <h2>Course Features</h2>
 
-      <button type="button" class="btn-add">+ Add Feature</button>
+      <button type="button" class="btn-add" aria-label="Add a course feature">
+        <span aria-hidden="true">+</span>
+        Add Feature
+      </button>
     </div>
 
     <div class="feature-list">
+      <!-- Feature 1 -->
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots" style="color: saddlebrown"></i>
-        <input type="text" placeholder="feature 1" formControlName="feature1" />
+        <i
+          class="fa-solid fa-arrow-up-right-dots"
+          style="color: saddlebrown"
+          aria-hidden="true"
+        ></i>
 
-        <button type="button" class="delete-btn">
-          <i class="fa-regular fa-trash-can"></i>
+        <label for="feature1" class="sr-only"> Course feature 1 </label>
+
+        <input id="feature1" type="text" placeholder="Feature 1" formControlName="feature1" />
+
+        <button type="button" class="delete-btn" aria-label="Delete course feature 1">
+          <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
         </button>
       </div>
 
+      <!-- Feature 2 -->
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(223, 2, 223)"></i>
-        <input type="text" placeholder="feature 2" formControlName="feature2" />
+        <i
+          class="fa-solid fa-arrow-up-right-dots"
+          style="color: rgb(223, 2, 223)"
+          aria-hidden="true"
+        ></i>
 
-        <button type="button" class="delete-btn">
-          <i class="fa-regular fa-trash-can"></i>
+        <label for="feature2" class="sr-only"> Course feature 2 </label>
+
+        <input id="feature2" type="text" placeholder="Feature 2" formControlName="feature2" />
+
+        <button type="button" class="delete-btn" aria-label="Delete course feature 2">
+          <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
         </button>
       </div>
 
+      <!-- Feature 3 -->
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(184, 184, 13)"></i>
-        <input type="text" placeholder="feature 3" formControlName="feature3" />
+        <i
+          class="fa-solid fa-arrow-up-right-dots"
+          style="color: rgb(184, 184, 13)"
+          aria-hidden="true"
+        ></i>
 
-        <button type="button" class="delete-btn">
-          <i class="fa-regular fa-trash-can"></i>
+        <label for="feature3" class="sr-only"> Course feature 3 </label>
+
+        <input id="feature3" type="text" placeholder="Feature 3" formControlName="feature3" />
+
+        <button type="button" class="delete-btn" aria-label="Delete course feature 3">
+          <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
         </button>
       </div>
 
+      <!-- Feature 4 -->
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(232, 27, 27)"></i>
-        <input type="text" placeholder="feature 4" formControlName="feature4" />
+        <i
+          class="fa-solid fa-arrow-up-right-dots"
+          style="color: rgb(232, 27, 27)"
+          aria-hidden="true"
+        ></i>
 
-        <button type="button" class="delete-btn">
-          <i class="fa-regular fa-trash-can"></i>
+        <label for="feature4" class="sr-only"> Course feature 4 </label>
+
+        <input id="feature4" type="text" placeholder="Feature 4" formControlName="feature4" />
+
+        <button type="button" class="delete-btn" aria-label="Delete course feature 4">
+          <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
         </button>
       </div>
 
+      <!-- Feature 5 -->
       <div class="feature-item">
-        <i class="fa-solid fa-arrow-up-right-dots" style="color: rgb(64, 64, 232)"></i>
-        <input type="text" placeholder="feature 5" formControlName="feature5" />
+        <i
+          class="fa-solid fa-arrow-up-right-dots"
+          style="color: rgb(64, 64, 232)"
+          aria-hidden="true"
+        ></i>
 
-        <button type="button" class="delete-btn">
-          <i class="fa-regular fa-trash-can"></i>
+        <label for="feature5" class="sr-only"> Course feature 5 </label>
+
+        <input id="feature5" type="text" placeholder="Feature 5" formControlName="feature5" />
+
+        <button type="button" class="delete-btn" aria-label="Delete course feature 5">
+          <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
         </button>
       </div>
     </div>

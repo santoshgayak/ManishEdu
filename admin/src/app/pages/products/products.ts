@@ -28,40 +28,69 @@ export class Products {
   constructor() {}
 
   ngOnInit() {
+    const savedProducts = localStorage.getItem('products');
+    if (savedProducts) {
+      this.productList = JSON.parse(savedProducts);
+    }
+    const savedOrders = localStorage.getItem('orders');
+    if (savedOrders) {
+      this.orderList = JSON.parse(savedOrders);
+      for (const order of this.orderList) {
+        if (order.type === 'Product' && order.paymentStatus === 'Paid') {
+          for (const item of order.items) {
+            const itemName = item.itemName.toLowerCase();
+
+            if (itemName.includes('sarangi')) {
+              this.sarangiRevenue += item.totalPrice;
+            } else if (itemName.includes('madal')) {
+              this.madalRevenue += item.totalPrice;
+            } else if (itemName.includes('bansuri')) {
+              this.bansuriRevenue += item.totalPrice;
+            }
+          }
+        }
+      }
+      this.totalRevenue = this.sarangiRevenue + this.madalRevenue + this.bansuriRevenue;
+      this.cdr.detectChanges();
+    } else {
+      this.dataService.getData('order', 'orders').subscribe({
+        next: (res) => {
+          this.orderList = res.data;
+          // Calculate totals of all data
+          for (const order of this.orderList) {
+            if (order.type === 'Product' && order.paymentStatus === 'Paid') {
+              for (const item of order.items) {
+                if (item.itemName.toLowerCase().includes('sarangi')) {
+                  console.log('This is a Sarangi item');
+                  this.sarangiRevenue += item.totalPrice;
+                }
+                if (item.itemName.toLowerCase().includes('madal')) {
+                  console.log('This is a Sarangi item');
+                  this.madalRevenue += item.totalPrice;
+                }
+                if (item.itemName.toLowerCase().includes('bansuri')) {
+                  console.log('This is a Sarangi item');
+                  this.bansuriRevenue += item.totalPrice;
+                }
+              }
+            }
+          }
+          this.totalRevenue = this.bansuriRevenue + this.sarangiRevenue + this.madalRevenue;
+          this.cdr.detectChanges();
+        },
+      });
+    }
+    this.loadProducts();
+  }
+
+  loadProducts() {
     this.dataService.getData('product', 'products').subscribe({
       next: (res) => {
         this.productList = res.data;
         this.cdr.detectChanges();
       },
     });
-    this.dataService.getData('order', 'orders').subscribe({
-      next: (res) => {
-        this.orderList = res.data;
-        // Calculate totals of all data
-        for (const order of this.orderList) {
-          if (order.type === 'Product' && order.paymentStatus === 'Paid') {
-            for (const item of order.items) {
-              if (item.itemName.toLowerCase().includes('sarangi')) {
-                console.log('This is a Sarangi item');
-                this.sarangiRevenue += item.totalPrice;
-              }
-              if (item.itemName.toLowerCase().includes('madal')) {
-                console.log('This is a Sarangi item');
-                this.madalRevenue += item.totalPrice;
-              }
-              if (item.itemName.toLowerCase().includes('bansuri')) {
-                console.log('This is a Sarangi item');
-                this.bansuriRevenue += item.totalPrice;
-              }
-            }
-          }
-        }
-        this.totalRevenue = this.bansuriRevenue + this.sarangiRevenue + this.madalRevenue;
-        this.cdr.detectChanges();
-      },
-    });
   }
-
   addNewProduct() {
     this.router.navigate(['/dashboard/add-product']);
   }

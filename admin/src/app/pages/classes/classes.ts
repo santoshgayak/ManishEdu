@@ -17,7 +17,6 @@ import { Loader } from '../../components/loader/loader';
 })
 export class Classes {
   private dataService = inject(DataService);
-  private cdr = inject(ChangeDetectorRef);
   private router = inject(Router);
 
   public basic_sarangi_revenue = 0;
@@ -33,48 +32,77 @@ export class Classes {
   constructor() {}
 
   ngOnInit() {
+    const savedClasses = localStorage.getItem('classes');
+
+    if (savedClasses) {
+      this.classList = JSON.parse(savedClasses);
+    } else {
+      this.loadClass();
+    }
+    this.getTotal();
+  }
+  getTotal() {
+    const savedOrders = localStorage.getItem('orders');
+
+    if (savedOrders) {
+      this.orderList = JSON.parse(savedOrders);
+      this.calculateRevenue();
+    } else {
+      this.dataService.getData('order', 'orders').subscribe({
+        next: (res) => {
+          this.orderList = res.data;
+          this.calculateRevenue();
+        },
+        error: (err) => {
+          console.error('Failed to load orders:', err);
+        },
+      });
+    }
+  }
+
+  loadClass() {
     this.dataService.getData('class', 'courses').subscribe({
       next: (res) => {
         this.classList = res.data;
-        this.cdr.detectChanges();
       },
     });
+  }
 
-    this.dataService.getData('order', 'orders').subscribe({
-      next: (res) => {
-        this.orderList = res.data;
-        console.log('Here is are the orderlList', this.orderList);
-        this.cdr.detectChanges();
+  calculateRevenue() {
+    this.basic_sarangi_revenue = 0;
+    this.intermediate_sarangi_revenue = 0;
+    this.advance_sarangi_revenue = 0;
 
-        this.orderList.forEach((order) => {
-          if (order.type !== 'Class') return;
+    this.orderList.forEach((order) => {
+      if (order.type !== 'Class' || order.paymentStatus !== 'Paid') {
+        return;
+      }
 
-          const price = Number(order.items[0].totalPrice);
-          switch (order.items[0].itemName) {
-            case 'Basic Sarangi Classes':
-              this.basic_sarangi_revenue += price;
-              console.log(this.basic_sarangi_revenue);
-              break;
+      const item = order.items?.[0];
 
-            case 'Intermediate Sarangi Skills':
-              this.intermediate_sarangi_revenue += price;
-              console.log(this.intermediate_sarangi_revenue);
-              break;
+      if (!item) {
+        return;
+      }
 
-            case 'Advanced Sarangi Mastery':
-              this.advance_sarangi_revenue += price;
-              console.log(this.advance_sarangi_revenue);
+      const price = Number(item.totalPrice);
 
-              break;
-          }
-        });
-        this.total_revenue =
-          this.basic_sarangi_revenue +
-          this.intermediate_sarangi_revenue +
-          this.advance_sarangi_revenue;
-        this.cdr.detectChanges();
-      },
+      switch (item.itemName) {
+        case 'Basic Sarangi Class':
+          this.basic_sarangi_revenue += price;
+          break;
+
+        case 'Intermediate Sarangi Skills':
+          this.intermediate_sarangi_revenue += price;
+          break;
+
+        case 'Advanced Sarangi Mastery':
+          this.advance_sarangi_revenue += price;
+          break;
+      }
     });
+
+    this.total_revenue =
+      this.basic_sarangi_revenue + this.intermediate_sarangi_revenue + this.advance_sarangi_revenue;
   }
   editClass(classId: string) {
     console.log('Edit class with ID:', classId);
@@ -92,7 +120,6 @@ export class Classes {
         console.log('Backend responded successfully:', response);
 
         this.classList = this.classList.filter((item) => item._id !== classId);
-        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('An error occurred during deletion:', err);

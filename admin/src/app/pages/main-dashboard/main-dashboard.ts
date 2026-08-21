@@ -101,6 +101,8 @@ export class MainDashboard {
     this.dataService.getData('product', 'products').subscribe({
       next: (res) => {
         const productList = res.data;
+        localStorage.setItem('products', JSON.stringify(productList));
+
         this.total_products = productList.length;
         this.cdr.detectChanges();
       },
@@ -117,6 +119,8 @@ export class MainDashboard {
         this.dataService.getData('customers', 'customers').subscribe({
           next: (res) => {
             const customersList: Customer[] = res.data;
+            localStorage.setItem('customers', JSON.stringify(customersList));
+
             for (const order of this.orderList) {
               const customer = customersList.find((customer) => customer._id === order.customerId);
 
@@ -132,6 +136,7 @@ export class MainDashboard {
         this.dataService.getData('student', 'students').subscribe({
           next: (res) => {
             const customersList: Customer[] = res.data;
+            localStorage.setItem('students', JSON.stringify(customersList));
             for (const order of this.orderList) {
               const customer = customersList.find((customer) => customer._id === order.customerId);
               if (customer) {

@@ -25,37 +25,54 @@ export class Orders {
   private cdr = inject(ChangeDetectorRef);
 
   ngOnInit() {
-    this.dataService.getData('order', 'orders').subscribe({
-      next: (res) => {
-        this.orderList = res.data;
-        // Calculate totals of all data
-        for (const order of this.orderList) {
-          if (order.paymentStatus !== 'Paid') {
-            continue;
-          }
+    const savedOrders = localStorage.getItem('orders');
 
-          // Classes
-          if (order.type === 'Class') {
-            this.student_total += 1;
+    if (savedOrders) {
+      this.orderList = JSON.parse(savedOrders);
+      this.calculateTotals();
+    } else {
+      this.dataService.getData('order', 'orders').subscribe({
+        next: (res) => {
+          this.orderList = res.data;
 
-            for (const item of order.items) {
-              this.enrollment_total += item.totalPrice;
-            }
-          }
+          // Cache orders
+          localStorage.setItem('orders', JSON.stringify(this.orderList));
 
-          // Products
-          if (order.type === 'Product') {
-            for (const item of order.items) {
-              this.order_total += item.totalPrice;
-            }
-          }
+          this.calculateTotals();
+        },
+        error: (err) => {
+          console.error('Failed to load orders:', err);
+        },
+      });
+    }
+  }
+  calculateTotals() {
+    this.student_total = 0;
+    this.enrollment_total = 0;
+    this.order_total = 0;
+
+    for (const order of this.orderList) {
+      if (order.paymentStatus !== 'Paid') {
+        continue;
+      }
+
+      if (order.type === 'Class') {
+        this.student_total++;
+
+        for (const item of order.items) {
+          this.enrollment_total += item.totalPrice;
         }
+      }
 
-        // Total revenue
-        this.total_revenue = this.enrollment_total + this.order_total;
+      if (order.type === 'Product') {
+        for (const item of order.items) {
+          this.order_total += item.totalPrice;
+        }
+      }
+    }
 
-        this.cdr.detectChanges();
-      },
-    });
+    this.total_revenue = this.enrollment_total + this.order_total;
+
+    this.cdr.detectChanges();
   }
 }
