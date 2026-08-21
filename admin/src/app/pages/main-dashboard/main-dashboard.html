@@ -43,13 +43,17 @@
       </div>
     </div>
   </div>
+
   <div class="row">
     <div class="order-summary-container">
       <div class="recent-order">
         <div class="card-title">
           <h3>Recent Orders</h3>
-          <a routerLink="/dashboard/order" class="view all">View All Orders</a>
+
+          <a routerLink="/dashboard/order" class="view-all"> View All Orders </a>
         </div>
+
+        <!-- Desktop -->
         <div class="card-content">
           <div class="table-header">
             <div>Order ID</div>
@@ -59,23 +63,48 @@
             <div>Amount</div>
             <div>Date</div>
           </div>
-          @for (order of orderList.slice(0, 15); track order._id) {
+
+          @for (order of orderList.slice(0, 3); track order._id) {
             <div class="table-row">
+              <!-- Order ID -->
               <div>#{{ order.orderId }}</div>
-              <div>{{ order.customerName }}</div>
+
+              <!-- Customer -->
+              <div>
+                {{ order.customerName || 'Unknown Customer' }}
+              </div>
+
+              <!-- Type -->
               <div class="type">
-                <p [ngClass]="{ class: order.type === 'Class', product: order.type === 'Product' }">
+                <p
+                  [ngClass]="{
+                    class: order.type === 'Class',
+                    product: order.type === 'Product',
+                  }"
+                >
                   {{ order.type }}
                 </p>
               </div>
-              @for (item of order.items; track $index) {
-                <div>{{ item.itemName }}</div>
-              }
-              @for (item of order.items; track $index) {
-                <div>${{ item.totalPrice }}</div>
-              }
 
-              <div>{{ order.createdAt | date: 'mediumDate' }}</div>
+              <!-- Items -->
+              <div class="items">
+                @if (order.items.length > 1) {
+                  {{ order.items[0].itemName }}
+                  <small> + {{ order.items.length - 1 }} more</small>
+                } @else {
+                  {{ order.items[0].itemName }}
+                }
+              </div>
+
+              <!-- Amounts -->
+              <div class="amounts">
+                <div class="amount">${{ getOrderTotal(order) }}</div>
+              </div>
+
+              <!-- Date -->
+              <div>
+                {{ order.createdAt | date: 'mediumDate' }}
+              </div>
             </div>
           } @empty {
             <div class="empty-state">
@@ -83,26 +112,48 @@
             </div>
           }
         </div>
+
+        <!-- Mobile -->
         <div class="mobile-view">
           @for (order of orderList.slice(0, 4); track order._id) {
             <div class="order-card">
+              <!-- Header -->
               <div class="order-status">
                 <h3>#{{ order.orderId }}</h3>
+
                 <p class="status">
                   <span [class]="order.paymentStatus?.toLowerCase()">
                     {{ order.paymentStatus }}
                   </span>
                 </p>
               </div>
-              <p><i class="fa-solid fa-circle-user"></i>{{ order.customerName }}</p>
 
-              @for (item of order.items; track $index) {
-                <p><i class="fa-solid fa-kaaba"></i>{{ item.itemName }}</p>
-              }
+              <!-- Customer -->
+              <p class="customer">
+                <i class="fa-solid fa-circle-user"></i>
 
+                {{ order.customerName || 'Unknown Customer' }}
+              </p>
+
+              <!-- Items -->
+              <div class="order-items">
+                @for (item of order.items; track item.itemId) {
+                  <div class="order-item">
+                    <p>
+                      <i class="fa-solid fa-box"></i>
+                      {{ item.itemName }}
+                    </p>
+
+                    <span> ×{{ item.quantity }} </span>
+                  </div>
+                }
+              </div>
+
+              <!-- Type + Amount -->
               <div class="type-amount">
                 <div class="type">
                   <p>Type</p>
+
                   <p>
                     <span
                       [ngClass]="{
@@ -117,14 +168,17 @@
 
                 <div class="amount">
                   <p>Amount</p>
-                  @for (item of order.items; track $index) {
-                    <p>${{ item.totalPrice }}</p>
-                  }
+
+                  <p>${{ getOrderTotal(order) }}</p>
                 </div>
               </div>
 
+              <!-- Date -->
               <div class="createdAt">
-                <p>Date: {{ order.createdAt | date: 'mediumDate' }}</p>
+                <p>
+                  Date:
+                  {{ order.createdAt | date: 'mediumDate' }}
+                </p>
               </div>
             </div>
           } @empty {

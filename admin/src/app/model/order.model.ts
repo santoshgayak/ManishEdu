@@ -17,6 +17,7 @@ export interface Order {
   customerId?: string;
   type: OrderType;
   items: OrderItem[];
+  totalPrice: number;
   paymentStatus: PaymentStatus;
   stripeSessionId?: string;
   createdAt: string | Date;

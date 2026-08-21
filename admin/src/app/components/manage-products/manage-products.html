@@ -13,7 +13,7 @@
         <div>Actions</div>
       </div>
 
-      @for (product of productList.slice(0, 5); track product._id) {
+      @for (product of productList.slice(0, 3); track product._id) {
         <div class="table-row">
           <div class="name-image">
             <img [src]="product.image" [alt]="product.name" height="30px" />{{ product.name }}

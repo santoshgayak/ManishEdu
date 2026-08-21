@@ -91,6 +91,9 @@ export class MainDashboard {
       this.cdr.detectChanges();
     }
   }
+  getOrderTotal(order: Order): number {
+    return order.items.reduce((total, item) => total + item.totalPrice, 0);
+  }
 
   private loadOrders(): void {
     this.dataService.getData('product', 'products').subscribe({
