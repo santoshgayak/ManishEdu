@@ -13,44 +13,67 @@ import { Loader } from '../loader/loader';
 })
 export class ManageClasses {
   classList: ClassPlan[] = [];
+
   private dataService = inject(DataService);
   private router = inject(Router);
   private cdr = inject(ChangeDetectorRef);
-  constructor() {}
-  ngOnInit() {
+
+  ngOnInit(): void {
+    // 1. Load cached data immediately
+    const savedClasses = localStorage.getItem('classes');
+
+    if (savedClasses) {
+      this.classList = JSON.parse(savedClasses);
+    }
+
+    // 2. Get fresh data from backend
     this.loadClasses();
-    this.cdr.detectChanges();
   }
 
   private loadClasses(): void {
     this.dataService.getData('class', 'courses').subscribe({
       next: (res: any) => {
+        // 3. Update UI with fresh data
         this.classList = res.data;
+
+        // 4. Update localStorage
+        localStorage.setItem('classes', JSON.stringify(this.classList));
+
         console.log('Classes loaded successfully:', this.classList);
       },
+
       error: (err) => {
         console.error('Failed to load classes:', err);
+
+        // Keep cached classes if API fails
       },
     });
   }
-  navigate() {
+
+  navigate(): void {
     this.router.navigate(['/dashboard/classes']);
   }
-  editClass(classId: string) {
+
+  editClass(classId: string): void {
     this.router.navigate(['/dashboard/edit-class', classId]);
   }
-  deleteClass(classId: string) {
+
+  deleteClass(classId: string): void {
     console.log('Delete button clicked in UI for ID:', classId);
 
-    // CRITICAL: You must use .subscribe() here to trigger the network request!
     this.dataService.deleteClass(classId).subscribe({
       next: (response) => {
         console.log('Backend responded successfully:', response);
 
-        // Optional: Remove the deleted class from your local array to update the UI instantly
+        // Remove from UI
         this.classList = this.classList.filter((item) => item._id !== classId);
+
+        // IMPORTANT: update localStorage too
+        localStorage.setItem('classes', JSON.stringify(this.classList));
+
         this.cdr.detectChanges();
       },
+
       error: (err) => {
         console.error('An error occurred during deletion:', err);
       },

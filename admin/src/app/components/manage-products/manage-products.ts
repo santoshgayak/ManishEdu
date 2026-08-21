@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { Product } from '../../model/products.model';
 import { DataService } from '../../services/data.service';
 import { Router, RouterLink } from '@angular/router';
-import { ChangeDetectorRef } from '@angular/core';
 import { Loader } from '../loader/loader';
+
 @Component({
   selector: 'app-manage-products',
   imports: [RouterLink, Loader],
@@ -15,44 +15,61 @@ export class ManageProducts {
 
   private dataService = inject(DataService);
   private router = inject(Router);
-  private cdr = inject(ChangeDetectorRef);
 
-  constructor() {}
-  ngOnInit() {
+  ngOnInit(): void {
+    // 1. Load cached products first
+    const savedProducts = localStorage.getItem('products');
+
+    if (savedProducts) {
+      this.productList = JSON.parse(savedProducts);
+    }
+
+    // 2. Get fresh products from API
     this.loadProducts();
-    this.cdr.detectChanges();
   }
 
   private loadProducts(): void {
     this.dataService.getData('product', 'products').subscribe({
       next: (res: any) => {
+        // 3. Update UI with fresh data
         this.productList = res.data;
+
+        // 4. Update localStorage
+        localStorage.setItem('products', JSON.stringify(this.productList));
+
         console.log('Products loaded successfully:', this.productList);
-        this.cdr.detectChanges();
       },
+
       error: (err) => {
         console.error('Failed to load products:', err);
+
+        // Cached products remain displayed if API fails
       },
     });
   }
-  navigate() {
+
+  navigate(): void {
     this.router.navigate(['/dashboard/products']);
   }
-  editProduct(productId: string) {
+
+  editProduct(productId: string): void {
     this.router.navigate(['/dashboard/edit-product', productId]);
   }
 
-  //delete product
-  deleteProduct(productId: string) {
+  deleteProduct(productId: string): void {
     console.log('Delete button clicked in UI for ID:', productId);
 
     this.dataService.deleteProduct(productId).subscribe({
       next: (response) => {
         console.log('Backend responded successfully:', response);
 
+        // Remove from UI
         this.productList = this.productList.filter((item) => item._id !== productId);
-        this.cdr.detectChanges();
+
+        // IMPORTANT: update localStorage
+        localStorage.setItem('products', JSON.stringify(this.productList));
       },
+
       error: (err) => {
         console.error('An error occurred during deletion of product:', err);
       },

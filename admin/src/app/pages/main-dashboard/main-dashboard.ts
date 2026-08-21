@@ -77,15 +77,17 @@ export class MainDashboard {
   private myChart!: echarts.ECharts;
 
   ngOnInit(): void {
+    const savedOrders = localStorage.getItem('orders');
+    if (savedOrders) {
+      this.orderList = JSON.parse(savedOrders);
+    }
     this.loadOrders();
   }
 
   ngAfterViewInit(): void {
     const chartDom = document.getElementById('donut-chart');
-
     if (chartDom) {
       this.myChart = echarts.init(chartDom);
-
       // Draw chart with initial values (0)
       this.updateChart(this.enrollment_total_week, this.order_total_week);
       this.cdr.detectChanges();
@@ -107,6 +109,8 @@ export class MainDashboard {
     this.dataService.getData('order', 'orders').subscribe({
       next: (res: any) => {
         this.orderList = res.data;
+        localStorage.setItem('orders', JSON.stringify(this.orderList));
+
         console.log(this.orderList);
         this.total_orders = this.orderList.length;
 
@@ -114,12 +118,8 @@ export class MainDashboard {
           next: (res) => {
             const customersList: Customer[] = res.data;
             for (const order of this.orderList) {
-              console.log('ORDER:', order.orderId);
-              console.log('CUSTOMER ID:', order.customerId);
               const customer = customersList.find((customer) => customer._id === order.customerId);
-              console.log('ORDER:', order.orderId);
-              console.log('CUSTOMER ID:', order.customerId);
-              console.log('FOUND CUSTOMER:', customer);
+
               if (customer) {
                 order.customerName = `${customer.firstName} ${customer.lastName}`;
                 order.customerEmail = customer.email;
@@ -133,12 +133,7 @@ export class MainDashboard {
           next: (res) => {
             const customersList: Customer[] = res.data;
             for (const order of this.orderList) {
-              console.log('ORDER:', order.orderId);
-              console.log('CUSTOMER ID:', order.customerId);
               const customer = customersList.find((customer) => customer._id === order.customerId);
-              console.log('ORDER:', order.orderId);
-              console.log('CUSTOMER ID:', order.customerId);
-              console.log('FOUND CUSTOMER:', customer);
               if (customer) {
                 order.customerName = `${customer.firstName} ${customer.lastName}`;
                 order.customerEmail = customer.email;
