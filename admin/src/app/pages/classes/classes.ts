@@ -17,6 +17,7 @@ import { Loader } from '../../components/loader/loader';
 })
 export class Classes {
   private dataService = inject(DataService);
+  private cdr = inject(ChangeDetectorRef);
   private router = inject(Router);
 
   public basic_sarangi_revenue = 0;
@@ -37,72 +38,64 @@ export class Classes {
     if (savedClasses) {
       this.classList = JSON.parse(savedClasses);
     } else {
-      this.loadClass();
+      this.loadClasses();
     }
-    this.getTotal();
-  }
-  getTotal() {
+
     const savedOrders = localStorage.getItem('orders');
 
     if (savedOrders) {
       this.orderList = JSON.parse(savedOrders);
-      this.calculateRevenue();
+      this.calculateTotals();
     } else {
-      this.dataService.getData('order', 'orders').subscribe({
-        next: (res) => {
-          this.orderList = res.data;
-          this.calculateRevenue();
-        },
-        error: (err) => {
-          console.error('Failed to load orders:', err);
-        },
-      });
+      this.loadOrders();
     }
   }
-
-  loadClass() {
-    this.dataService.getData('class', 'courses').subscribe({
-      next: (res) => {
-        this.classList = res.data;
-      },
-    });
-  }
-
-  calculateRevenue() {
-    this.basic_sarangi_revenue = 0;
-    this.intermediate_sarangi_revenue = 0;
-    this.advance_sarangi_revenue = 0;
-
+  calculateTotals() {
+    console.log('Here is are the orderlList', this.orderList);
+    this.cdr.detectChanges();
     this.orderList.forEach((order) => {
-      if (order.type !== 'Class' || order.paymentStatus !== 'Paid') {
-        return;
-      }
+      if (order.type !== 'Class') return;
 
-      const item = order.items?.[0];
-
-      if (!item) {
-        return;
-      }
-
-      const price = Number(item.totalPrice);
-
-      switch (item.itemName) {
+      const price = Number(order.items[0].totalPrice);
+      switch (order.items[0].itemName) {
         case 'Basic Sarangi Class':
           this.basic_sarangi_revenue += price;
+          console.log(this.basic_sarangi_revenue);
           break;
 
         case 'Intermediate Sarangi Skills':
           this.intermediate_sarangi_revenue += price;
+          console.log(this.intermediate_sarangi_revenue);
           break;
 
         case 'Advanced Sarangi Mastery':
           this.advance_sarangi_revenue += price;
+          console.log(this.advance_sarangi_revenue);
+
           break;
       }
     });
-
     this.total_revenue =
       this.basic_sarangi_revenue + this.intermediate_sarangi_revenue + this.advance_sarangi_revenue;
+    this.cdr.detectChanges();
+  }
+  loadClasses() {
+    this.dataService.getData('class', 'courses').subscribe({
+      next: (res) => {
+        this.classList = res.data;
+      },
+      error: (err) => {
+        console.error('Failed to load classes:', err);
+      },
+    });
+  }
+  loadOrders() {
+    this.dataService.getData('order', 'orders').subscribe({
+      next: (res) => {
+        this.orderList = res.data;
+        this.calculateTotals();
+      },
+    });
   }
   editClass(classId: string) {
     console.log('Edit class with ID:', classId);
@@ -120,6 +113,7 @@ export class Classes {
         console.log('Backend responded successfully:', response);
 
         this.classList = this.classList.filter((item) => item._id !== classId);
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('An error occurred during deletion:', err);

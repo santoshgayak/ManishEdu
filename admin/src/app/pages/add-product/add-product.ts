@@ -46,10 +46,7 @@ export class AddProduct {
     };
     this.dataService.saveProduct('product', 'products', newProduct).subscribe({
       next: (res) => {
-        console.log('Product saved successfully.');
         const productId = res.data.insertedId;
-        console.log('Navigating with ID:', productId);
-
         this.router.navigate(['/dashboard/update-success-product', productId]);
       },
     });
