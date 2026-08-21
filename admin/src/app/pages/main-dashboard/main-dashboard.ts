@@ -12,23 +12,21 @@ import { Loader } from '../../components/loader/loader';
 import { OrderType } from '../../model/order-type.model';
 import { PaymentStatus } from '../../model/payment-status.model';
 import { Products } from '../products/products';
-
-interface Order {
-  _id?: string;
-  orderId: string;
-  customerName: string;
-  customerEmail?: string;
-  type: OrderType;
-  items: {
-    itemId: string;
-    itemName: string;
-    quantity: number;
-    unitPrice: number;
-    totalPrice: number;
-  }[];
-
-  paymentStatus: PaymentStatus;
-  createdAt: string | Date;
+import { Order } from '../../model/order.model';
+interface Customer {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  email?: string;
+  address?: {
+    addressLine1?: string;
+    addressLine2?: string;
+    city?: string;
+    state?: string;
+    postcode?: string;
+    country?: string;
+  };
 }
 @Component({
   selector: 'app-main-dashboard',
@@ -50,6 +48,7 @@ export class MainDashboard {
   total_enrollments = 0;
   total_revenue = 0;
   total_products = 0;
+  customers_name = 0;
 
   total_revenue_period = 0;
   enrollment_total_period = 0;
@@ -101,19 +100,32 @@ export class MainDashboard {
         this.cdr.detectChanges();
       },
     });
-    this.dataService.getData('customers', 'customers').subscribe({
-      next: (res) => {
-        const customersList = res.data;
-        console.log('Customer Listis :::: ', customersList);
-        this.cdr.detectChanges();
-      },
-    });
 
     this.dataService.getData('order', 'orders').subscribe({
       next: (res: any) => {
         this.orderList = res.data;
         console.log(this.orderList);
         this.total_orders = this.orderList.length;
+
+        this.dataService.getData('customers', 'customers').subscribe({
+          next: (res) => {
+            const customersList: Customer[] = res.data;
+            for (const order of this.orderList) {
+              console.log('ORDER:', order.orderId);
+              console.log('CUSTOMER ID:', order.customerId);
+              const customer = customersList.find((customer) => customer._id === order.customerId);
+              console.log('ORDER:', order.orderId);
+              console.log('CUSTOMER ID:', order.customerId);
+              console.log('FOUND CUSTOMER:', customer);
+              if (customer) {
+                order.customerName = `${customer.firstName} ${customer.lastName}`;
+                order.customerEmail = customer.email;
+              }
+            }
+
+            this.cdr.detectChanges();
+          },
+        });
 
         this.total_enrollments = this.orderList.filter(
           (order) => order.type === 'Class' && order.paymentStatus === 'Paid',

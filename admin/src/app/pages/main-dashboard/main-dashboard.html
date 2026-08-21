@@ -59,10 +59,10 @@
             <div>Amount</div>
             <div>Date</div>
           </div>
-          @for (order of orderList.slice(0, 4); track order._id) {
+          @for (order of orderList.slice(0, 15); track order._id) {
             <div class="table-row">
               <div>#{{ order.orderId }}</div>
-              <div>{{ order._id }}</div>
+              <div>{{ order.customerName }}</div>
               <div class="type">
                 <p [ngClass]="{ class: order.type === 'Class', product: order.type === 'Product' }">
                   {{ order.type }}

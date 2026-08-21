@@ -138,7 +138,7 @@ app.post("/create-checkout-session1", async (req, res) => {
   }
   try {
     const orderPayload = {
-      customerId,
+      customerId:customerId,
       orderId: "",
       items: [
         {
