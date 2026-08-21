@@ -97,6 +97,8 @@ export class Success implements OnInit {
     // DETAILS
     pdf.text(`Transaction ID: ${this.paymentIntentId}`, 15, y);
     y += 10;
+    pdf.text(`Order ID: ${this.orderId}`, 15, y);
+    y += 10;
 
     pdf.text(`Date: ${this.formatted}`, 15, y);
     y += 10;
