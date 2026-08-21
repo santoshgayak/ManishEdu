@@ -46,7 +46,7 @@ export class Success implements OnInit {
     this.sessionId = this.route.snapshot.queryParamMap.get('session_id') || '';
 
     if (!this.sessionId) {
-      console.error('❌ No session_id found in URL');
+      console.error('No session_id found in URL');
       return;
     }
 
@@ -55,8 +55,6 @@ export class Success implements OnInit {
       .get<any>(`https://manisheduserver.onrender.com/session-status?session_id=${this.sessionId}`)
       .subscribe({
         next: (res) => {
-          console.log('✅ Session Data:', res);
-
           this.paymentStatus = res.paymentStatus;
           this.orderId = res.orderId;
           this.paymentIntentId = res.paymentIntentId;

@@ -21,7 +21,6 @@ export class SaveCustomerInfoService {
   constructor() {}
 
   async savedToDb(data: CustomerData) {
-    console.log("Now saving to db (mock):", data);
     const db = getDB();
 
     const customer = await db

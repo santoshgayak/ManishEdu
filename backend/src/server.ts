@@ -57,22 +57,15 @@ app.use("/api/save/product", verifyToken, getSaveProductRoutes);
 app.use("/api/delete/class", verifyToken, getDeleteClassRoutes);
 app.use("/api/delete/product", verifyToken, getDeleteProductRoutes);
 
-app.get("/health", (req, res) => {
-  console.log("Health endpoint hit");
-  res.json({ status: "OK", time: new Date() });
-});
 app.get("/", (_req: Request, res: Response) => {
   res.json({
     message: "Backend is running...",
   });
 });
 
-// Stripe setup (secured with env variable)
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2026-05-27.dahlia",
 });
-
-const myDomain = "http://localhost:4200";
 
 app.post("/create-checkout-session", async (req, res) => {
   const { items, customerId } = req.body;
@@ -122,7 +115,7 @@ app.post("/create-checkout-session", async (req, res) => {
       clientSecret: session.client_secret,
     });
   } catch (error: any) {
-    console.error("❌ Stripe session error:", error.message);
+    console.error("Stripe session error:", error.message);
 
     res.status(500).json({
       error: error.message,
@@ -131,10 +124,10 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 app.post("/create-checkout-session1", async (req, res) => {
   const { id, customerId } = req.body;
-  console.log("CUSTOMER ID IS ", customerId);
+
   const dataService = new DataService();
   const course = await dataService.getOne("courses", { id: id });
-  console.log("COURSE IS :", course);
+
   if (!course) {
     return res.status(404).json({
       error: "Course not found",
@@ -186,13 +179,12 @@ app.post("/create-checkout-session1", async (req, res) => {
       clientSecret: session.client_secret,
     });
   } catch (error: any) {
-    console.error("❌ Stripe session error:", error.message);
+    console.error("Stripe session error:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
 
 // GET SESSION STATUS
-
 app.get("/session-status", async (req: Request, res: Response) => {
   let newOrderId = "";
   try {
@@ -213,15 +205,11 @@ app.get("/session-status", async (req: Request, res: Response) => {
     const paymentMethod =
       paymentIntent.payment_method as Stripe.PaymentMethod | null;
     const charge = paymentIntent.latest_charge as Stripe.Charge | null;
-    const dataService = new DataService();
 
-    console.log("💳 PAYMENT STATUS:", paymentIntent.status);
+    const dataService = new DataService();
 
     if (paymentIntent.status === "succeeded") {
       newOrderId = await dataService.getNextOrderId();
-
-      console.log("🆔 NEW ORDER ID:", newOrderId);
-
       const result = await dataService.updateOne(
         "orders",
         {
@@ -233,10 +221,8 @@ app.get("/session-status", async (req: Request, res: Response) => {
           paidAt: new Date(),
         },
       );
-
-      console.log("💾 ORDER UPDATED:", result);
     } else {
-      console.log("❌ PAYMENT NOT SUCCESSFUL:", paymentIntent.status);
+      console.log("PAYMENT NOT SUCCESSFUL:", paymentIntent.status);
     }
 
     res.json({
@@ -263,5 +249,5 @@ app.get("/session-status", async (req: Request, res: Response) => {
 // START SERVER
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("🚀 Server running now !!");
+  console.log("Server running now !!");
 });

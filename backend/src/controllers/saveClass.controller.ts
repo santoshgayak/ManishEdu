@@ -5,9 +5,7 @@ const dataService = new DataService();
 
 export const saveClass = async (req: Request, res: Response) => {
   const updatedData = req.body;
-  console.log("Controller: rq.body", updatedData);
-  console.log("Controller: rq.body", req.body);
-
+  
   const result = await dataService.saveData("courses", updatedData);
 
   //check the credentials

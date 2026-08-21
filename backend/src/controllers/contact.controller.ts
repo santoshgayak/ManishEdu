@@ -7,8 +7,6 @@ const contactService = new ContactService();
 
 export const submitContactForm = async (req: Request, res: Response) => {
   try {
-    console.log("Contact form received...");
-    console.log(req.body);
     const { name, email, subject, message } = req.body;
     const result = await contactService.sendMail(name, email, subject, message);
     res.status(200).json({

@@ -5,9 +5,6 @@ const service = new SaveCustomerInfoService();
 
 export const saveCustomerInfo = async (req: Request, res: Response) => {
   try {
-    console.log(" CONTROLLER HIT");
-    console.log(req.body);
-
     const result = await service.savedToDb(req.body);
     return res.status(201).json({
       success: true,
@@ -15,7 +12,7 @@ export const saveCustomerInfo = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.error("❌ Error:", err);
+    console.error("Error:", err);
 
     return res.status(500).json({
       success: false,

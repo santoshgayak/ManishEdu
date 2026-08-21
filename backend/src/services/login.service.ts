@@ -13,9 +13,8 @@ export class LoginService {
   someOtherPlaintextPassword = "not_bacon";
 
   async login(data: loginData) {
-    console.log(" I am in");
     const user = await dataService.getOne("admins", { email: data.email });
-    console.log("USR", user);
+
     if (!user) {
       return null;
     }
@@ -37,8 +36,7 @@ export class LoginService {
           expiresIn: "1h",
         },
       );
-      console.log("Database user:", user);
-      console.log("User email:", user.email);
+
       return {
         token: token,
         user: user,

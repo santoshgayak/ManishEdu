@@ -4,7 +4,6 @@ export class SaveStudentInfoService {
   constructor() {}
 
   async savedToDb(data: any) {
-    console.log("Now saving to db:", data);
     const db = getDB();
 
     const student = await db
@@ -17,7 +16,6 @@ export class SaveStudentInfoService {
         .collection("students")
         .replaceOne({ _id: student._id }, data);
 
-      // Return structure aligned with what your Angular component reads
       return {
         success: true,
         alreadyExists: true,
@@ -34,7 +32,7 @@ export class SaveStudentInfoService {
       success: true,
       alreadyExists: false,
       data: {
-        _id: result.insertedId, // Wrap in data._id to match client expectations
+        _id: result.insertedId,
       },
     };
   }
