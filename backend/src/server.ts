@@ -52,6 +52,7 @@ app.use("/api/data", getDataRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/data/order", verifyToken, getOrderRoutes);
 app.use("/api/data/customers", verifyToken, getCustomerRoutes);
+app.use("/api/data/student", verifyToken, getCustomerRoutes);
 
 app.use("/api/data/class", verifyToken, getClassRoutes);
 app.use("/api/data/product", verifyToken, getProductRoutes);
@@ -138,7 +139,7 @@ app.post("/create-checkout-session1", async (req, res) => {
   }
   try {
     const orderPayload = {
-      customerId:customerId,
+      customerId: customerId,
       orderId: "",
       items: [
         {

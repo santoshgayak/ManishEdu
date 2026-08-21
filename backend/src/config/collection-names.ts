@@ -4,4 +4,5 @@ export const collectionList = [
   "products",
   "orders",
   "customers",
+  "students",
 ];

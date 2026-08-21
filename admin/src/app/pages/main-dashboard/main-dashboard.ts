@@ -126,6 +126,25 @@ export class MainDashboard {
             this.cdr.detectChanges();
           },
         });
+        this.dataService.getData('student', 'students').subscribe({
+          next: (res) => {
+            const customersList: Customer[] = res.data;
+            for (const order of this.orderList) {
+              console.log('ORDER:', order.orderId);
+              console.log('CUSTOMER ID:', order.customerId);
+              const customer = customersList.find((customer) => customer._id === order.customerId);
+              console.log('ORDER:', order.orderId);
+              console.log('CUSTOMER ID:', order.customerId);
+              console.log('FOUND CUSTOMER:', customer);
+              if (customer) {
+                order.customerName = `${customer.firstName} ${customer.lastName}`;
+                order.customerEmail = customer.email;
+              }
+            }
+
+            this.cdr.detectChanges();
+          },
+        });
 
         this.total_enrollments = this.orderList.filter(
           (order) => order.type === 'Class' && order.paymentStatus === 'Paid',
