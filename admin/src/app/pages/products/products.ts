@@ -38,18 +38,24 @@ export class Products {
       next: (res) => {
         this.orderList = res.data;
         // Calculate totals of all data
-        this.sarangiRevenue = this.orderList
-          .filter((order) => order.type === 'Product' && order.itemName === 'Classic Sarangi')
-          .reduce((sum, order) => sum + order.totalPrice, 0);
-
-        this.madalRevenue = this.orderList
-          .filter((order) => order.type === 'Product' && order.itemName === 'Professional Madal')
-          .reduce((sum, order) => sum + order.totalPrice, 0);
-
-        this.bansuriRevenue = this.orderList
-          .filter((order) => order.type === 'Product' && order.itemName === 'Premium Bansuri')
-          .reduce((sum, order) => sum + order.totalPrice, 0);
-
+        for (const order of this.orderList) {
+          if (order.type === 'Product' && order.paymentStatus === 'Paid') {
+            for (const item of order.items) {
+              if (item.itemName.toLowerCase().includes('sarangi')) {
+                console.log('This is a Sarangi item');
+                this.sarangiRevenue += item.totalPrice;
+              }
+              if (item.itemName.toLowerCase().includes('madal')) {
+                console.log('This is a Sarangi item');
+                this.madalRevenue += item.totalPrice;
+              }
+              if (item.itemName.toLowerCase().includes('bansuri')) {
+                console.log('This is a Sarangi item');
+                this.bansuriRevenue += item.totalPrice;
+              }
+            }
+          }
+        }
         this.totalRevenue = this.bansuriRevenue + this.sarangiRevenue + this.madalRevenue;
         this.cdr.detectChanges();
       },

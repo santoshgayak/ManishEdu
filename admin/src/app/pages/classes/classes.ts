@@ -49,8 +49,8 @@ export class Classes {
         this.orderList.forEach((order) => {
           if (order.type !== 'Class') return;
 
-          const price = Number(order.totalPrice);
-          switch (order.itemName) {
+          const price = Number(order.items[0].totalPrice);
+          switch (order.items[0].itemName) {
             case 'Basic Sarangi Classes':
               this.basic_sarangi_revenue += price;
               console.log(this.basic_sarangi_revenue);

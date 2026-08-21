@@ -63,14 +63,17 @@
           @for (order of orderList.slice(0, 4); track order._id) {
             <div class="table-row">
               <div>#{{ order.orderId }}</div>
-              <div>J{{ order.customerName }}</div>
+              <div>{{ order.items[0].itemName }}</div>
               <div class="type">
                 <p [ngClass]="{ class: order.type === 'Class', product: order.type === 'Product' }">
                   {{ order.type }}
                 </p>
               </div>
-              <div>{{ order.itemName }}</div>
-              <div>${{ order.totalPrice }}</div>
+              @for (item of order.items; track $index) {
+                <div>{{ item.itemName }}</div>
+                <div>${{ item.totalPrice }}</div>
+              }
+
               <div class="status">
                 <p [class]="order.paymentStatus?.toLowerCase()">{{ order.paymentStatus }}</p>
               </div>
@@ -94,7 +97,10 @@
                 </p>
               </div>
               <p><i class="fa-solid fa-circle-user"></i>{{ order.customerName }}</p>
-              <p><i class="fa-solid fa-kaaba"></i>{{ order.itemName }}</p>
+
+              @for (item of order.items; track $index) {
+                <p><i class="fa-solid fa-kaaba"></i>{{ item.itemName }}</p>
+              }
 
               <div class="type-amount">
                 <div class="type">
@@ -113,7 +119,9 @@
 
                 <div class="amount">
                   <p>Amount</p>
-                  <p>${{ order.totalPrice }}</p>
+                  @for (item of order.items; track $index) {
+                    <p>${{ item.totalPrice }}</p>
+                  }
                 </div>
               </div>
 

@@ -29,19 +29,31 @@ export class Orders {
       next: (res) => {
         this.orderList = res.data;
         // Calculate totals of all data
-        this.enrollment_total = this.orderList
-          .filter((order) => order.type === 'Class')
-          .reduce((sum, order) => sum + order.totalPrice, 0);
+        for (const order of this.orderList) {
+          if (order.paymentStatus !== 'Paid') {
+            continue;
+          }
 
-        this.student_total = this.orderList
-          .filter((order) => order.type === 'Class')
-          .reduce((sum, order) => sum + 1, 0);
+          // Classes
+          if (order.type === 'Class') {
+            this.student_total += 1;
 
-        this.order_total = this.orderList
-          .filter((order) => order.type === 'Product')
-          .reduce((sum, order) => sum + order.totalPrice, 0);
+            for (const item of order.items) {
+              this.enrollment_total += item.totalPrice;
+            }
+          }
 
+          // Products
+          if (order.type === 'Product') {
+            for (const item of order.items) {
+              this.order_total += item.totalPrice;
+            }
+          }
+        }
+
+        // Total revenue
         this.total_revenue = this.enrollment_total + this.order_total;
+
         this.cdr.detectChanges();
       },
     });

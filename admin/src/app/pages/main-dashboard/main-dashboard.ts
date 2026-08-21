@@ -5,11 +5,30 @@ import { RouterLink } from '@angular/router';
 import * as echarts from 'echarts';
 
 import { DataService } from '../../services/data.service';
-import { Order } from '../../model/order.model';
 import { RevenueAnalyticsService } from '../../services/revenue_analytics.service';
 import { ManageClasses } from '../../components/manage-classes/manage-classes';
 import { ManageProducts } from '../../components/manage-products/manage-products';
 import { Loader } from '../../components/loader/loader';
+import { OrderType } from '../../model/order-type.model';
+import { PaymentStatus } from '../../model/payment-status.model';
+
+interface Order {
+  _id?: string;
+  orderId: string;
+  customerName: string;
+  customerEmail?: string;
+  type: OrderType;
+  items: {
+    itemId: string;
+    itemName: string;
+    quantity: number;
+    unitPrice: number;
+    totalPrice: number;
+  }[];
+
+  paymentStatus: PaymentStatus;
+  createdAt: string | Date;
+}
 @Component({
   selector: 'app-main-dashboard',
   standalone: true,
@@ -72,6 +91,7 @@ export class MainDashboard {
     this.dataService.getData('order', 'orders').subscribe({
       next: (res: any) => {
         this.orderList = res.data;
+        console.log('Reciever orderlist', this.orderList);
         // Calculate revenue metrics for different time periods
         const revenueMetrics = this.revenueAnalyticsService.calculateThisYearRevenue(
           this.orderList,
