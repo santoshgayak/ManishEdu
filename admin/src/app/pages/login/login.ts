@@ -39,6 +39,7 @@ export class Login {
         localStorage.setItem('token', res.token);
         localStorage.setItem('user', JSON.stringify(res.user));
         this.adminService.setAdmin(res.user);
+        console.log('User', res.user);
         //this.router.navigate(['/dashboard']);
         this.router.navigate(['/dashboard']);
       },

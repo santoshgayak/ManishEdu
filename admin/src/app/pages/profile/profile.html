@@ -117,7 +117,9 @@
       <div class="fields">
         <h3>Update Password</h3>
       </div>
-      <button class="changePassword" (click)="changePassword()">Change Password</button>
+      <button class="changePassword" (click)="changePassword()">
+        {{ showPasswordChangeForm ? 'Save' : 'ChangePassword' }}
+      </button>
     </div>
     <div class="security-info" [ngClass]="showPasswordChangeForm ? 'hide' : 'show'">
       <i class="fa-solid fa-shield-halved"></i>

@@ -36,10 +36,12 @@ export class LoginService {
           expiresIn: "1h",
         },
       );
+      const { password, ...userWithoutPassword } = user;
+      console.log("Hello P", userWithoutPassword);
 
       return {
         token: token,
-        user: user,
+        user: userWithoutPassword,
       };
     }
     //else return
