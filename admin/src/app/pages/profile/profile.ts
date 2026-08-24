@@ -4,6 +4,7 @@ import { DataService } from '../../services/data.service';
 import { Admin } from '../../model/admin.model';
 import { AdminService } from '../../services/admin.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { PasswordService } from '../../services/password.service';
 import {
   FormBuilder,
   ReactiveFormsModule,
@@ -36,12 +37,22 @@ export class Profile {
 
   passwordChangeForm = this.fb.group({
     password: ['', Validators.required],
-    newPassword: ['', Validators.required],
+    newPassword: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.pattern(/[!@#$%^&*(),.?":{}|<>_\-\\[\]/+=~`]/),
+      ],
+    ],
     confirmPassword: ['', Validators.required],
   });
 
+  isComplete = false;
   adminService = inject(AdminService);
   dataService = new DataService();
+  passwordService = inject(PasswordService);
+
   constructor(private cdr: ChangeDetectorRef) {}
   ngOnInit() {
     this.user = localStorage.getItem('user');
@@ -97,7 +108,44 @@ export class Profile {
   }
 
   changePassword() {
-    this.showPasswordChangeForm = !this.showPasswordChangeForm;
+    if (!this.showPasswordChangeForm) {
+      this.showPasswordChangeForm = true;
+      return;
+    }
+    if (this.passwordChangeForm.invalid) {
+      this.passwordChangeForm.markAllAsTouched();
+      alert('Password must be atleast 10 characters long and shoudl contain symbols');
+      return;
+    }
+    if (
+      this.passwordChangeForm.value.newPassword !== this.passwordChangeForm.value.confirmPassword
+    ) {
+      alert('New Passwords donot match.');
+      return;
+    }
+    console.log('Password change form is valid', this.passwordChangeForm.value);
+
+    const { password, newPassword, confirmPassword } = this.passwordChangeForm.getRawValue();
+
+    if (!password || !newPassword || !confirmPassword) {
+      alert('Please complete all fields.');
+      return;
+    }
+
+    this.passwordService.changePassword(this.user._id, password, newPassword).subscribe({
+      next: () => {
+        console.log('Password updated successfully');
+
+        this.passwordChangeForm.reset();
+        this.showPasswordChangeForm = false;
+      },
+      error: (err) => {
+        console.error('Password update failed:', err);
+        alert('Password could not be updated.');
+      },
+    });
+
+    this.showPasswordChangeForm = false;
   }
 
   onSubmit() {

@@ -19,6 +19,7 @@ import getDeleteClassRoutes from "./routes/deleteClass.routes.js";
 import getSaveProductRoutes from "./routes/saveProduct.routes.js";
 import getDeleteProductRoutes from "./routes/deleteProduct.routes.js";
 import getUpdateAminRoutes from "./routes/updateAdmin.routes.js";
+import getChangePasswordRoutes from "./routes/changePassword.routes.js";
 
 import { verifyToken } from "./middleware/auth.middleware.js";
 import { DataService } from "./services/data.service.js";
@@ -62,6 +63,7 @@ app.use("/api/update/admins", verifyToken, getUpdateAminRoutes);
 app.use("/api/save/product", verifyToken, getSaveProductRoutes);
 app.use("/api/delete/class", verifyToken, getDeleteClassRoutes);
 app.use("/api/delete/product", verifyToken, getDeleteProductRoutes);
+app.use("/api/change-password", verifyToken, getChangePasswordRoutes);
 
 app.get("/", (_req: Request, res: Response) => {
   res.json({
