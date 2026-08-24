@@ -13,6 +13,7 @@ import { OrderType } from '../../model/order-type.model';
 import { PaymentStatus } from '../../model/payment-status.model';
 import { Products } from '../products/products';
 import { Order } from '../../model/order.model';
+import { Router } from '@angular/router';
 interface Customer {
   _id: string;
   firstName: string;
@@ -41,6 +42,7 @@ export class MainDashboard {
   private http = inject(HttpClient);
   private cdr = inject(ChangeDetectorRef);
   private resizeObserver!: ResizeObserver;
+  router = inject(Router);
 
   orderList: Order[] = [];
 
@@ -113,7 +115,6 @@ export class MainDashboard {
         this.orderList = res.data;
         localStorage.setItem('orders', JSON.stringify(this.orderList));
 
-        console.log(this.orderList);
         this.total_orders = this.orderList.length;
 
         this.dataService.getData('customers', 'customers').subscribe({
@@ -162,28 +163,15 @@ export class MainDashboard {
         const revenueMetrics = this.revenueAnalyticsService.calculateThisYearRevenue(
           this.orderList,
         );
-        console.log('Revenue Metrics:', revenueMetrics);
 
         // Assign calculated metrics to respective variables
         this.enrollment_total_week = revenueMetrics.class.week;
         this.order_total_week = revenueMetrics.product.week;
         this.total_revenue_week = revenueMetrics.overall.week;
 
-        console.log('Weekly Metrics:', {
-          enrollment_total_week: this.enrollment_total_week,
-          order_total_week: this.order_total_week,
-          total_revenue_week: this.total_revenue_week,
-        });
-
         this.enrollment_total_month = revenueMetrics.class.month;
         this.order_total_month = revenueMetrics.product.month;
         this.total_revenue_month = revenueMetrics.overall.month;
-
-        console.log('Monthly Metrics:', {
-          enrollment_total_month: this.enrollment_total_month,
-          order_total_month: this.order_total_month,
-          total_revenue_month: this.total_revenue_month,
-        });
 
         this.enrollment_total_quater = revenueMetrics.class.quater;
         this.order_total_quater = revenueMetrics.product.quater;
@@ -194,20 +182,10 @@ export class MainDashboard {
 
         this.updateChart(this.enrollment_total_period, this.order_total_period);
 
-        console.log('Quarterly Metrics:', {
-          enrollment_total_quater: this.enrollment_total_quater,
-          order_total_quater: this.order_total_quater,
-          total_revenue_quater: this.total_revenue_quater,
-        });
-
         this.enrollment_total_yearly = revenueMetrics.class.year;
         this.order_total_yearly = revenueMetrics.product.year;
         this.total_revenue_yearly = revenueMetrics.overall.year;
-        console.log('Yearly Metrics:', {
-          enrollment_total_yearly: this.enrollment_total_yearly,
-          order_total_yearly: this.order_total_yearly,
-          total_revenue_yearly: this.total_revenue_yearly,
-        });
+
         this.cdr.detectChanges();
 
         this.resizeObserver = new ResizeObserver(() => {
@@ -231,7 +209,7 @@ export class MainDashboard {
     if (!this.myChart) return;
 
     const option: echarts.EChartsOption = {
-      color: ['#8B5CF6', '#22D3EE'],
+      color: ['#600adaff', '#22D3EE'],
       tooltip: {
         trigger: 'item',
         formatter: '{b}<br/>${c} ({d}%)',
@@ -315,5 +293,9 @@ export class MainDashboard {
 
     // Update the chart with the new values
     this.updateChart(this.enrollment_total_period, this.order_total_period);
+  }
+
+  navigate() {
+    this.router.navigate(['/dashboard/order']);
   }
 }

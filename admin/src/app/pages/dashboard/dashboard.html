@@ -81,16 +81,19 @@
       <div class="right">
         <span id="divider"></span>
 
-        <div class="user">
-          <div class="user-name">
-            <p>{{ user.role }}</p>
-            <p>{{ user.email }}</p>
+        @if (admin$ | async; as user) {
+          <div class="user">
+            <span>{{ user.fName.slice(0, 1) + user.lName.slice(0, 1) }}</span>
+
+            <div class="user-name">
+              <p>{{ user.role }}</p>
+            </div>
+
+            <a (click)="logOut()">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </a>
           </div>
-          <span>{{ user.fName.slice(0, 1) + user.lName.slice(0, 1) }}</span>
-          <a (click)="logOut()">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-          </a>
-        </div>
+        }
       </div>
     </div>
     <div class="content">

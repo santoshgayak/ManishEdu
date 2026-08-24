@@ -1,6 +1,12 @@
 import { getDB } from "../db/mongo.js";
 import { ObjectId } from "mongodb";
 import { Document } from "mongodb";
+import { Admin } from "../model/admin.model.js";
+
+interface UpdateAdminResponse {
+  message: string;
+  admin: Admin;
+}
 export class DataService {
   constructor() {
     console.log("DataService from data.service.ts loaded");
@@ -77,7 +83,6 @@ export class DataService {
 
   async getNextOrderId() {
     const db = getDB();
-
     const counters = db.collection<{ _id: string; sequence: number }>(
       "counters",
     );
@@ -96,5 +101,24 @@ export class DataService {
     }
 
     return `ORD-${result.sequence}`;
+  }
+  async updateFields(
+    collection: string,
+    id: string,
+    updatedFields: Partial<Admin>,
+  ) {
+    console.log("Updated Filed :", collection, updatedFields, id);
+    console.log("Converted id to ObjectId", new ObjectId(id));
+    const db = getDB();
+    const result = await db
+      .collection(collection)
+      .updateOne({ _id: id as any }, { $set: updatedFields });
+    if (result) {
+      const admin = await this.getOne("admins", { _id: id });
+      console.log("Admin : ", admin);
+      return admin;
+    }
+
+    return result;
   }
 }

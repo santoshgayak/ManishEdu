@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { DataService } from '../../services/data.service';
+import { Admin } from '../../model/admin.model';
+import { AdminService } from '../../services/admin.service';
+import { ChangeDetectorRef } from '@angular/core';
 import {
   FormBuilder,
   ReactiveFormsModule,
   Validators,
   ɵInternalFormsSharedModule,
 } from '@angular/forms';
+
 import { disabled, required, validate } from '@angular/forms/signals';
 import { NgClass } from '@angular/common';
 import { DatePipe } from '@angular/common';
@@ -35,12 +40,16 @@ export class Profile {
     confirmPassword: ['', Validators.required],
   });
 
-  constructor() {}
+  adminService = inject(AdminService);
+  dataService = new DataService();
+  constructor(private cdr: ChangeDetectorRef) {}
   ngOnInit() {
     this.user = localStorage.getItem('user');
 
     if (this.user) {
       this.user = JSON.parse(this.user);
+    } else {
+      this.loadUser();
     }
 
     this.AdminInfo = this.fb.group({
@@ -53,6 +62,14 @@ export class Profile {
     this.emailNotification = this.user.notificationPreference.isEmailOn;
     this.phoneNotification = this.user.notificationPreference.isPhoneOn;
     this.transactionNotification = this.user.notificationPreference.isTransactionOn;
+  }
+
+  loadUser() {
+    this.dataService.getData('admin', 'admins').subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+    });
   }
 
   editProfile() {
@@ -81,5 +98,32 @@ export class Profile {
 
   changePassword() {
     this.showPasswordChangeForm = !this.showPasswordChangeForm;
+  }
+
+  onSubmit() {
+    if (this.AdminInfo.invalid) {
+      this.AdminInfo.markAllAsTouched();
+      return;
+    }
+    const updatedFields: Partial<Admin> = {};
+
+    Object.keys(this.AdminInfo.controls).forEach((key) => {
+      const control = this.AdminInfo.get(key);
+      if (control?.dirty) {
+        updatedFields[key as keyof Admin] = control.value;
+      }
+    });
+    console.log('Changed fields : ', updatedFields);
+    this.dataService.updateAmin('admins', this.user._id, updatedFields).subscribe({
+      next: (res) => {
+        const admin = res.admin;
+        this.user = admin;
+        localStorage.setItem('user', JSON.stringify(admin));
+        this.adminService.setAdmin(admin);
+      },
+      error: (err) => {
+        console.error('Update failed:', err);
+      },
+    });
   }
 }

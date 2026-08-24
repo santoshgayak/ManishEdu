@@ -4,6 +4,8 @@ import { form } from '@angular/forms/signals';
 import { FormField } from '@angular/forms/signals';
 import { RouterLink, Router } from '@angular/router';
 import { AuthenticateService } from '../../services/authenticate.service';
+import { AdminService } from '../../services/admin.service';
+import { inject } from '@angular/core';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -12,13 +14,15 @@ import { AuthenticateService } from '../../services/authenticate.service';
   styleUrl: './login.scss',
 })
 export class Login {
+  private adminService = inject(AdminService);
+
   constructor(
     private router: Router,
     private authenticateService: AuthenticateService,
   ) {}
 
   signIn = signal({
-    email: 'manish_edu@gmail.com',
+    email: 'santoshgayak10@gmail.com',
     password: 'hello',
     checkbox: false,
   });
@@ -32,11 +36,10 @@ export class Login {
 
     this.authenticateService.authenticate(payload).subscribe({
       next: (res) => {
-        console.log('ressssss', res);
-        console.log('Authentication successful ! fc', res.token);
         localStorage.setItem('token', res.token);
         localStorage.setItem('user', JSON.stringify(res.user));
-
+        this.adminService.setAdmin(res.user);
+        //this.router.navigate(['/dashboard']);
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {

@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   position: relative;
-  //background:linear-gradient(135deg, rgb(241, 246, 226),rgb(227, 230, 244),rgb(234, 239, 245),rgb(244, 228, 244),white);
 
   //side navbar
   .side-nav {
@@ -19,7 +18,7 @@
     background-color: rgb(230, 225, 225);
     transition: all 0.3s ease;
     box-shadow: rgb(106, 12, 193, 0.5) 0px 4px 10px;
-    background-color: var(--text-dark);
+    background: var(--gradient-main);
     &.collapsed {
       min-width: 80px;
 
@@ -58,7 +57,6 @@
         z-index: 999;
       }
       a {
-        background-color: var(--btn-background-color);
         color: var(--button-light-color);
         text-decoration: none;
         padding: 0.8rem;
@@ -300,7 +298,7 @@
 
 //main content section
 .content {
-  padding: 0.5rem 2rem;
+  padding: 0.5rem;
   border: 1px solid var(--border-color);
   border-radius: 0 0 0.5rem 0.5rem;
   position: relative;

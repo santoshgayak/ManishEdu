@@ -7,10 +7,10 @@
 }
 
 :root {
-  --bg-light: #f8fafc; /* Main page background */
-  --bg-white: #ffffff; /* Cards, sections, navbar (if light) */
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
 
-  --text-dark: rgb(3, 4, 94); /* Main headings (H1, H2) */
+  --text-dark: rgb(3, 4, 94);
   --text-muted: #64748b;
 
   --text-link: rgb(77, 26, 241);
@@ -25,7 +25,7 @@
   --highlight-text: rgb(3, 146, 3);
   --boxes-background: rgb(248, 251, 251);
 
-  --gradient-main: linear-gradient(135deg, #2563eb, #06b6d4);
+  --gradient-main: linear-gradient(135deg, #010d27, #1b616d);
   --gradient-main-sec: linear-gradient(135deg, #06b6d4, #2563eb);
 }
 

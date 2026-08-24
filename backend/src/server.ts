@@ -18,6 +18,8 @@ import getSaveClassRoutes from "./routes/saveClass.routes.js";
 import getDeleteClassRoutes from "./routes/deleteClass.routes.js";
 import getSaveProductRoutes from "./routes/saveProduct.routes.js";
 import getDeleteProductRoutes from "./routes/deleteProduct.routes.js";
+import getUpdateAminRoutes from "./routes/updateAdmin.routes.js";
+
 import { verifyToken } from "./middleware/auth.middleware.js";
 import { DataService } from "./services/data.service.js";
 import { error } from "node:console";
@@ -34,7 +36,7 @@ app.use(
       "https://manish-edu.vercel.app",
       "https://manish-edu-admin1.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   }),
 );
@@ -56,6 +58,7 @@ app.use("/api/data/student", verifyToken, getCustomerRoutes);
 app.use("/api/data/class", verifyToken, getClassRoutes);
 app.use("/api/data/product", verifyToken, getProductRoutes);
 app.use("/api/save/class", verifyToken, getSaveClassRoutes);
+app.use("/api/update/admins", verifyToken, getUpdateAminRoutes);
 app.use("/api/save/product", verifyToken, getSaveProductRoutes);
 app.use("/api/delete/class", verifyToken, getDeleteClassRoutes);
 app.use("/api/delete/product", verifyToken, getDeleteProductRoutes);

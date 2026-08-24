@@ -4,13 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ClassPlan } from '../model/classes.model';
 import { Product } from '../model/products.model';
+import { Admin } from '../model/admin.model';
 
+interface UpdateAdminResponse {
+  message: string;
+  admin: Admin;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   //apiUrl = 'http://localhost:3000/api';
   apiUrl = 'https://manisheduserver.onrender.com/api';
+  apiUrl2 = 'http://localhost:3000/api';
   private http = inject(HttpClient);
   updatedClass?: ClassPlan;
   updatedProduct?: Product;
@@ -59,6 +65,13 @@ export class DataService {
         console.error('Deleting product API failed:', err);
         return of({ success: false, data: null, error: err.message });
       }),
+    );
+  }
+
+  updateAmin(collection: string, id: string, updatedFields: Partial<Admin>) {
+    return this.http.patch<UpdateAdminResponse>(
+      `${this.apiUrl2}/update/${collection}/${id}`,
+      updatedFields,
     );
   }
 }

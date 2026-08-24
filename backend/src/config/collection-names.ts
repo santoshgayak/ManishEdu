@@ -5,4 +5,5 @@ export const collectionList = [
   "orders",
   "customers",
   "students",
+  "admins",
 ];

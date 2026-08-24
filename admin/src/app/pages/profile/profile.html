@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div class="left">
-    <img src="/images/manish/manish.jpg" alt="" height="200px" />
+    <img src="/images/manish/manish.webp" alt="profile photo" />
     <h3>{{ user.role }}</h3>
     <p><i class="fa-regular fa-envelope"></i>{{ user.email }}</p>
     <p>
@@ -21,11 +21,17 @@
       <div class="title">
         <h3>Personal Information</h3>
       </div>
-      <button class="editProfileBtn" (click)="editProfile()">
+      <button
+        [attr.form]="isEditable ? 'adminForm' : null"
+        class="editProfileBtn"
+        (click)="editProfile()"
+        type="submit"
+        form="adminForm"
+      >
         <i class="fa-solid fa-plus"></i>{{ isEditable ? 'Save' : 'Edit Profile' }}
       </button>
     </div>
-    <form action="submit" [formGroup]="AdminInfo">
+    <form id="adminForm" (ngSubmit)="onSubmit()" [formGroup]="AdminInfo">
       <div class="form-left">
         <div class="fields">
           <label for="fName"><i class="fa-regular fa-address-card"></i>First Name</label>
