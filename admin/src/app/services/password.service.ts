@@ -10,7 +10,7 @@ export class PasswordService {
 
   changePassword(id: string, oldPassword: string, newPassword: string) {
     console.log('In service: ', id + ' -- ', oldPassword, '---', newPassword);
-    return this.http.patch(`${this.apiUrl2}/change-password`, {
+    return this.http.patch(`${this.apiUrl}/change-password`, {
       id,
       oldPassword,
       newPassword,

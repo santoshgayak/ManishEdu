@@ -6,6 +6,7 @@
 <div class="row">
   <div class="left">
     <img src="/images/manish/manish.webp" alt="profile photo" />
+    <span>{{ user.fName + ' ' + user.lName }}</span>
     <h3>{{ user.role }}</h3>
     <p><i class="fa-regular fa-envelope"></i>{{ user.email }}</p>
     <p>
@@ -28,7 +29,8 @@
         type="submit"
         form="adminForm"
       >
-        <i class="fa-solid fa-plus"></i>{{ isEditable ? 'Save' : 'Edit Profile' }}
+        <i class="fa-regular fa-pen-to-square"></i>
+        {{ isEditable ? 'Save' : 'Edit Profile' }}
       </button>
     </div>
     <form id="adminForm" (ngSubmit)="onSubmit()" [formGroup]="AdminInfo">
@@ -123,7 +125,8 @@
         class="changePassword"
         (click)="changePassword()"
       >
-        {{ showPasswordChangeForm ? 'Save' : 'ChangePassword' }}
+        <i class="fa-regular fa-pen-to-square"></i
+        >{{ showPasswordChangeForm ? 'Save' : 'ChangePassword' }}
       </button>
     </div>
     <div class="security-info" [ngClass]="showPasswordChangeForm ? 'hide' : 'show'">

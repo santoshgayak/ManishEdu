@@ -33,17 +33,24 @@
 
   img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     padding: 6px;
     background-color: #212cf4;
     box-sizing: border-box;
     box-shadow: 0px 2px 10px rgb(184, 182, 182);
   }
+  span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-link);
+    margin: 0;
+    padding: 0;
+  }
   h3 {
     color: var(--text-dark);
     text-align: center;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     background-color: rgba(247, 245, 252, 0.2);
     padding: 0.4rem 0.8rem;
     border-radius: 10px;
@@ -73,6 +80,7 @@
       padding: 0.5rem 0.8rem;
       border-radius: 10px;
       box-shadow: 0px 2px 10px rgb(184, 182, 182);
+      font-size: 0.7rem;
     }
   }
 }
@@ -349,6 +357,11 @@ form {
   &:hover {
     background-color: var(--highlight-text);
     color: white;
+  }
+  i {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
   }
 }
 @media (max-width: 1300px) {
