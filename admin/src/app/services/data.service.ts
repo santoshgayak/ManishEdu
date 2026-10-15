@@ -70,7 +70,7 @@ export class DataService {
 
   updateAmin(collection: string, id: string, updatedFields: Partial<Admin>) {
     return this.http.patch<UpdateAdminResponse>(
-      `${this.apiUrl2}/update/${collection}/${id}`,
+      `${this.apiUrl}/update/${collection}/${id}`,
       updatedFields,
     );
   }
